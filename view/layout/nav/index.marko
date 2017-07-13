@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <!--1. navbar - to start navigation bar without color
+      2. navbar-default- css the bar with color and border
+    -->
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <!--1. navbar-toggle" - use for Menu button appear and disapear when needed
+                            it also css for the button to stay on the right of the nav bar
+            2.data-toggle="collapse" - show/hidden menu when click on Menu button
+            3.data-target="#bs-example-navbar-collapse-1" - target id="bs-example-navbar-collapse-1"
+                          in the div of the menu, so it can toggle the menu into the button
+        -->
+          <span>Menu</span>
+      </button>
+      <a class="navbar-brand" href="/">Welcome !</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!--1.collapse - collapse all li to invisible  -->
+      <ul class="nav navbar-nav navbar-right">
+        <!--1. nav - layout for li
+            2. navbar-nav ccs for color and style the a
+        -->
+        <li class="hidden">
+						<a href="http://localhost:8000/#page-top"></a>
+				</li>
+        <li class="page-scroll">
+						<a href="http://localhost:8000/#portfolio">Portfolio</a>
+					</li>
+					<li class="page-scroll">
+						<a href="http://localhost:8000/#about">About</a>
+					</li>
+					<li class="page-scroll">
+						<a href="http://localhost:8000/#contact">Contact</a>
+					</li>
+          <li class="page-scroll">
+						<a href="/notes">Notes</a>
+					</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class='container'>
+    <div class='nav_header'>
+      <a class='navbar-brand' href='/'>Marko-Lasso</a>
+    </div>
+    <ul class='nav navbar-nav'>
+      <li id='home' onclick='document.title'><a href='/'>Home</a></li>
+      <li id='about' onclick='document.title'><a href='/'>About</a></li>
+      <li id='others' class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Others
+          <span class='caret'></span></a>
+          <ul class='dropdown-menu'>
+            <li><a href='#'>page 1</a></li>
+            <li><a href='#'>page 2</a></li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</nav> -->

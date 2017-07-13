@@ -1,0 +1,36 @@
+/*only fill out info after pull from github*/
+
+var mysql = require("mysql");
+
+
+//exports.dbCon = dbCon;
+module.exports={
+
+	//this for connecting to my gmphan7.com mysql database
+	//For this to work I have to create a SSH tunnel using PUTTY in Windows
+	//in Putty: I use my Nodejs setting and add SSH Tunnels to it
+	//Read more in dropbox/selfstudy/MySQL
+	gmphanCon: function(){
+		var gmpcon = mysql.createConnection({
+							host: "127.0.0.1",
+							port:33060, //this 33060 so it won't conflict with localhost 33060 for local mysql
+							user: "", //usename of the mysql
+							password: "", //password of the mysql
+							database:""});
+		return gmpcon;
+	}  //need a comma if I add anything else
+
+	//localhost = 127.0.0.1 => the below will conflict with the connection above
+	//at the meantime I only can use one connection, but will use deepAssign to
+	//use both in the future.
+	// localCon:function() {
+	// 	var con = mysql.createConnection({
+	// 						host: "localhost",
+	// 						port:3306,
+	// 						user: "",
+	// 						password: "",
+	// 						database:"test"});
+	// 	return con;
+	// }
+
+}
