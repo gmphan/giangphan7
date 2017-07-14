@@ -1,0 +1,14 @@
+<lasso-page package-path="./browser.json"/>
+//the <include/> and <@tag> tag is belong to marko
+<include('../layout/template/index.marko', data)>
+<@title>blog-display</@title>
+<@content>
+  <div class="container">
+    <div class="row">
+    <get-blog/>
+
+    </div>
+  </div>
+
+</@content>
+</include>
