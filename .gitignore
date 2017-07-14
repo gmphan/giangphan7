@@ -3,3 +3,4 @@ node_modules
 static
 /lib/mysqlCon.js
 /lib/emailConfig.js
+/lib/server.js
