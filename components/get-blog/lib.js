@@ -11,4 +11,5 @@ $(document).ready(function(){
    $("#btn3").click(function(){
        $("#test3").val("Dolly Duck");
    });
+   $("#includedContent").load("/assets/html-in-html.html");
 });
