@@ -7,6 +7,10 @@ const conngmp = mysqlCon.gmphanCon();
 const page = require('~/view/blog/index.marko')
 const displayPage = require('~/view/blog-display/index.marko')
 
+/******blog handler*****************/
+function blogHandler(req, reply){
+  queryIdAndTitle(reply);
+}
 const queryIdAndTitle = function(reply){
   return new Promise(function(resolve, reject){
     conngmp.query('SELECT * FROM blog', function(err, rows){
@@ -19,8 +23,8 @@ const queryIdAndTitle = function(reply){
         console.log("Successfully SELECT * FROM blog")
         for(var i=0; i<rows.length; i++){
           blogId[i] = rows[i].id
-          blogName[i] = rows[i].name
-          console.log(blogId[i], blogName[i])
+          blogName[i] = rows[i].blog_name
+          //console.log(blogId[i], blogName[i])
         }
         const idAndNameJson = {
           blogId,
@@ -32,48 +36,52 @@ const queryIdAndTitle = function(reply){
     })
   })
 }
+/*****End blogHandler*************************/
 
-function blogHandler(req, reply){
-  queryIdAndTitle(reply);
+/********getBlogHandler*********/
+function getBlogHandler(req, reply){
+  const blogIdReceiver = req.payload.blogId
+  console.log(blogIdReceiver)
+  queryBlogFile(blogIdReceiver, reply)
 }
 
-
-const queryBlogFile = function(reply){
+const queryBlogFile = function(blogIdReceiver, reply){
   return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM blog WHERE id=?', 3, function(err, rows){
+    conngmp.query('SELECT * FROM blog WHERE id=?', blogIdReceiver, function(err, rows){
       const blog = []
       if(err){
         throw err
       }else {
-        console.log('Successfully selected all from blog where id =')
         for(var i=0; i<rows.length; i++){
           blog[i] = rows[i].blog_content
+          console.log('Successfully selected all from blog where id = '+rows[i].id)
         }
-        console.log(blog[0])
         const blogJson={
           blog
         }
-        //console.log(blogFileJson.blogFile[0])
+        //console.log(blogJson.blog[0])
         reply(displayPage.stream(blogJson))
         resolve()
       }
     })
   })
 }
+/******End of getBlogHandler*************/
 
-function getBlogHandler(req, reply){
-  //console.log('here')
-  queryBlogFile(reply)
-   //will reply the code of the page
-  //reply('hello')
-}
 
 /******blog content insertion****************/
+function blogInsertHandler(req, reply){
+  const blogName=req.payload.blogName
+  const blogContent=req.payload.blogContent
+  insertBlogContent(blogName, blogContent)
+  console.log('from blogInsertHandler')
+  reply(1)
+}
 const insertBlogContent = function(blogName, blogContent){
   return new Promise(function(resolve, reject){
     const blogValues = {
       id:null,
-      name:blogName,
+      blog_name:blogName,
       date: new Date(),
       blog_content:blogContent
     }
@@ -86,13 +94,6 @@ const insertBlogContent = function(blogName, blogContent){
       }
     })
   })
-}
-function blogInsertHandler(req, reply){
-  const blogName=req.payload.blogName
-  const blogContent=req.payload.blogContent
-  insertBlogContent(blogName, blogContent)
-  console.log('from blogInsertHandler')
-  reply(1)
 }
 /****End blog content insertion*************/
 
