@@ -40,34 +40,61 @@ function blogHandler(req, reply){
 
 const queryBlogFile = function(reply){
   return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM blog WHERE id=?', 1, function(err, rows){
-      const blogFile = []
+    conngmp.query('SELECT * FROM blog WHERE id=?', 3, function(err, rows){
+      const blog = []
       if(err){
         throw err
       }else {
-        console.log('yeah')
+        console.log('Successfully selected all from blog where id =')
         for(var i=0; i<rows.length; i++){
-          blogFile[i] = rows[i].file
-          //console.log(blogFile[i])
+          blog[i] = rows[i].blog_content
         }
-        console.log(blogFile[0])
-        const blogFileJson={
-          blogFile
+        console.log(blog[0])
+        const blogJson={
+          blog
         }
-        console.log(blogFileJson.blogFile[0])
-        reply(displayPage.stream(blogFileJson))
+        //console.log(blogFileJson.blogFile[0])
+        reply(displayPage.stream(blogJson))
         resolve()
       }
     })
   })
 }
 
-function getBlogFile(req, reply){
-  console.log('here')
+function getBlogHandler(req, reply){
+  //console.log('here')
   queryBlogFile(reply)
    //will reply the code of the page
   //reply('hello')
 }
+
+/******blog content insertion****************/
+const insertBlogContent = function(blogName, blogContent){
+  return new Promise(function(resolve, reject){
+    const blogValues = {
+      id:null,
+      name:blogName,
+      date: new Date(),
+      blog_content:blogContent
+    }
+    conngmp.query('INSERT INTO blog SET?', blogValues, function(err, res){
+      if(err){
+        throw err
+      }else {
+        console.log('Successfully inserted into blog table')
+        resolve()
+      }
+    })
+  })
+}
+function blogInsertHandler(req, reply){
+  const blogName=req.payload.blogName
+  const blogContent=req.payload.blogContent
+  insertBlogContent(blogName, blogContent)
+  console.log('from blogInsertHandler')
+  reply(1)
+}
+/****End blog content insertion*************/
 
 module.exports=[
   {
@@ -77,7 +104,12 @@ module.exports=[
   },
   {
     method:'POST',
-    path:'/getBlogFile',
-    handler:getBlogFile
+    path:'/getBlog',
+    handler:getBlogHandler
+  },
+  {
+    method:'POST',
+    path:'/blog/insertion',
+    handler:blogInsertHandler
   }
 ]
