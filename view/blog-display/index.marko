@@ -5,13 +5,11 @@
 <@content>
   <div class="container">
     <div class="row">
-      <p>testing</p>
-
-    <!-- <get-blog/> -->
-
-      ${input.blog[0]} 
+      <div class="col-md-2 hidden-sm">  </div>
+      <div id="blogContentDiv" class="col-md-8">
+        <input type="text" name="blog_content" value="${input.blog[0]}">
+      </div>
     </div>
   </div>
-
 </@content>
 </include>

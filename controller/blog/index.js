@@ -4,10 +4,11 @@ var Promise = require('promise')
 const mysqlCon = require('~/lib/mysqlCon');
 const conngmp = mysqlCon.gmphanCon();
 
-const page = require('~/view/blog/index.marko')
-const displayPage = require('~/view/blog-display/index.marko')
+
+
 
 /******blog handler*****************/
+const page = require('~/view/blog/index.marko')
 function blogHandler(req, reply){
   queryIdAndTitle(reply);
 }
@@ -39,9 +40,10 @@ const queryIdAndTitle = function(reply){
 /*****End blogHandler*************************/
 
 /********getBlogHandler*********/
+const displayPage = require('~/view/blog-display/index.marko')
 function getBlogHandler(req, reply){
   const blogIdReceiver = req.payload.blogId
-  console.log(blogIdReceiver)
+  //console.log(blogIdReceiver)
   queryBlogFile(blogIdReceiver, reply)
 }
 
@@ -74,7 +76,7 @@ function blogInsertHandler(req, reply){
   const blogName=req.payload.blogName
   const blogContent=req.payload.blogContent
   insertBlogContent(blogName, blogContent)
-  console.log('from blogInsertHandler')
+  //console.log('from blogInsertHandler')
   reply(1)
 }
 const insertBlogContent = function(blogName, blogContent){
@@ -97,6 +99,14 @@ const insertBlogContent = function(blogName, blogContent){
 }
 /****End blog content insertion*************/
 
+/********Blog form handler************************/
+const blogForm = require('~/view/blog-form/index.marko')
+function blogFormHandler(req, reply){
+  //console.log('in blog form handler')
+  reply(blogForm.stream())
+}
+/********End Blog form handler************************/
+
 module.exports=[
   {
     method: 'GET',
@@ -112,5 +122,10 @@ module.exports=[
     method:'POST',
     path:'/blog/insertion',
     handler:blogInsertHandler
+  },
+  {
+    method:'GET',
+    path:'/blog-form',
+    handler:blogFormHandler
   }
 ]
