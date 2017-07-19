@@ -12,6 +12,7 @@ body{
 }
 p {
   font-size: 20px;
+	text-indent: 50px;
 }
 p.small {
   font-size: 16px;
