@@ -7,29 +7,29 @@ const conngmp = mysqlCon.gmphanCon();
 
 
 
-/******blogHandler*****************/
+/******postHandler*****************/
 const page = require('~/view/blog/index.marko')
-function blogHandler(req, reply){
+function postHandler(req, reply){
   queryIdAndTitle(reply);
 }
 const queryIdAndTitle = function(reply){
   return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM blog', function(err, rows){
-      const blogId = []
-      const blogName = []
-      const blogDate = []
+    conngmp.query('SELECT * FROM post', function(err, rows){
+      const postId = []
+      const postName = []
+      const postDate = []
       if(err){
         throw err
       }else {
-        console.log("Successfully SELECT * FROM blog")
+        console.log("Successfully SELECT * FROM post")
         for(var i=0; i<rows.length; i++){
-          blogId[i] = rows[i].id
-          blogName[i] = rows[i].blog_name
-          //console.log(blogId[i], blogName[i])
+          postId[i] = rows[i].id
+          postName[i] = rows[i].post_name
+          //console.log(postId[i], postName[i])
         }
         const idAndNameJson = {
-          blogId,
-          blogName
+          postId,
+          postName
         }
         reply(page.stream(idAndNameJson))
         resolve()
@@ -37,95 +37,95 @@ const queryIdAndTitle = function(reply){
     })
   })
 }
-/*****End blogHandler ********************/
+/*****End postHandler ********************/
 
-/*****blogDisplayHandler******************/
-const displayPage = require('~/view/blog-display/index.marko')
-function blogDisplayHandler(req, reply){
-   const blogIdReceiver=req.params.param
-   //console.log(blogIdReceiver)
-  queryBlogFile(blogIdReceiver, reply)
+/*****postDisplayHandler******************/
+const displayPage = require('~/view/post-display/index.marko')
+function postDisplayHandler(req, reply){
+   const postIdReceiver=req.params.param
+   //console.log(postIdReceiver)
+  queryPostFile(postIdReceiver, reply)
 }
-const queryBlogFile = function(blogIdReceiver, reply){
+const queryPostFile = function(postIdReceiver, reply){
   return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM blog WHERE id=?', blogIdReceiver, function(err, rows){
-      const blog = []
+    conngmp.query('SELECT * FROM post WHERE id=?', postIdReceiver, function(err, rows){
+      const post = []
       if(err){
         throw err
       }else {
         for(var i=0; i<rows.length; i++){
-          blog[i] = rows[i].blog_content
-          console.log('Successfully selected all from blog where id = '+rows[i].id)
+          post[i] = rows[i].post_content
+          console.log('Successfully selected all from post where id = '+rows[i].id)
         }
-        const blogIndex0 = blog[0]
-        const blogJson={
-          blogIndex0
+        const postIndex0 = post[0]
+        const postJson={
+          postIndex0
         }
-        //console.log(blogJson.blog[0])
-        reply(displayPage.stream(blogJson))
+        //console.log(postJson.post[0])
+        reply(displayPage.stream(postJson))
         resolve()
       }
     })
   })
 }
-/*****End blogDisplayHandler*************/
+/*****End postDisplayHandler*************/
 
 
-/******blog content insertion****************/
-function blogInsertHandler(req, reply){
-  const blogName=req.payload.blogName
-  const blogContent=req.payload.blogContent
-  insertBlogContent(blogName, blogContent)
-  //console.log('from blogInsertHandler')
+/******post content insertion****************/
+function postInsertHandler(req, reply){
+  const postName=req.payload.postName
+  const postContent=req.payload.postContent
+  insertpostContent(postName, postContent)
+  //console.log('from postInsertHandler')
   reply(1)
 }
-const insertBlogContent = function(blogName, blogContent){
+const insertpostContent = function(postName, postContent){
   return new Promise(function(resolve, reject){
-    const blogValues = {
+    const postValues = {
       id:null,
-      blog_name:blogName,
+      post_name:postName,
       date: new Date(),
-      blog_content:blogContent
+      post_content:postContent
     }
-    conngmp.query('INSERT INTO blog SET?', blogValues, function(err, res){
+    conngmp.query('INSERT INTO post SET?', postValues, function(err, res){
       if(err){
         throw err
       }else {
-        console.log('Successfully inserted into blog table')
+        console.log('Successfully inserted into post table')
         resolve()
       }
     })
   })
 }
-/****End blog content insertion*************/
+/****End post content insertion*************/
 
-/********Blog form handler************************/
-const blogForm = require('~/view/blog-form/index.marko')
-function blogFormHandler(req, reply){
-  //console.log('in blog form handler')
-  reply(blogForm.stream())
+/********post form handler************************/
+const postForm = require('~/view/post-form/index.marko')
+function postFormHandler(req, reply){
+  //console.log('in post form handler')
+  reply(postForm.stream())
 }
-/********End Blog form handler************************/
+/********End post form handler************************/
 
 module.exports=[
   {
     method: 'GET',
     path:'/blog',
-    handler:blogHandler
+    handler:postHandler
   },
   {
     method:'GET',
-    path:'/blog/display/{param*}',
-    handler:blogDisplayHandler
+    path:'/post/display/{param*}',
+    handler:postDisplayHandler
   },
   {
     method:'POST',
-    path:'/blog/insertion',
-    handler:blogInsertHandler
+    path:'/post/insertion',
+    handler:postInsertHandler
   },
   {
     method:'GET',
-    path:'/blog-form',
-    handler:blogFormHandler
+    path:'/post/form',
+    handler:postFormHandler
   }
 ]

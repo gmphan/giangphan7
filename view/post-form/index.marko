@@ -1,7 +1,7 @@
 <lasso-page package-path="./browser.json"/>
 //the <include/> and <@tag> tag is belong to marko
 <include('../layout/template/index.marko', data)>
-<@title>Blog</@title>
+<@title>Post</@title>
   <@content>
   <!--always need something in @content, or else will get "Error: write after end"  -->
   <div class="container">
@@ -10,6 +10,7 @@
     <div class="col-md-8">
 
       <h3>Why I write posts!!!</h3>
+
       <ul>
         <li>My posts are my memories of those unique codes and projects that I have done.</li>
         <li>Writing a post on a topic actually helps me to understand the topic a lot better.</li>
@@ -19,10 +20,10 @@
       </ul>
 
 
-      <h3>Blog-form</h3>
-      <form id="submitBlog">
-        Blog name:<input type="text" name="blog_name" size="99"><br/><br/>
-        Blob: <textarea type="text" name="blog_content" rows="3" cols="100" style="vertical-align:middle"></textarea>
+      <h3>Post-form</h3>
+      <form id="submitPost">
+        Post name:<input type="text" name="post_name" size="99"><br/><br/>
+        Post content: <textarea type="text" name="post_content" rows="3" cols="100" style="vertical-align:middle"></textarea>
         <br/><br/><input  type="submit" value="submit">
       </form>
     </div>
