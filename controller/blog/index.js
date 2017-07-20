@@ -7,7 +7,7 @@ const conngmp = mysqlCon.gmphanCon();
 
 
 
-/******blog handler*****************/
+/******blogHandler*****************/
 const page = require('~/view/blog/index.marko')
 function blogHandler(req, reply){
   queryIdAndTitle(reply);
@@ -37,16 +37,15 @@ const queryIdAndTitle = function(reply){
     })
   })
 }
-/*****End blogHandler*************************/
+/*****End blogHandler ********************/
 
-/********getBlogHandler*********/
+/*****blogDisplayHandler******************/
 const displayPage = require('~/view/blog-display/index.marko')
-function getBlogHandler(req, reply){
-  const blogIdReceiver = req.payload.blogId
-  //console.log(blogIdReceiver)
+function blogDisplayHandler(req, reply){
+   const blogIdReceiver=req.params.param
+   //console.log(blogIdReceiver)
   queryBlogFile(blogIdReceiver, reply)
 }
-
 const queryBlogFile = function(blogIdReceiver, reply){
   return new Promise(function(resolve, reject){
     conngmp.query('SELECT * FROM blog WHERE id=?', blogIdReceiver, function(err, rows){
@@ -58,8 +57,9 @@ const queryBlogFile = function(blogIdReceiver, reply){
           blog[i] = rows[i].blog_content
           console.log('Successfully selected all from blog where id = '+rows[i].id)
         }
+        const blogIndex0 = blog[0]
         const blogJson={
-          blog
+          blogIndex0
         }
         //console.log(blogJson.blog[0])
         reply(displayPage.stream(blogJson))
@@ -68,7 +68,7 @@ const queryBlogFile = function(blogIdReceiver, reply){
     })
   })
 }
-/******End of getBlogHandler*************/
+/*****End blogDisplayHandler*************/
 
 
 /******blog content insertion****************/
@@ -114,9 +114,9 @@ module.exports=[
     handler:blogHandler
   },
   {
-    method:'POST',
-    path:'/getBlog',
-    handler:getBlogHandler
+    method:'GET',
+    path:'/blog/display/{param*}',
+    handler:blogDisplayHandler
   },
   {
     method:'POST',
