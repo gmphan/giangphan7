@@ -9,15 +9,54 @@
     <div class="col-md-2 hidden-sm"></div>
     <div class="col-md-8">
 
-      <h3>Why I write posts!!!</h3>
+      <h3>Understand Basic AWS</h3>
 
-      <ul>
-        <li>My posts are my memories of those unique codes and projects that I have done.</li>
-        <li>Writing a post on a topic actually helps me to understand the topic a lot better.</li>
-        <li>I show off my works and knowledge through my posts</li>
-        <li>My posts save me time from digging into my projects to find what I need for the current object(s)</li>
-        <li>I hope my posts can be good small tutorials on different subjects for someone out there.</li>
+      <ul>(Written from how I understand about the AWS)
+        <li>What is AWS?
+          <ul>
+            <li>AWS is a big Virtual Machine on Amazon enormous Computer</li>
+            <li>AWS contains many big and small applications (example: S3, EC2, IAM,...)</li>
+            <li>My AWS account/ID is one of the usernames on the AWS machine</li>
+            <li>I can create an alias for my account ID for easier memorize it</li>
+          </ul>
+        </li>
+        <li>IAM user
+          <ul>
+            <li>My email is like a sudo user, and it can view to all the applications on AWS console.</li>
+            <li>However, "my email" account only can access to certain applications that I pay for.</li>
+            <li>I shouldn't login as "my email" account, but by an IAM user.</li>
+            <li>An IAM user is created by "my email" account and only has access to things that "my email" account allow it to</li>
+            <li>Think of "my email" account as an root account, and IAM user as a standard user</li>
+            <li>Since "my email" account act as root account, it can do damage to file system</li>
+          </ul>
+        </li>
+        <li>Create IAM user
+          <ul>
+            <li>First create an administrator user by login using "my email" account</li>
+            <li>Service > IAM > Users > Create a "exampleUser" user</li>
+            <li>Go to Group > Create Administrator group > give the group Administrator Access</li>
+            <li>Back to Users > put the "exampleUser" under Administrator Group.</li>
+            <li>Sign out > sign back in using the "exampleUser", "exampleUser" only can access certain things depend on what access Administrator Group have</li>
+          </ul>
+        </li>
+        <li>EC2 instances
+          <ul>
+            <li>EC2 is one of resources/applications on AWS.</li>
+            <li>EC2 allow my IAM user to create my own VM/instances in AWS machine.</li>
+            <li>Users in an EC2 instance are totally different then IAM users</li>
+            <li>A computer access to EC2 instance through AWS IPv4 Public IP or Public DNS (IPv4).</li>
+          </ul>
+        </li>
+        <li>AWS IPv4 Public IP or Public DNS (IPv4)
+          <ul>
+            <li>The IP address can be static or DHCP.</li>
+            <li>The IP address was already configured by Amazon to talk to the outside world</li>
+            <li>I can generate key on my local computer to access my EC2 instance.</li>
+          </ul>
+        </li>
       </ul>
+
+
 
 
       <h3>Post-form</h3>

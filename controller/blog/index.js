@@ -7,9 +7,9 @@ const conngmp = mysqlCon.gmphanCon();
 
 
 
-/******postHandler*****************/
+/******blogHandler*****************/
 const page = require('~/view/blog/index.marko')
-function postHandler(req, reply){
+function blogHandler(req, reply){
   queryIdAndTitle(reply);
 }
 const queryIdAndTitle = function(reply){
@@ -111,7 +111,7 @@ module.exports=[
   {
     method: 'GET',
     path:'/blog',
-    handler:postHandler
+    handler:blogHandler
   },
   {
     method:'GET',
