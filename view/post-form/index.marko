@@ -9,7 +9,7 @@
     <div class="col-md-2 hidden-sm"></div>
     <div class="col-md-8">
 
-      <h3>SSH to EC2</h3>
+      <h3>SSH to a Linux server</h3>
       <ul>
         <li>Using Putty:
           <ul>
@@ -25,9 +25,19 @@
                    <li><strong>Key:</strong> move the mouse pointer in the box until process bar is full</li>
                    <li><strong>Key comment:</strong> give your key an identifier (this will be automatically added to the end of your key)</li>
                    <li><strong>Key passphrase/Confirm passphrase: </strong>optional (best option is to leave it blank)</li>
-                   <li><strong>Save public key/Save private key </strong>buttons: save to wherever you want (default location would be best, incase one day you have to look for them again)</li>
+                   <li><strong>Save public key/Save private key </strong>buttons: save to wherever you want (default location would be best,
+                     incase one day you have to look for them again)</li>
+                   <li><strong>public key</strong> will be copied and pasted into the server's authorized_keys file</li>
+                   <li><strong>private key</strong> can be copied to different computers, so those computers can login to the same server. (not recommended because you might lose one
+                     of those computers, and people can steal your private out from it.)</li>
+                   <li><strong>Best option:</strong> each computer should have its own SSH key pair</li>
                  </ul>
                </li>
+              </ul>
+            </li>
+            <li>Save public key on a server
+              <ul>
+                <li>Simplest way:</li>
               </ul>
             </li>
           </ul>
