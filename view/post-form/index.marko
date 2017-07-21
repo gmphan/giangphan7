@@ -9,49 +9,27 @@
     <div class="col-md-2 hidden-sm"></div>
     <div class="col-md-8">
 
-      <h3>Understand Basic AWS</h3>
-
-      <ul>(Written from how I understand about the AWS)
-        <li>What is AWS?
+      <h3>SSH to EC2</h3>
+      <ul>
+        <li>Using Putty:
           <ul>
-            <li>AWS is a big Virtual Machine on Amazon enormous Computer</li>
-            <li>AWS contains many big and small applications (example: S3, EC2, IAM,...)</li>
-            <li>My AWS account/ID is one of the usernames on the AWS machine</li>
-            <li>I can create an alias for my account ID for easier memorize it</li>
-          </ul>
-        </li>
-        <li>IAM user
-          <ul>
-            <li>My email is like a sudo user, and it can view to all the applications on AWS console.</li>
-            <li>However, "my email" account only can access to certain applications that I pay for.</li>
-            <li>I shouldn't login as "my email" account, but by an IAM user.</li>
-            <li>An IAM user is created by "my email" account and only has access to things that "my email" account allow it to</li>
-            <li>Think of "my email" account as an root account, and IAM user as a standard user</li>
-            <li>Since "my email" account act as root account, it can do damage to file system</li>
-          </ul>
-        </li>
-        <li>Create IAM user
-          <ul>
-            <li>First create an administrator user by login using "my email" account</li>
-            <li>Service > IAM > Users > Create a "exampleUser" user</li>
-            <li>Go to Group > Create Administrator group > give the group Administrator Access</li>
-            <li>Back to Users > put the "exampleUser" under Administrator Group.</li>
-            <li>Sign out > sign back in using the "exampleUser", "exampleUser" only can access certain things depend on what access Administrator Group have</li>
-          </ul>
-        </li>
-        <li>EC2 instances
-          <ul>
-            <li>EC2 is one of resources/applications on AWS.</li>
-            <li>EC2 allow my IAM user to create my own VM/instances in AWS machine.</li>
-            <li>Users in an EC2 instance are totally different then IAM users</li>
-            <li>A computer access to EC2 instance through AWS IPv4 Public IP or Public DNS (IPv4).</li>
-          </ul>
-        </li>
-        <li>AWS IPv4 Public IP or Public DNS (IPv4)
-          <ul>
-            <li>The IP address can be static or DHCP.</li>
-            <li>The IP address was already configured by Amazon to talk to the outside world</li>
-            <li>I can generate key on my local computer to access my EC2 instance.</li>
+            <li>Generate a new SSH key pair:
+              <ul>
+                <li>download and install putty from <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">this website</a> </li>
+                <li>The installing will give Putty.exe and PuTTYgen.exe utility</li>
+                <li>Double click on PuTTYgen.exe, then follow the setting below:
+                  <ul>
+                   <li><strong>Type of key to generate: SSH-2 RSA</strong> </li>
+                   <li><strong>Number of bits in a generated key: 2048 or 4096</strong> (larger the bit harder for cracking)</li>
+                   <li>Click on <strong>Generate</strong> button to generate public and private key</li>
+                   <li><strong>Key:</strong> move the mouse pointer in the box until process bar is full</li>
+                   <li><strong>Key comment:</strong> give your key an identifier (this will be automatically added to the end of your key)</li>
+                   <li><strong>Key passphrase/Confirm passphrase: </strong>optional (best option is to leave it blank)</li>
+                   <li><strong>Save public key/Save private key </strong>buttons: save to wherever you want (default location would be best, incase one day you have to look for them again)</li>
+                 </ul>
+               </li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
