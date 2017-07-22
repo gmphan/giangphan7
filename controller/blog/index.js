@@ -84,7 +84,6 @@ const insertpostContent = function(postName, postContent){
     const postValues = {
       id:null,
       post_name:postName,
-      date: new Date(),
       post_content:postContent
     }
     conngmp.query('INSERT INTO post SET?', postValues, function(err, res){
