@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "browser-refresh": "^1.7.1",
+    "browser-refresh-taglib": "^1.1.0",
     "deep-assign": "^2.0.0",
     "hapi": "^16.1.1",
     "hapi-auth-basic": "^4.2.0",
