@@ -50,16 +50,20 @@ const queryPostFile = function(postIdReceiver, reply){
   return new Promise(function(resolve, reject){
     conngmp.query('SELECT * FROM post WHERE id=?', postIdReceiver, function(err, rows){
       const post = []
+      const postId = []
       if(err){
         throw err
       }else {
         for(var i=0; i<rows.length; i++){
           post[i] = rows[i].post_content
-          console.log('Successfully selected all from post where id = '+rows[i].id)
+          postId[i] = rows[i].id
+          console.log('Successfully selected all from post where id = '+postId[i])
         }
         const postIndex0 = post[0]
+        const postIdIndex0 = postId[0]
         const postJson={
-          postIndex0
+          postIndex0,
+          postIdIndex0
         }
         //console.log(postJson.post[0])
         reply(displayPage.stream(postJson))
@@ -107,8 +111,9 @@ function postFormHandler(req, reply){
 /********End post form handler************************/
 
 /*******Post update handler**********************************/
+const postEditor = require('~/view/post-editor-form/index.marko')
 function postUpdateHandler(req, reply){
-  reply(1)
+  reply(postEditor.stream())
 }
 
 
@@ -136,8 +141,8 @@ module.exports=[
     handler:postFormHandler
   },
   {
-    method:'POST',
-    path: '/post/update',
+    method:'GET',
+    path:'/post/update/{param*}',
     handler:postUpdateHandler
   }
 ]

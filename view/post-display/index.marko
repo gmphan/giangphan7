@@ -1,7 +1,7 @@
 <lasso-page package-path="./browser.json"/>
 //the <include/> and <@tag> tag is belong to marko
 <include('../layout/template/index.marko', data)>
-<@title>blog-display</@title>
+<@title>post-display</@title>
 <@content>
   <div class="container">
     <div class="row">
@@ -10,11 +10,12 @@
         <div id="postContentDiv">
           <input type="text" name="post_content" value="${input.postIndex0}">
         </div>
-        <button id="editPost" type="button" onclick="editPost()">
+        <a class="btn btn-info" href="/post/update/${input.postIdIndex0}">Edit post</a>
+        <!-- <button id="editPost" type="button" onclick="editPost()">
           edit post
         </button>
         <div id="postAfterEdit">
-        </div>
+        </div> -->
       </div>
 
     </div>
