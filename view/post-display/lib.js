@@ -1,16 +1,38 @@
 $(document).ready(function(){
     const $post_content = $("input[name='post_content']");
-    $("#postContentDiv").html($post_content.val());
-    
-    /**
-      since the $post_content already have the value,
-      I can out put it in an text area for now,
-      when I click on edit button, I will kick off
-      a click even and have code put the content in to an text area.
-      the text area will be right underneath of the content,
-      after editing, there will be a save button/submit button
-      the data will be send down to blog controller for the time being,
-      I will use alter column to replace the field with the new content.
-      and the page should be refresh by calling an event.
-    **/
+    const postContent = $post_content.val();
+    $("#postContentDiv").html(postContent);
+
+  /*****Update current post with editing************/
+    //Edit current post
+    $("#editPost").on("click", function editPost(){
+        console.log(postContent);
+        $("#postAfterEdit").html("<form id='submitEditedPost'>"+
+            "Post Content: <textarea type='text' rows='3' cols='100'style='vertical-align:middle'>"+
+              postContent +
+            "</textarea>"+
+            "<input type='submit' value='Submit Change'>"+
+          "</form>"
+        );
+      });
+      //End editing post
+
+      //submitting editing post
+    $("#submitEditedPost").submit(function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:'/post/update',
+        //data:submitEditedPost,
+        success:function(postUpdateReply){
+          console.log('Successfully ajax /postUpdateHandler');
+
+        },
+        error:function(){
+          alert('error update post content')
+        }
+      });
+    });
+    //End submiting editing post
+  /*****End Update current post with editing************/
 });

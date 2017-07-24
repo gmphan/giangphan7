@@ -106,6 +106,14 @@ function postFormHandler(req, reply){
 }
 /********End post form handler************************/
 
+/*******Post update handler**********************************/
+function postUpdateHandler(req, reply){
+  reply(1)
+}
+
+
+/*******End of Post update handler***************************/
+
 module.exports=[
   {
     method: 'GET',
@@ -126,5 +134,10 @@ module.exports=[
     method:'GET',
     path:'/post/form',
     handler:postFormHandler
+  },
+  {
+    method:'POST',
+    path: '/post/update',
+    handler:postUpdateHandler
   }
 ]

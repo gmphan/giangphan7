@@ -6,11 +6,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2 hidden-sm">  </div>
-      <div id="postContentDiv" class="col-md-8">
-        <p>testing</p>
-        <input type="text" name="post_content" value="${input.postIndex0}">
-
+      <div class="col-md-8">
+        <div id="postContentDiv">
+          <input type="text" name="post_content" value="${input.postIndex0}">
+        </div>
+        <button id="editPost" type="button" onclick="editPost()">
+          edit post
+        </button>
+        <div id="postAfterEdit">
+        </div>
       </div>
+
     </div>
   </div>
 </@content>
