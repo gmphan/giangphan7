@@ -150,8 +150,7 @@ function reinsertPosthandler(req, reply){
 
 const updatePost = function(postId, editedPost){
   return new Promise(function(resolve, reject){
-    const sql = "UPDATE post SET post_content='"+editedPost+"'WHERE id='"+postId+"'"
-    conngmp.query(sql, function(error, rows){
+    conngmp.query("UPDATE post SET post_content=? WHERE id=?", [editedPost, postId], function(error, rows){
       if(error){
         throw error
       }else {
