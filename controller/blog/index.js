@@ -113,11 +113,44 @@ function postFormHandler(req, reply){
 /*******Post update handler**********************************/
 const postEditor = require('~/view/post-editor-form/index.marko')
 function postUpdateHandler(req, reply){
-  reply(postEditor.stream())
+  const postUpdatedId=req.params.param
+  queryPost4edit(postUpdatedId, reply)
+  //reply(postEditor.stream())
+}
+const queryPost4edit = function(postUpdatedId, reply){
+  return new Promise(function(resolve, reject){
+    conngmp.query('SELECT * FROM post WHERE id=?', postUpdatedId, function(err, rows){
+      const post4Update = []
+      //const post4UpdateId = []
+      if(err){
+        throw err
+      }else {
+        for(var i=0; i<rows.length; i++){
+          post4Update[i] = rows[i].post_content
+          //post4UpdateId[i] = rows[i].id
+        }
+        const post4Update0 = post4Update[0]
+        const postJson4Update={
+          post4Update0
+        }
+        reply(postEditor.stream(postJson4Update))
+        resolve()
+      }
+    })
+  })
+}
+
+
+function updatePosthandler(req, reply){
+  console.log('here in updatePosthandler')
+  reply(1)
 }
 
 
 /*******End of Post update handler***************************/
+
+
+
 
 module.exports=[
   {
@@ -144,5 +177,10 @@ module.exports=[
     method:'GET',
     path:'/post/update/{param*}',
     handler:postUpdateHandler
+  },
+  {
+    method:'POST',
+    path:'/update/post',
+    handler:updatePosthandler
   }
 ]
