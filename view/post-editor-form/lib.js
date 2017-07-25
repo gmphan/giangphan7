@@ -10,7 +10,7 @@ $(document).ready(function(){
       url:'/update/post',
       data:submitEditedPost,
       success:function(){
-        console.log('Successfully ajax insertEditedPost')
+        console.log('Successfully ajax updatePosthandler')
       },
       error:function(){
         alert('error adding edited post')
