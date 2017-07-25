@@ -141,11 +141,25 @@ const queryPost4edit = function(postUpdatedId, reply){
 }
 
 
-function updatePosthandler(req, reply){
-  console.log('here in updatePosthandler')
+function reinsertPosthandler(req, reply){
+  const postId = req.payload.editedPostId
+  const editedPost = req.payload.editedPost
+  updatePost(postId, editedPost)
   reply(1)
 }
 
+const updatePost = function(postId, editedPost){
+  return new Promise(function(resolve, reject){
+    const sql = "UPDATE post SET post_content='"+editedPost+"'WHERE id='"+postId+"'"
+    conngmp.query(sql, function(error, rows){
+      if(error){
+        throw error
+      }else {
+        console.log('Successfully UPDATE post')
+      }
+    })
+  })
+}
 
 /*******End of Post update handler***************************/
 
@@ -174,13 +188,15 @@ module.exports=[
     handler:postFormHandler
   },
   {
+    //will merge this with pos/display/{param*} as a component
     method:'GET',
     path:'/post/update/{param*}',
     handler:postUpdateHandler
   },
   {
+    //will merge this with pos/form as a component
     method:'POST',
-    path:'/update/post',
-    handler:updatePosthandler
+    path:'/post/reinsertion',
+    handler:reinsertPosthandler
   }
 ]
