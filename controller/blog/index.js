@@ -1,6 +1,6 @@
 'use strict'
 
-var Promise = require('promise')
+const Promise = require('promise')
 const mysqlCon = require('~/lib/mysqlCon');
 const conngmp = mysqlCon.gmphanCon();
 
@@ -150,7 +150,7 @@ function reinsertPosthandler(req, reply){
 
 const updatePost = function(postId, editedPost){
   return new Promise(function(resolve, reject){
-    conngmp.query("UPDATE post SET post_content=? WHERE id=?", [editedPost, postId], function(error, rows){
+    conngmp.query("UPDATE post SET post_content=?, updated_date=? WHERE id=?", [editedPost, new Date, postId], function(error, rows){
       if(error){
         throw error
       }else {
