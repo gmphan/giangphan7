@@ -8,57 +8,25 @@
   <div class="row">
     <div class="col-md-2 hidden-sm"></div>
     <div class="col-md-8">
-      https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps 
-      <h3>SSH to a Linux server</h3>
-      <ul>
-        <li>SSH, <strong>S</strong>ecure <strong>S</strong>hell, is a network protocol
-          to access to a remote machine/server.</li>
-        <li>SSH provides provides strong authentication and secure encrypted data
-          communications between two computers connecting over an insecure network </li>
-        <li>SSH use for execute commands and move files from one computer to another.</li>
-      </ul>
-      <ul>
-        <li><strong>Using Putty:</strong>
-          <ul>
-            <li>Generate a new SSH key pair:
-              <ul>
-                <li>download and install putty from <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">this website</a> </li>
-                <li>The installing will give Putty.exe and PuTTYgen.exe utility</li>
-                <li>Double click on PuTTYgen.exe, then follow the setting below:
-                  <ul>
-                   <li><strong>Type of key to generate: SSH-2 RSA</strong> </li>
-                   <li><strong>Number of bits in a generated key: 2048 or 4096</strong> (larger the bit harder for cracking)</li>
-                   <li>Click on <strong>Generate</strong> button to generate public and private key</li>
-                   <li><strong>Key:</strong> move the mouse pointer in the box until process bar is full</li>
-                   <li><strong>Key comment:</strong> give your key an identifier (this will be automatically added to the end of your key)</li>
-                   <li><strong>Key passphrase/Confirm passphrase: </strong>optional (best option is to leave it blank)</li>
-                   <li><strong>Save public key/Save private key </strong>buttons: save to wherever you want (default location would be best,
-                     incase one day you have to look for them again)</li>
-                   <li><strong>public key</strong> will be copied and pasted into the server's <strong>authorized_keys</strong>file</li>
-                   <li><strong>private key</strong> can be copied to different computers, so those computers can login to the same server. (not recommended because you might lose one
-                     of those computers, and people can steal your private out from it.)</li>
-                   <li><strong>Best option:</strong> each computer should have its own SSH key pair</li>
-                 </ul>
-               </li>
-              </ul>
-            </li>
-            <li>Save public key on a server
-              <ul>
-                <li>Copy and paste the public key in <strong>~/.ssh/authorized_keys</strong> on your server.</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-
-
-
-      <h3>Post-form</h3>
+      <signin-box/>
+      <h3>New Post</h3>
       <form id="submitPost">
-        Post name:<input type="text" name="post_name" size="99"><br/><br/>
-        Post content: <textarea type="text" name="post_content" rows="3" cols="100" style="vertical-align:middle"></textarea>
-        <br/><br/><input  type="submit" value="submit">
+        <div class="row control-group">
+             <div class="form-group col-xs-12 floating-label-form-group controls">
+                 <!-- <label for="post name">Post name:</label> -->
+                 <input id="postName" type="text" class="form-control" name="post_name" placeholder="post name" >
+                 <p class="help-block text-danger"></p>
+             </div>
+         </div>
+         <div class="row control-group">
+           <div class="form-group col-xs-12 floating-label-form-group controls">
+               <!-- <label for="post content">Post content</label> -->
+               <textarea id="postContent" rows="20" class="form-control" name="post_content" placeholder="post content" ></textarea>
+               <p class="help-block text-danger"></p>
+           </div>
+         </div>
+         <input type="submit" value="Submit" class="btn btn-success btn-lg">
+
       </form>
     </div>
   </div>
