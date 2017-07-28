@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  $("#signInBox").modal('show');
   /****Add post***************/
   const $post_name = $("input[name='post_name']");
   const $post_content = $("textarea[name='post_content']");
