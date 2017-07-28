@@ -18,19 +18,25 @@ function validationHandler(req, reply){
   const usrname=req.payload.usrname
   const psw=req.payload.psw
   //console.log(usrname + psw)
-  queryOnUsrInfo(usrname, psw)
-  reply(1)
+  queryOnUsrInfo(usrname, psw, reply)
+
 }
-const queryOnUsrInfo=function(usrname, psw){
+const queryOnUsrInfo=function(usrname, psw, reply){
   return new Promise(function(resolve, reject){
     conngmp.query('SELECT * FROM user_accounts WHERE user_name=? and user_password=?', [usrname, psw], function(error, rows){
       if(error){
         throw error
       }else {
         if(typeof rows[0] == 'undefined'){
-          console.log('not match')
+          console.log('The user input the wrong user_name or user_password ')
+          reply(0)
         }else{
-          console.log('The credentials were matched!')
+          console.log('The user input correct user_name and user_password')
+          const return4validate={
+            usrname:rows[0].user_name,
+            validatePw:rows[0].md5_password
+          }
+          reply(return4validate)
         }
 
       }
