@@ -8,7 +8,8 @@ const conngmp = mysqlCon.gmphanCon()
 function signInHandler(req, reply){
   const usrname=req.payload.usrname
   const psw=req.payload.psw
-  //console.log(usrname + psw)
+  console.log(usrname + psw)
+
   reply(1)
 }
 /*******End signInHandler************/
