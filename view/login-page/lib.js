@@ -24,13 +24,19 @@ $(document).ready(function(){
             ">Incorrect username or password!";
             document.getElementById("loginBox").reset();
           }else {
-            document.getElementById("notifyMessage").innerHTML="<p"+
-            ">Correct username or password!";
-            document.getElementById("loginBox").reset();
+            // document.getElementById("notifyMessage").innerHTML="<p"+
+            // ">Correct username or password!";
+            //document.getElementById("loginBox").reset();
             //console.log(validateResult.usrname + validateResult.validatePw);
             const sessionKey = validateResult.usrname;
+            window.name = sessionKey;
             const sessionValue = validateResult.validatePw
             sessionStorage.setItem(sessionKey, sessionValue);
+            const url = window.location.href;
+            const lastIndexOfUrl = url.substr(url.lastIndexOf('/')+1);
+            if(lastIndexOfUrl=='newpost'){
+              window.location.href='/newpost';
+            }
           }
         },
         error:function(){

@@ -50,7 +50,7 @@ const queryOnUsrInfo=function(usrname, psw, reply){
 module.exports=[
   {
     method:'GET',
-    path:'/login',
+    path:'/login/{param*}',
     handler:loginHandler
   },
   {

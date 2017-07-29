@@ -76,38 +76,38 @@ const queryPostFile = function(postIdReceiver, reply){
 
 
 /******post content insertion****************/
-function postInsertHandler(req, reply){
-  const postName=req.payload.postName
-  const postContent=req.payload.postContent
-  insertpostContent(postName, postContent)
-  //console.log('from postInsertHandler')
-  reply(1)
-}
-const insertpostContent = function(postName, postContent){
-  return new Promise(function(resolve, reject){
-    const postValues = {
-      id:null,
-      post_name:postName,
-      post_content:postContent
-    }
-    conngmp.query('INSERT INTO post SET?', postValues, function(err, res){
-      if(err){
-        throw err
-      }else {
-        console.log('Successfully inserted into post table')
-        resolve()
-      }
-    })
-  })
-}
+// function postInsertHandler(req, reply){
+//   const postName=req.payload.postName
+//   const postContent=req.payload.postContent
+//   insertpostContent(postName, postContent)
+//   //console.log('from postInsertHandler')
+//   reply(1)
+// }
+// const insertpostContent = function(postName, postContent){
+//   return new Promise(function(resolve, reject){
+//     const postValues = {
+//       id:null,
+//       post_name:postName,
+//       post_content:postContent
+//     }
+//     conngmp.query('INSERT INTO post SET?', postValues, function(err, res){
+//       if(err){
+//         throw err
+//       }else {
+//         console.log('Successfully inserted into post table')
+//         resolve()
+//       }
+//     })
+//   })
+// }
 /****End post content insertion*************/
 
 /********post form handler************************/
-const postForm = require('~/view/post-form/index.marko')
-function postFormHandler(req, reply){
-  //console.log('in post form handler')
-  reply(postForm.stream())
-}
+// const postForm = require('~/view/post-form/index.marko')
+// function postFormHandler(req, reply){
+//   //console.log('in post form handler')
+//   reply(postForm.stream())
+// }
 /********End post form handler************************/
 
 /*******Post update handler**********************************/
@@ -176,16 +176,16 @@ module.exports=[
     path:'/post/display/{param*}',
     handler:postDisplayHandler
   },
-  {
-    method:'POST',
-    path:'/post/insertion',
-    handler:postInsertHandler
-  },
-  {
-    method:'GET',
-    path:'/post/form',
-    handler:postFormHandler
-  },
+  // {
+  //   method:'POST',
+  //   path:'/post/insertion',
+  //   handler:postInsertHandler
+  // },
+  // {
+  //   method:'GET',
+  //   path:'/post/form',
+  //   handler:postFormHandler
+  // },
   {
     //will merge this with pos/display/{param*} as a component
     method:'GET',
