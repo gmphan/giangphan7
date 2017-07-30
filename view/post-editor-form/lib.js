@@ -4,9 +4,13 @@ $(document).ready(function(){
   const lastIndexOfUrl = url.substr(url.lastIndexOf('/')+1);
   $('#submitEditedPost').submit(function(e){
     e.preventDefault();
+    const sessionKey=window.name;
+    const sessionValue=sessionStorage.getItem(sessionKey);
     const submitEditedPost={
       editedPostId:lastIndexOfUrl,
-      editedPost:$editedPost.val()
+      editedPost:$editedPost.val(),
+      sessionKey:sessionKey,
+      sessionValue:sessionValue
     }
     $.ajax({
       type:'POST',

@@ -24,7 +24,8 @@ $(document).ready(function(){
         data: submitPost,
         success:function(){
           console.log('Successfully ajax /postInsertHandler');
-          document.getElementById("submitPost").reset();
+          //document.getElementById("submitPost").reset();
+          window.location.href='/blog';
         },
         error:function(){
           alert('error adding new post content');
