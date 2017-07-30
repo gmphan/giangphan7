@@ -7,8 +7,6 @@ const conngmp = mysqlCon.gmphanCon()
 /*******signInHandler*****************/
 const loginPage = require('~/view/login-page/index.marko')
 function loginHandler(req, reply){
-
-
   reply(loginPage.stream())
 }
 /*******End signInHandler************/

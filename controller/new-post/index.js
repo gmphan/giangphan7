@@ -3,7 +3,7 @@ const Promise = require('promise')
 const mysqlCon = require('~/lib/mysqlCon');
 const conngmp = mysqlCon.gmphanCon();
 const validateKeySession = require('~/lib/validateKeySession')
-//const validateFunc = validateKeySession.keyValidation()
+
 /********newpostHandler*******************/
 const postForm = require('~/view/new-post/index.marko')
 function newpostHandler(req, reply){
@@ -18,30 +18,18 @@ function postInsertHandler(req, reply){
   const postContent=req.payload.postContent
   const sessionKey=req.payload.sessionKey
   const sessionValue=req.payload.sessionValue
-  //console.log(sessionKey + ' '+ sessionValue )
-  runKeyValidation(sessionKey, sessionValue)
-    .then(function(result){
-      functest(result)
-    })
 
-  //console.log(result)
-  //insertpostContent(postName, postContent)
-  //console.log('from postInsertHandler')
+  validateKeySession.checkSessionValues(sessionKey,sessionValue)
+    .then(function(result){
+      if(result==sessionValue){
+        insertpostContent(postName,postContent)
+      }else {
+        console.log("User sessionValue not matching with result md5")
+      }
+    })
   reply(1)
 }
 
-const runKeyValidation = function(sessionKey, sessionValue){
-  return new Promise(function(resolve,reject){
-    const result=validateKeySession.keyValidation(sessionKey, sessionValue)
-    resolve(result)
-  })
-}
-const functest = function(result){
-  return new Promise(function(resolve,reject){
-    console.log(result)
-    resolve()
-  })
-}
 const insertpostContent = function(postName, postContent){
   return new Promise(function(resolve, reject){
     const postValues = {
