@@ -35,10 +35,23 @@ const insertContactInfo = function(name, email, phone, message){
 }
 
 /****end contactMeHandler*********/
+
+/****contactMeHandler************/
+const contactListPage=require('~/view/contact-me-list/index.marko')
+function contactListHandler(req, reply){
+  reply(contactListPage.stream())
+}
+/****End contactMeHandler**********/
+
 module.exports=[
   {
     method:'POST',
     path:'/contact/me',
     handler:contactMeHandler
+  },
+  {
+    method:'GET',
+    path:'/contact/me/list',
+    handler:contactListHandler
   }
 ]
