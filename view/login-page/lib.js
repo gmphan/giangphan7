@@ -1,5 +1,4 @@
 $(document).ready(function(){
-<<<<<<< HEAD
   if(sessionStorage.getItem(window.name)==null){
     console.log("No session key or session value, yet")
   $('#loginBox').submit(function(e){
