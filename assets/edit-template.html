@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+     <h4>Steps:</h4>
+     <ul>
+       <li>
+         Create a login index view
+       </li>
+       <li>
+         Create .js file for ajaxing the controller
+       </li>
+       <li>
+         Create a controller 
+       </li>
+     </ul>
+
+      <p>
+      1. Create login controller: in the controller there will be 2 parts: first
+      part is to render login page/view; second part is to validate user name
+      and password after login button submitted, if validate successfull >
+      username and encrypted password will be reply to be session key and values <br/>
+      2. Create a login view folder: in login.marko, will be a form for input
+      user name and password, in lib.js will ajax validate function from login
+      controller, and get username and encrypted password. Also assign the key
+      to window name to use in multiple pages. The page then will redirected to
+      whichever page it suppose to get to by using the last url after login word. <br/>
+      3. After editing the page or adding new page, the session key and value
+      will be validated again using sessionValidateion in lib folder. The reason
+      for revalidate the key and value again because user can go straight to the
+      editing page with the right url, but with out the key, the post will not
+      be edited.
+      </p>
+  </body>
+</html>

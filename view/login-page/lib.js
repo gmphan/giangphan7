@@ -4,7 +4,7 @@ $(document).ready(function(){
     e.preventDefault();
     if($('#usrname').val()==""||$('#psw').val()==""){
       document.getElementById("notifyMessage").innerHTML="<p"+
-      "style='color:red'>fill out your credential</p>"
+      "style='color:red'>***Login field can be blank!</p>"
     }else{
       //console.log($('#usrname').val() + $('#psw').val())
       const loginInfo={
@@ -21,7 +21,7 @@ $(document).ready(function(){
           const validateValue = validateResult;
           if(validateValue==0){
             document.getElementById("notifyMessage").innerHTML="<p"+
-            ">Incorrect username or password!";
+            ">***Incorrect username or password!";
             document.getElementById("loginBox").reset();
           }else {
             const sessionKey = validateResult.usrname;

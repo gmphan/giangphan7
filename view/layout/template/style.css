@@ -35,6 +35,11 @@ h6{
   text-transform: uppercase;
   font-weight: 700;
 }
+
+.btn{
+	//background-color:#FFA500
+}
+
 hr.star-light,
 hr.star-primary{
   padding: 0;
