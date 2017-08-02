@@ -1,4 +1,43 @@
-
+/**++++++header++++++++++++++**/
+header {
+  text-align: center;
+  background: #FFA500;
+  color: white;
+}
+/*padding top: to padding from the beginning of the browser not from
+the end of navigation, so that we can do rolling without rolling the
+navigation away*/
+header .container {
+  padding-bottom: 50px;
+}
+header img {
+  display: block;
+  margin: 0 auto 20px;
+}
+header .intro-text .name {
+  display: block;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2em;
+}
+header .intro-text .skills {
+  font-size: 1.25em;
+  font-weight: 300;
+}
+@media(min-width: 768px){
+   header .container {
+    padding-top: 200px;
+    padding-bottom: 100px;
+  }
+   header .intro-text .name {
+    font-size: 4.75em;
+  }
+  header .intro-text .skills {
+    font-size: 1.75em;
+  }
+}
+/**------End of header------------**/
 /******* Sections ************/
 section{
 	padding:100px 0;
@@ -19,3 +58,25 @@ section.success {
     padding-top: 75px;
   }
 }
+/**-----End Sections----------**/
+
+/****** Portfolio *************/
+.portfolio-box{
+  border:1px solid gray;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #888888;
+  margin: 2.5px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  height: 300px;
+  position: relative;
+}
+.portfolio-box h3{
+  text-align: center;
+  padding-bottom: 5px;
+}
+.btnPortfolio{
+  position: absolute;
+  bottom: 10%;
+}
+/**-------end Portfolio-----------**/
