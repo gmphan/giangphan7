@@ -1,0 +1,26 @@
+<lasso-page package-path="./browser.json"/>
+//the <include/> and <@tag> tag is belong to marko
+<include('../layout/template/index.marko', data)>
+<@title>About-editor</@title>
+<@content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 hidden-sm">  </div>
+      <div class="col-md-8">
+        <h3>Edit About</h3>
+        <form id="submitAbout">
+           <div class="row control-group">
+             <div class="form-group col-xs-12 floating-label-form-group controls">
+                 <!-- <label for="post content">Post content</label> -->
+                 <textarea id="abContent" rows="20" class="form-control" name="ab_content" placeholder="content" >${input.aboutContent[0]}</textarea>
+                 <p class="help-block text-danger"></p>
+             </div>
+           </div>
+           <input type="submit" value="Submit" class="btn btn-success btn-lg">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</@content>
+</include>

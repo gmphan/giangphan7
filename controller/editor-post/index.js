@@ -4,7 +4,7 @@ const mysqlCon = require('~/lib/mysqlCon');
 const conngmp = mysqlCon.gmphanCon();
 const validateKeySession = require('~/lib/validateKeySession')
 /*******editpostHandler***************/
-const postEditor = require('~/view/post-editor-form/index.marko')
+const postEditor = require('~/view/editor-post/index.marko')
 function editpostHandler(req, reply){
   const postUpdatedId=req.params.param
   queryPost4edit(postUpdatedId, reply)
@@ -45,7 +45,7 @@ function reinsertPosthandler(req, reply){
       if(result==sessionValue){
         updatePost(postId, editedPost)
       }else {
-        console.log("User sessionValue not matching with result md5")
+        console.log("User sessionValue not matching with result")
       }
     })
   reply(1)

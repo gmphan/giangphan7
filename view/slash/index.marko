@@ -83,26 +83,16 @@
     </div>
     <div class="row"  style="padding:0px 15px;">
       <div class="col-lg-4 col-lg-offset-2">
-        <p>${input.aboutId[0]}</p>
-        <p id="leftP">
-              I'm currently working at Clayton State University as an Application
-              Administrator. I finished my bachelor degree
-            in Computer Science in 2013 from Clayton State University, and have worked
-            in the IT field for the last seven years. I worked as a student IT
-            Analyst for the first three years, an IT Specialist for two years, and
-            have been an Application Administrator for the last two years.
-        </p>
-        <a class="btn btn-basic btn-sm" href="/login/edit/about" role="botton">Edit</a>
+        <p id="leftP">${input.aboutContent[0]}</p>
+        <a class="btn btn-success btn-sm" href="/login/edit/about/1" role="botton">Edit</a>
       </div>
       <div class="col-lg-4">
-        <p id="rightP">
-          I am working hard to become a professional Application Developer someday. IT has alway been my designated
-           career path especially programing and solving problems. I have spent
-           a lot of time - almost few hours a day - to code and learn about
-           programing. SQL, PLSQL, Javascript and NodeJS are currently my choice of programming
-           languages and framework. As an Application Administrator, I have done/worked
-           on programming some applications using PLSQL and NodeJS.
-        </p>
+        <p id="rightP">${input.aboutContent[1]}</p>
+        <!-- <div id="aboutContent">
+
+          <input type="text" name="about_content" value="${input.aboutContent[0]}">
+        </div> -->
+        <a class="btn btn-success btn-sm" href="/login/edit/about/2" role="botton">Edit</a>
       </div>
     </div>
   </section>
