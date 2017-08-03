@@ -76,7 +76,7 @@ const queryOnAb=function(id){
           aboutId[i]=rows[i].id
           aboutContent[i]=rows[i].about_content
         }
-        console.log(aboutContent[0])
+        //console.log(aboutContent[0])
         const aboutJson={
           aboutId:aboutId,
           aboutContent:aboutContent
