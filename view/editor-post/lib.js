@@ -3,6 +3,7 @@ $(document).ready(function(){
     window.location.href=('/blog')
   }else{
     const $editedPost = $("textarea[name='editedPost']");
+    console.log($editedPost.val())
     const url = window.location.href;
     const lastIndexOfUrl = url.substr(url.lastIndexOf('/')+1);
     $('#submitEditedPost').submit(function(e){

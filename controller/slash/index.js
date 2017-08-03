@@ -31,7 +31,7 @@ const queryAbout=function(){
           aboutId,
           aboutContent
         }
-        const testing = 'testing'
+        //const testing = 'testing'
         resolve(aboutJson)
       }
     })
@@ -45,10 +45,21 @@ const queryAbout=function(){
 const editAboutPage=require('~/view/editor-about/index.marko')
 function editAboutHandler(req, reply){
   const id=req.params.param
-  queryOnAb(id)
-    .then(function(id){
-      reply(editAboutPage.stream(aboutJson))
-    })
+  if (id === 'assets/GP-favicon.png') {
+    return false
+  }else{
+    //console.log(req)
+    console.log('id in in editAboutPage '+id)
+    const comon={
+      name:'giang'
+    }
+     queryOnAb(id)
+      .then(function(aboutJson){
+        reply(editAboutPage.stream(aboutJson))
+        //console.log(testing)
+      })
+    //reply(id)
+  }
 }
 
 const queryOnAb=function(id){
@@ -60,16 +71,17 @@ const queryOnAb=function(id){
       if(err){
         throw err
       }else {
-        console.log('Successfully SELECT * FROM about')
+        console.log('Successfully SELECT * FROM about WHERE id= '+id)
         for(var i=0; i<rows.length; i++){
           aboutId[i]=rows[i].id
           aboutContent[i]=rows[i].about_content
         }
+        console.log(aboutContent[0])
         const aboutJson={
-          aboutId,
-          aboutContent
+          aboutId:aboutId,
+          aboutContent:aboutContent
         }
-        const testing = 'testing'
+
         resolve(aboutJson)
       }
     })
@@ -84,27 +96,27 @@ const queryOnAb=function(id){
 
 function abReinsertHandler(req,reply){
   const id=req.payload.id
-  const editedAbout=req.payload.editedAbout
+  const editedAbValue=req.payload.editedAbValue
   const sessionKey=req.payload.sessionKey
   const sessionValue=req.payload.sessionValue
 
   validateKeySession.checkSessionValues(sessionKey,sessionValue)
     .then(function(result){
       if(result==sessionValue){
-        updateAbout(editedAbout)
+        updateAbout(editedAbValue,id)
       }else {
         console.log("User sessionValue was not matching with result")
       }
     })
   reply(1)
 }
-const updateAbout = function(editedAbout, id){
+const updateAbout = function(editedAbValue, id){
   return new Promise(function(resolve, reject){
-    conngmp.query("UPDATE about SET about_content=?, updated_date=? WHERE id=?", [editedAbout, new Date, id], function(error, rows){
+    conngmp.query("UPDATE about SET about_content=?, updated_date=? WHERE id=?", [editedAbValue, new Date, id], function(error, rows){
       if(error){
         throw error
       }else {
-        console.log('Successfully UPDATE about')
+        console.log('Successfully UPDATE about ')
       }
     })
   })
