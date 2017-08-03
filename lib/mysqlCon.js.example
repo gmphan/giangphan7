@@ -32,5 +32,4 @@ module.exports={
 	// 						database:"test"});
 	// 	return con;
 	// }
-
 }
