@@ -1,8 +1,28 @@
 <lasso-page package-path="./browser.json"/>
 //the <include/> and <@tag> tag is belong to marko
 <include('../layout/template/index.marko', data)>
-<@title>Blog</@title>
+<@title>Contact me list</@title>
   <@content>
-    <p>testing</p>
+    <h3>Contat me list</h3>
+    <table name="" id="contactList" class="display">
+
+      <thead>
+        <tr>
+          <for(header in Object.keys(input))>
+            <th>${header}</th>
+          </for>
+        </tr>
+      </thead>
+      <tbody>
+        <for(row in input)>
+          <tr>
+            <for(column in Object.values(row))>
+              <td>${column}</td>
+            </for>
+          </tr>
+        </for>
+        <!-- <tr><td>test</td></tr> -->
+      </tbody>
+    </table>
   </@content>
 </include>

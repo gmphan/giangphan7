@@ -39,8 +39,29 @@ const insertContactInfo = function(name, email, phone, message){
 /****contactMeHandler************/
 const contactListPage=require('~/view/contact-me-list/index.marko')
 function contactListHandler(req, reply){
-  reply(contactListPage.stream())
+
+  qryContact().then(function(result){
+    reply(contactListPage.stream(result))
+  })
 }
+
+const qryContact=function(){
+  return new Promise(function(resolve,reject){
+    conngmp.query('SELECT * FROM contact_me', function(error,rows){
+      if(error){
+        throw error
+      }else{
+        console.log('Successfully SELECT * FROM contact_me')
+        console.log(rows[0])
+        const result=rows[0]
+
+        console.log(result.id)
+        resolve(result)
+      }
+    })
+  })
+}
+
 /****End contactMeHandler**********/
 
 module.exports=[
