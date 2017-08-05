@@ -2,5 +2,4 @@ node_modules
 .cache
 static
 /lib/mysqlCon.js
-/lib/emailConfig.js
 /lib/server.js
