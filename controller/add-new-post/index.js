@@ -5,7 +5,7 @@ const conngmp = mysqlCon.gmphanCon();
 const validateKeySession = require('~/lib/validateKeySession')
 
 /********newpostHandler*******************/
-const postForm = require('~/view/editor-post/index.marko')
+const postForm = require('~/view/add-new-post-form/index.marko')
 function newpostHandler(req, reply){
     //console.log('in post form handler')
     reply(postForm.stream())
