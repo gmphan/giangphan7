@@ -40,22 +40,36 @@ const insertContactInfo = function(name, email, phone, message){
 const contactListPage=require('~/view/contact-me-list/index.marko')
 function contactListHandler(req, reply){
 
-  qryContact().then(function(result){
-    reply(contactListPage.stream(result))
-  })
+  qryContact()
+    // .then(function(result){
+    //   console.log(result)
+    //   const replyData={
+    //     result
+    //     //tableName:'contactMe'
+    //   }
+    // })
+    .then(function(result){
+      reply(contactListPage.stream(result))
+    })
 }
 
 const qryContact=function(){
   return new Promise(function(resolve,reject){
-    conngmp.query('SELECT * FROM contact_me', function(error,rows){
+    conngmp.query('SELECT * FROM contact_me', function(error,rows, fields){
       if(error){
         throw error
       }else{
+        //const result=[]
         console.log('Successfully SELECT * FROM contact_me')
         console.log(rows[0])
+        // for(var i=0; i<rows.length; i++){
+        //   result[i]=rows[i]
+        //
+        // }
         const result=rows[0]
 
-        console.log(result.id)
+
+
         resolve(result)
       }
     })
