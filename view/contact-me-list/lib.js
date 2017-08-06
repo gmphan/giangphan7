@@ -1,3 +1,7 @@
 $(document).ready(function() {
-  $('#contactList').DataTable();
+  if(sessionStorage.getItem(window.name)==null){
+    window.location.href=('/login/contact/me/list')
+  }else {
+    $('#contactList').DataTable();
+  }
 });

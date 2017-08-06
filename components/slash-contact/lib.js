@@ -9,7 +9,7 @@ $(document).ready(function(){
         name:$("#name").val(),
         email:$("#email").val(),
         phone:$("#phone").val(),
-        message:$("#message").val()        
+        message:$("#message").val()
       }
       $.ajax({
         type:'POST',
@@ -24,7 +24,6 @@ $(document).ready(function(){
           alert('Error adding Contact Info to the database');
         }
       });
-
     }
   });
 });
