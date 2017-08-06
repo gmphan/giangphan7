@@ -3,8 +3,7 @@
 <include('../layout/template/index.marko', data)>
 <@title>Contact me list</@title>
   <@content>
-    <h3>Contat me list</h3>
-    <p>${input}</p>
+    <h3>Contact-me list</h3>
     <table name="" id="contactList" class="display">
 
       <thead>
@@ -22,8 +21,14 @@
             </for>
           </tr>
         </for>
-
       </tbody>
+      <tfoot>
+        <tr>
+          <for(footer in Object.keys(input[0]))>
+            <th>${footer}</th>
+          </for>
+        </tr>
+      </tfoot>
     </table>
   </@content>
 </include>
