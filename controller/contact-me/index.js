@@ -51,6 +51,7 @@ const qryContact=function(){
       if(error){
         throw error
       }else{
+        const result=[]
         console.log('Successfully SELECT * FROM contact_me')
         //console.log(rows[0])
         for(var i=0; i<rows.length; i++){
