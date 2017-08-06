@@ -39,15 +39,7 @@ const insertContactInfo = function(name, email, phone, message){
 /****contactMeHandler************/
 const contactListPage=require('~/view/contact-me-list/index.marko')
 function contactListHandler(req, reply){
-
   qryContact()
-    // .then(function(result){
-    //   console.log(result)
-    //   const replyData={
-    //     result
-    //     //tableName:'contactMe'
-    //   }
-    // })
     .then(function(result){
       reply(contactListPage.stream(result))
     })
@@ -59,33 +51,11 @@ const qryContact=function(){
       if(error){
         throw error
       }else{
-        const id=[]
-        const name=[]
-        const email=[]
-        const phone=[]
-        const message=[]
-        const received_date=[]
         console.log('Successfully SELECT * FROM contact_me')
-        console.log(rows[0])
+        //console.log(rows[0])
         for(var i=0; i<rows.length; i++){
-          id[i]=rows[i].id
-          name[i]=rows[i].name
-          email[i]=rows[i].email
-          phone[i]=rows[i].phone
-          message[i]=rows[i].message
-          received_date[i]=rows[i].received_date
+          result[i]=rows[i]
         }
-        const result={
-            id:id,
-            name:name,
-            email:email,
-            phone:phone,
-            message:message,
-            received_date:received_date
-        }
-
-
-
         resolve(result)
       }
     })
