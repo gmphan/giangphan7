@@ -7,5 +7,6 @@ require('require-self-ref');
   await require('~/lib/server').init();
 })()
 .catch((err)=>{
-  log.console.error(err.message);
+  throw err;
+  //log.console.error(err.message);
 });
