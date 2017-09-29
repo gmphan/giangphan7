@@ -31,8 +31,9 @@ h3,
 h4,
 h5,
 h6{
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  //font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //text-transform: uppercase;
+	font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
   font-weight: 700;
 }
 
