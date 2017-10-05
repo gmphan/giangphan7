@@ -7,6 +7,7 @@
     "bcrypt": "^1.0.2",
     "browser-refresh": "^1.7.1",
     "browser-refresh-taglib": "^1.1.0",
+    "catbox": "^8.0.1",
     "client-sessions": "^0.8.0",
     "deep-assign": "^2.0.0",
     "good": "^7.3.0",
@@ -17,6 +18,7 @@
     "hapi-auth-cookie": "^7.0.0",
     "hapi-easy-session": "^1.0.0",
     "hapi-server-session": "^3.0.2",
+    "heavy": "^5.0.1",
     "inert": "^4.2.1",
     "lasso": "^2.11.12",
     "lasso-marko": "^2.3.0",
@@ -26,6 +28,7 @@
     "nodemailer": "^4.0.1",
     "os": "^0.1.1",
     "promise": "^7.1.1",
+    "request": "^2.83.0",
     "require-self-ref": "^2.0.1"
   },
   "devDependencies": {},
