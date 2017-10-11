@@ -7,17 +7,13 @@ function sandboxHandler(req, reply){
 
   (async function(){
     console.log("In async in sandbox controller");
-
-    //try to get the whole path to send in from here
-    const sandboxData = await api.get('/sanbox');
-    reply(2)
+    const sandboxData = await api.get('/sandbox');
+    reply(sandboxData)
   })()
     .catch((err)=>{
       throw err;
     })
-  // reply(2)
 }
-
 
 module.exports=[
   {
