@@ -1,78 +1,32 @@
 'use strict'
 
-const Promise = require('promise')
-const mysqlCon = require('~/lib/mysqlCon');
-const conngmp = mysqlCon.gmphanCon();
+const api = require('~/lib/api');
 
 
 
-
-/******blogHandler*****************/
-const page = require('~/view/blog/index.marko')
-function blogHandler(req, reply){
-  queryIdAndTitle(reply);
-}
-const queryIdAndTitle = function(reply){
-  return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM post', function(err, rows){
-      const postId = []
-      const postName = []
-      const postDate = []
-      if(err){
-        throw err
-      }else {
-        console.log("Successfully SELECT * FROM post")
-        for(var i=0; i<rows.length; i++){
-          postId[i] = rows[i].id
-          postName[i] = rows[i].post_name
-          //console.log(postId[i], postName[i])
-        }
-        const idAndNameJson = {
-          postId,
-          postName
-        }
-        reply(page.stream(idAndNameJson))
-        resolve()
-      }
-    })
+/*******handleBlog****************/
+const blogPage = require('~/view/blog/index.marko');
+function handleBlog(req, reply){
+  (async function(){
+    const results=await api.get('/blog');
+    const postId=[];
+    const postName=[];
+    for(let i=0; i<results.length; i++){
+        postId[i]=results[i].id,
+        postName[i]=results[i].post_name
+    }
+    const dataOfPost={
+      postId:postId,
+      postName:postName
+    }
+    reply(blogPage.stream(dataOfPost))
+  })()
+  .catch((err)=>{
+    throw err;
   })
 }
-/*****End postHandler ********************/
+/**-----end handleBlog---------***/
 
-/*****postDisplayHandler******************/
-const displayPage = require('~/view/post-display/index.marko')
-function postDisplayHandler(req, reply){
-   const postIdReceiver=req.params.param
-   //console.log(postIdReceiver)
-  queryPostFile(postIdReceiver, reply)
-}
-const queryPostFile = function(postIdReceiver, reply){
-  return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM post WHERE id=?', postIdReceiver, function(err, rows){
-      const post = []
-      const postId = []
-      if(err){
-        throw err
-      }else {
-        for(var i=0; i<rows.length; i++){
-          post[i] = rows[i].post_content
-          postId[i] = rows[i].id
-          console.log('Successfully selected all from post where id = '+postId[i])
-        }
-        const postIndex0 = post[0]
-        const postIdIndex0 = postId[0]
-        const postJson={
-          postIndex0,
-          postIdIndex0
-        }
-        //console.log(postJson.post[0])
-        reply(displayPage.stream(postJson))
-        resolve()
-      }
-    })
-  })
-}
-/*****End postDisplayHandler*************/
 
 
 
@@ -80,13 +34,8 @@ const queryPostFile = function(postIdReceiver, reply){
 
 module.exports=[
   {
-    method: 'GET',
-    path:'/blog',
-    handler:blogHandler
-  },
-  {
     method:'GET',
-    path:'/post/display/{param*}',
-    handler:postDisplayHandler
+    path:'/blog',
+    handler:handleBlog
   }
 ]

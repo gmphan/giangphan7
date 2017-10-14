@@ -1,0 +1,27 @@
+<lasso-page package-path="./browser.json"/>
+//the <include/> and <@tag> tag is belong to marko
+<include('../layout/template/index.marko', data)>
+<@title>post-editor</@title>
+<@content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 hidden-sm">  </div>
+      <div class="col-md-8">
+        <h3>Editor Form</h3>
+        <form id="submitEditedPost">
+           <div class="row control-group">
+             <div class="form-group col-xs-12 floating-label-form-group controls">
+                 <!-- <label for="post content">Post to Edit</label> -->
+                 <!-- <textarea id="editedPostArea" rows="20" class="form-control" name="editedPost" placeholder="post content" >${input.postContent}</textarea> -->
+                 <textarea id="" rows="20" class="form-control" name="postContent" placeholder="post content" >${input.postContent}</textarea>
+                 <p class="help-block text-danger"></p>
+             </div>
+           </div>
+           <input type="submit" value="Submit Change" class="btn btn-success btn-sm">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</@content>
+</include>

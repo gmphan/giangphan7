@@ -4,11 +4,7 @@ $(document).ready(function(){
   const aboutId=
   $('#submitAbout').submit(function(e){
     e.preventDefault();
-    // const jsonEditedAbout={
-    //   about_content:about_content.val(),
-    //   id:url.substr(url.lastIndexOf('/')+1)
-    // }
-    console.log(about_content.val());
+    //console.log(about_content.val());
     $.ajax({
       type:'POST',
       url:'/update/about',
@@ -17,7 +13,8 @@ $(document).ready(function(){
         id:url.substr(url.lastIndexOf('/')+1)
       },
       success:function(){
-        console.log('Successfully ajax about/updateAbout');
+        //console.log('Successfully ajax about/updateAbout');
+        window.location.href='/#about';
 
       },
       error:function(){

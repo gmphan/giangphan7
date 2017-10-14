@@ -1,8 +1,5 @@
 'use strict'
-const Promise = require('promise')
-const mysqlCon = require('~/lib/mysqlCon')
-const conngmp = mysqlCon.gmphanCon()
-const validateKeySession = require('~/lib/validateKeySession')
+
 const api = require('~/lib/api');
 
 /***+++++++slashHandler++++++++++++++++*/
@@ -64,7 +61,7 @@ function handleAboutEditor(req,reply){
 /**+++++handleAboutEditor++++++++++++++**/
 function handleUpdateAbout(req,reply){
   const {id, about_content, updated_by} = req.payload;
-  console.log(about_content);
+  //console.log(about_content);
   (async function(){
     const result=await api.post('/update/about/'+id, {about_content, updated_by});
     //console.log(result);
