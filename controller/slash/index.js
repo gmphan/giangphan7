@@ -13,7 +13,7 @@ function slashHandler(req, reply){
     const idOfAbout=[]
     const topicOfAbout=[]
     const contentOfAbout=[]
-    const DataOfAbout=await api.get('/');
+    const DataOfAbout=await api.get('/about');
     for(let i=0; i<DataOfAbout.length; i++){
       idOfAbout[i]=DataOfAbout[i].id;
       contentOfAbout[i]=DataOfAbout[i].about_content;
@@ -27,123 +27,55 @@ function slashHandler(req, reply){
       .catch((err)=>{
         throw(err)
       })
-
 }
-
 /**-------end slashHandler-------------**/
 
-
-/**+++++++++++editorHandler+++++++++++++++++++++**/
-const editAboutPage=require('~/view/editor-about/index.marko')
-function editAboutHandler(req, reply){
-  let idOfReqOnAbout=req.params.param;
-  //console.log('idOfReqOnAbout: '+idOfReqOnAbout);
+/**+++++handleAboutEditor++++++++++++++**/
+const aboutEditorPage=require('~/view/slash-about-editor/index.marko')
+function handleAboutEditor(req,reply){
+  let id=req.params.id;
   (async function(){
-
-    if(idOfReqOnAbout==='assets/GP-favicon.png'){
+    if(id==='assets/GP-favicon.png'){
       return false;
     }else{
-      console.log('Id of request on about: '+idOfReqOnAbout);
+      console.log('ID of request to edit about: '+id);
     }
-    let idOfAbout=[];
-    let topicOfAbout=[];
     let contentOfAbout=[];
-    let data4IdOfAbout=await api.get('/edit/about/'+idOfReqOnAbout);
-    //console.log(data4IdOfAbout)
-    console.log('Successfully SELECT * FROM about WHERE id= '+idOfReqOnAbout)
+    let idOfAbout = [];
+    const data4IdOfAbout=await api.get('/about/'+id);
     for(let i=0; i<data4IdOfAbout.length; i++){
+      contentOfAbout[i] = data4IdOfAbout[i].about_content;
       idOfAbout[i]=data4IdOfAbout[i].id;
-      contentOfAbout[i]=data4IdOfAbout[i].about_content;
     }
-    let JsonOfAbout={
-      idOfAbout:idOfAbout,
-      contentOfAbout:contentOfAbout
+    const jsonOfAbout={
+      contentOfAbout:contentOfAbout[0],
+      idOfAbout:idOfAbout[0]
     }
-
-    reply(editAboutPage.stream(JsonOfAbout));
+    reply(aboutEditorPage.stream(jsonOfAbout))
   })()
-    .catch((err)=>{
-      throw(err)
-    })
-}
-//   const id=req.params.param
-//   if (id === 'assets/GP-favicon.png') {
-//     return false
-//   }else{
-//     //console.log(req)
-//     console.log('id in in editAboutPage '+id)
-//     const comon={
-//       name:'giang'
-//     }
-//      queryOnAb(id)
-//       .then(function(aboutJson){
-//         reply(editAboutPage.stream(aboutJson))
-//         //console.log(testing)
-//       })
-//     //reply(id)
-//   }
-// }
-
-// const queryOnAb=function(id){
-//   return new Promise(function(resolve,reject){
-//     conngmp.query('SELECT * FROM about WHERE id=?', id, function(err, rows){
-//       const aboutId=[]
-//       const aboutTopic=[]
-//       const aboutContent=[]
-//       if(err){
-//         throw err
-//       }else {
-//         console.log('Successfully SELECT * FROM about WHERE id= '+id)
-//         for(var i=0; i<rows.length; i++){
-//           aboutId[i]=rows[i].id
-//           aboutContent[i]=rows[i].about_content
-//         }
-//         //console.log(aboutContent[0])
-//         const aboutJson={
-//           aboutId:aboutId,
-//           aboutContent:aboutContent
-//         }
-//
-//         resolve(aboutJson)
-//       }
-//     })
-//   })
-// }
-
-/**----------end editorHandler-------------------**/
-
-
-
-/**++++++++++++abReinsertHandler++++++++++++++**/
-
-function abReinsertHandler(req,reply){
-  const id=req.payload.id
-  const editedAbValue=req.payload.editedAbValue
-  const sessionKey=req.payload.sessionKey
-  const sessionValue=req.payload.sessionValue
-
-  validateKeySession.checkSessionValues(sessionKey,sessionValue)
-    .then(function(result){
-      if(result==sessionValue){
-        updateAbout(editedAbValue,id)
-      }else {
-        console.log("User sessionValue was not matching with result")
-      }
-    })
-  reply(1)
-}
-const updateAbout = function(editedAbValue, id){
-  return new Promise(function(resolve, reject){
-    conngmp.query("UPDATE about SET about_content=?, updated_date=? WHERE id=?", [editedAbValue, new Date, id], function(error, rows){
-      if(error){
-        throw error
-      }else {
-        console.log('Successfully UPDATE about ')
-      }
-    })
+  .catch((err)=>{
+    throw err;
   })
+
 }
-/**-----end abReinsertHandler------------------**/
+/**------end handleAboutEditor---------**/
+
+
+/**+++++handleAboutEditor++++++++++++++**/
+function handleUpdateAbout(req,reply){
+  const {id, about_content, updated_by} = req.payload;
+  console.log(about_content);
+  (async function(){
+    const result=await api.post('/update/about/'+id, {about_content, updated_by});
+    //console.log(result);
+    reply(result);
+  })()
+  .catch((err)=>{
+    throw err
+  })
+
+}
+/**-----end handleAboutEditor----------**/
 
 module.exports=[
   {
@@ -153,12 +85,12 @@ module.exports=[
   },
   {
     method:'GET',
-    path:'/edit/about/{param*}',
-    handler:editAboutHandler
+    path:'/about-editor/{id}',
+    handler:handleAboutEditor
   },
   {
     method:'POST',
-    path:'/about/reinsertion',
-    handler:abReinsertHandler
+    path:'/update/about',
+    handler:handleUpdateAbout
   }
 ]
