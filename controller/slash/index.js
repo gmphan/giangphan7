@@ -74,6 +74,36 @@ function handleUpdateAbout(req,reply){
 }
 /**-----end handleAboutEditor----------**/
 
+
+/******* handleInsertContact ***************/
+function handleInsertContact(req, reply){
+  (async function(){
+    const {name, email, phone, message} = req.payload;
+    //when setting from UI to API, I use {} json,
+    //from sql in API to the table I use [] array.
+    await api.post('/insert/contact', {name, email, phone, message});
+    reply(1)
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/**------ end handleInsertContact -------**/
+
+
+/******* handleContactList ****************/
+const listOfContactPage = require('~/view/slash-contact-list/index.marko');
+function handleContactList(req, reply){
+  (async function(){
+    const result = await api.get('/contact/list');
+    reply(listOfContactPage.stream(result));
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/**----- End handleContactList ----------**/
+
 module.exports=[
   {
     method:'GET',
@@ -89,5 +119,15 @@ module.exports=[
     method:'POST',
     path:'/update/about',
     handler:handleUpdateAbout
+  },
+  {
+    method:'POST',
+    path:'/insert/contact',
+    handler:handleInsertContact
+  },
+  {
+    method:'GET',
+    path:'/contact/list',
+    handler:handleContactList
   }
 ]

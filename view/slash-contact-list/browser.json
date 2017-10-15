@@ -1,0 +1,15 @@
+{
+  "dependencies":[
+    "../layout/template/browser.json",
+    "./lib.js",
+    "./style.css",
+    {
+        "type": "css",
+        "url": "//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+      },
+      {
+        "type": "js",
+        "url": "//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"
+      }
+  ]
+}
