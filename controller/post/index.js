@@ -52,6 +52,34 @@ function handleUpdatePost(req, reply){
 /***------ End handleUpdatePost -----***/
 
 
+/****** handleNewPostEditor ****************/
+const postNewEditorPage=require('~/view/post-new-editor/index.marko');
+function handlePostNewEditor(req, reply){
+  (async function(){
+    reply(postNewEditorPage.stream())
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/**----- End handleNewPostEditor --------***/
+
+
+/********** handleInsertPost **********/
+function handleInsertPost(req, reply){
+  (async function(){
+    const {post_name, post_content} = req.payload;
+    //console.log(post_name);
+    await api.post('/insert/post', {post_name, post_content});
+
+    reply(1);
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/**------- End handleInsertPost -------**/
+
 module.exports=[
   {
     method:'GET',
@@ -67,5 +95,15 @@ module.exports=[
     method:'POST',
     path:'/update/post',
     handler:handleUpdatePost
+  },
+  {
+    method:'GET',
+    path:'/post-new-editor',
+    handler:handlePostNewEditor
+  },
+  {
+    method:'POST',
+    path:'/insert/post',
+    handler:handleInsertPost
   }
 ]

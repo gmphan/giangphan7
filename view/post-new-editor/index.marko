@@ -1,0 +1,37 @@
+<lasso-page package-path="./browser.json"/>
+//the <include/> and <@tag> tag is belong to marko
+<include('../layout/template/index.marko', data)>
+<@title>Post</@title>
+  <@content>
+  <!--always need something in @content, or else will get "Error: write after end"  -->
+  <div class="container">
+  <div class="row">
+    <div class="col-md-2 hidden-sm"></div>
+    <div class="col-md-8">
+
+      <h3>New Post</h3>
+      <form id="submitPost">
+        <div class="row control-group">
+             <div class="form-group col-xs-12 floating-label-form-group controls">
+                 <!-- <label for="post name">Post name:</label> -->
+                 <input id="postName" type="text" class="form-control" name="post_name" placeholder="post name" >
+                 <p class="help-block text-danger"></p>
+             </div>
+         </div>
+         <div class="row control-group">
+           <div class="form-group col-xs-12 floating-label-form-group controls">
+               <!-- <label for="post content">Post content</label> -->
+               <textarea id="postContent" rows="20" class="form-control" name="post_content" placeholder="post content" ></textarea>
+               <p class="help-block text-danger"></p>
+           </div>
+         </div>
+         <input type="submit" value="Submit" class="btn btn-success btn-lg">
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  </@content>
+</include>
