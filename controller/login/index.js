@@ -1,59 +1,48 @@
-'use strict'
+'use strict';
 
-const Promise = require('promise')
-const mysqlCon = require('~/lib/mysqlCon')
-const conngmp = mysqlCon.gmphanCon()
 
-/*******signInHandler*****************/
-const loginPage = require('~/view/login-page/index.marko')
-function loginHandler(req, reply){
-  reply(loginPage.stream())
+/******** handleLogin *******************/
+const loginPage=require('~/view/login/index.marko');
+function handleLogin(req, reply){
+  (async function(){
+    reply(loginPage.stream());
+  })()
+  .catch((err)=>{
+    throw err;
+  });
 }
-/*******End signInHandler************/
 
-/********validationHandler**********/
-function validationHandler(req, reply){
-  const usrname=req.payload.usrname
-  const psw=req.payload.psw
-  //console.log(usrname + psw)
-  queryOnUsrInfo(usrname, psw, reply)
+/***------ End handleLogin -----------****/
 
+/******* handleValidateLogin *************/
+function handleValidateLogin(req, reply){
+  (async function(){
+    const {usrname, psw} = req.payload;
+    console.log(usrname + psw);
+  
+
+    reply('testing')
+
+
+
+
+  })()
+  .catch((err)=>{
+    throw err;
+  });
 }
-const queryOnUsrInfo=function(usrname, psw, reply){
-  return new Promise(function(resolve, reject){
-    conngmp.query('SELECT * FROM user_accounts WHERE user_name=? and user_password=?', [usrname, psw], function(error, rows){
-      if(error){
-        throw error
-      }else {
-        if(typeof rows[0] == 'undefined'){
-          console.log('The user input the wrong user_name or user_password ')
-          reply(0)
-        }else{
-          console.log('The user input correct user_name and user_password')
-          const return4validate={
-            usrname:rows[0].user_name,
-            validatePw:rows[0].md5_password
-          }
-          reply(return4validate)
-        }
 
-      }
-      resolve()
-    })
-  })
-}
-/*******End validationHandler******/
-
+/****---- End handleValidateLogin -----****/
 
 module.exports=[
   {
     method:'GET',
-    path:'/login/{param*}',
-    handler:loginHandler
+    path:'/login',
+    handler:handleLogin
   },
   {
     method:'POST',
-    path:'/login/validate',
-    handler:validationHandler
+    path:'/validate/login',
+    handler:handleValidateLogin
   }
 ]

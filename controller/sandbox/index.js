@@ -33,6 +33,7 @@ function handleSandboxSearch(req, reply){
 
 /******** handleUpdateSandbox *************/
 function handleUpdateSandbox(req,reply){
+  console.log(req.session);
   let id=req.params.id;
   let testing='testing from ui'
   let body={
@@ -54,7 +55,10 @@ module.exports=[
   {
     method:'GET',
     path:'/sandbox',
-    handler:sandboxHandler
+    config: {
+      auth: 'simple',
+      handler:sandboxHandler
+    }
   },
   {
     method:'GET',

@@ -1,0 +1,32 @@
+<lasso-page package-path="./browser.json"/>
+//the <include/> and <@tag> tag is belong to marko
+<include('../layout/template/index.marko', data)>
+<@title>login</@title>
+  <@content>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-2 hidden-sm"></div>
+        <div class="col-md-8">
+          <h3>Please sigin</h3>
+          <form id="loginBox" role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+          <br/>
+          <p id="notifyMessage"></p>
+        </div>
+      </div>
+    </div>
+  </@content>
+</include>
