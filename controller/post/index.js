@@ -89,21 +89,37 @@ module.exports=[
   {
     method:'GET',
     path:'/post-editor/{id}',
+    // config:{
+    //   auth:'simple',
+    //   handler:handlePostEditor
+    // }
     handler:handlePostEditor
   },
   {
     method:'POST',
     path:'/update/post',
+    // config:{
+    //   auth:'simple',
+    //   handler:handleUpdatePost
+    // }
     handler:handleUpdatePost
   },
   {
     method:'GET',
     path:'/post-new-editor',
+    // config:{
+    //   auth:'simple',
+    //   handler:handlePostNewEditor
+    // }
     handler:handlePostNewEditor
   },
   {
     method:'POST',
     path:'/insert/post',
+    // config:{
+    //   auth:'simple',
+    //   handler:handleInsertPost
+    // }
     handler:handleInsertPost
   }
 ]

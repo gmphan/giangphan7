@@ -4,7 +4,6 @@ const api = require('~/lib/api')
 
 function sandboxHandler(req, reply){
   console.log("in sandbox controller");
-
   (async function(){
     console.log("In async in sandbox controller");
     const sandboxData = await api.get('/sandbox');
@@ -12,7 +11,7 @@ function sandboxHandler(req, reply){
   })()
     .catch((err)=>{
       throw err;
-    })
+  })
 }
 
 /**********handleSandboxSearch*******************/
@@ -56,9 +55,12 @@ module.exports=[
     method:'GET',
     path:'/sandbox',
     config: {
-      auth: 'simple',
-      handler:sandboxHandler
+      auth: {
+        strategy: 'base'
+      },
+        handler:sandboxHandler
     }
+    //handler:sandboxHandler
   },
   {
     method:'GET',
@@ -68,6 +70,10 @@ module.exports=[
   {
     method:'POST',
     path:'/update/sandbox/{id}',
+    // config:{
+    //   auth:'simple',
+    //   handler:handleUpdateSandbox
+    // }
     handler:handleUpdateSandbox
   }
 ]
