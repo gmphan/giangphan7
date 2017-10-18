@@ -113,37 +113,41 @@ module.exports=[
   {
     method:'GET',
     path:'/about-editor/{id}',
-    // config:{
-    //   auth:'simple',
-    //   handler:handleAboutEditor
-    // }
-    handler:handleAboutEditor
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleAboutEditor
+    }
   },
   {
     method:'POST',
     path:'/update/about',
-    // config:{
-    //   auth:'simple',
-    //   handler:handleUpdateAbout
-    // }
-    handler:handleUpdateAbout
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleUpdateAbout
+    }
   },
   {
     method:'POST',
     path:'/insert/contact',
-    // config:{
-    //   auth:'simple',
-    //   handler:handleInsertContact
-    // }
-    handler:handleInsertContact
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleInsertContact
+    }         
   },
   {
     method:'GET',
     path:'/contact/list',
-    // config:{
-    //   auth:'simple',
-    //   handler:handleContactList
-    // }
-    handler:handleContactList
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleContactList
+    }
   }
 ]

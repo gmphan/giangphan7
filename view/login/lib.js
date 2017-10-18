@@ -13,9 +13,13 @@ $(document).ready(function(){
           psw:$('#psw').val()
         },
         success:function(returnData){
-          console.log(returnData);
-          console.log('Successfully ajax /validate/login');
-          href:window.location.href='/';
+          if(returnData==='badUsername'){
+            console.log('Wrong Username');
+          }else if(returnData==='badPassword'){
+            console.log('Wrong Password');
+          }else if(returnData==='matched'){
+            href:window.location.href='/';
+          }
         },
         error:function(){
           alert('Error ajax /validate/login');
