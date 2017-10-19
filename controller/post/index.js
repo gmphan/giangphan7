@@ -25,7 +25,8 @@ function handlePostEditor(req, reply){
   (async function(){
     const results=await api.get('/post/'+req.params.id)
     const postData={
-      postContent:results[0].post_content
+      postContent:results[0].post_content,
+      postId:results[0].id
     }
     //console.log(postData.postContent)
     reply(postEditorPage.stream(postData))
@@ -124,6 +125,6 @@ module.exports=[
         strategy: 'base'
       },
         handler:handleInsertPost
-    }       
+    }
   }
 ]
