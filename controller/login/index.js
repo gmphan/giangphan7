@@ -49,10 +49,12 @@ function handleValidateLogin(req, reply){
                 password:hash_pw
               }
               const sid = usrname;
+
               req.server.app.cache.set(sid, {credentials:credentials}, 0, (err) => {
                   if (err) {
                       throw err;
                   }else{
+                    //set cookieAuth Object with session id 
                     req.cookieAuth.set({ sid: sid });
                     return reply('matched');
                   }

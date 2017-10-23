@@ -95,6 +95,7 @@ function handleInsertContact(req, reply){
 const listOfContactPage = require('~/view/slash-contact-list/index.marko');
 function handleContactList(req, reply){
   (async function(){
+    //console.log(req.auth);
     const result = await api.get('/contact/list');
     reply(listOfContactPage.stream(result));
   })()
@@ -138,7 +139,7 @@ module.exports=[
         strategy: 'base'
       },
         handler:handleInsertContact
-    }         
+    }
   },
   {
     method:'GET',

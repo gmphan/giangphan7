@@ -8,16 +8,21 @@ const api = require('~/lib/api');
 const blogPage = require('~/view/blog/index.marko');
 function handleBlog(req, reply){
   (async function(){
-    const results=await api.get('/blog');
+    const results=await api.get('/all-post');
     const postId=[];
     const postName=[];
+    const postDate=[];
     for(let i=0; i<results.length; i++){
         postId[i]=results[i].id,
-        postName[i]=results[i].post_name
+        postName[i]=results[i].post_name,
+        postDate[i]=results[i].created_date
     }
+
+    //console.log(postDate);
     const dataOfPost={
       postId:postId,
-      postName:postName
+      postName:postName,
+      postDate:postDate
     }
     reply(blogPage.stream(dataOfPost))
   })()

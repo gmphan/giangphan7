@@ -14,9 +14,9 @@ $(document).ready(function(){
         },
         success:function(returnData){
           if(returnData==='badUsername'){
-            console.log('Wrong Username');
+            alert('Wrong Username');
           }else if(returnData==='badPassword'){
-            console.log('Wrong Password');
+            alert('Wrong Password');
           }else if(returnData==='matched'){
             href:window.location.href='/';
           }
