@@ -17,6 +17,7 @@
       "url": "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
     },
     "./lib.js",
-    "./style.css"
+    "./style.css",
+    "../../../assets/font-awesome/css/font-awesome.min.css"
   ]
 }

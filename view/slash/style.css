@@ -1,7 +1,7 @@
 /**++++++header++++++++++++++**/
 header {
   text-align: center;
-  background: #FFA500;
+  background: #708090;//#FFA500;
   color: white;
 }
 /*padding top: to padding from the beginning of the browser not from
@@ -47,7 +47,7 @@ section h2 {
   font-size: 3em;
 }
 section.success {
-  background: #FFA500;
+  background: #708090;//#FFA500;
   color: white;
 }
 @media (max-width: 767px) {

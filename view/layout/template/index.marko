@@ -22,11 +22,13 @@
   </head>
   <body>
 
-    <main>
+    <main>      
       <include('../nav/index.marko', data)/>
+
+      <!-- include @content from each page/view index.marko -->
       <include(input.content)/>
 
-
+      <include("../footer/index.marko", data)></include>
     </main>
     <lasso-body/>
     <browser-refresh enabled="true"/>

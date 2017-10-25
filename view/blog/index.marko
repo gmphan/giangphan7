@@ -16,17 +16,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Attention!</h4>
+        <h3 class="modal-title">Attention!</h3>
       </div>
       <div class="modal-body">
-        <li>The post information can be inaccurate.</li>
-        <li>Some information are used from other sources.</li>
-        <li>There are unfinished or post-layout only.</li>
-        <li>Help to make the posts better by 'Contact Me'</li>
-        <li>Thank you for visiting!</li>
+        <p>The posts are my notes, and the info might not be 100% accurate.
+        I also have collected information from different sources and included the
+        links to sources if they were collected from online sources. There are
+        unfinished posts and post layouts in the list, so I can remember the info
+        for later writing. If you interesting in any post, and want to contribute or have
+        any question, please send me an email through 'Contact' option in the
+        menu bar for now. I will implement comment section to each post in
+        the future.<br/><br/>Thank you for visiting!</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Continue to the page</button>
       </div>
     </div>
 
@@ -39,15 +42,15 @@
     <div class="col-md-8">
       <h1>Blog</h1>
       <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"><h4 class="meta">Posts that I've written.</h4></button>
-      <ul id="ulBlog">
+      <ul id="ulBlog" style="list-style-type:decimal;">
         <for(var i=0; i<input.postId.length; i++)>
-          <li>${input.postDate[i]} &nbsp <a id="${input.postId[i]}" href="/post/${input.postId[i]}">${input.postName[i]}</a></li>
+          <li><span class="col-md-2">${input.postDate[i]}</span> <span class="col-md-4"><a id="${input.postId[i]}" href="/post/${input.postId[i]}">${input.postName[i]}</a></span></li><br/>
         </for>
       <!-- <li><span class="monospace">July 5, 2017</span> &raquo; <a href="/post/display">testing</a></li> -->
       </ul>
       <!-- <a class="btn btn-success btn-lg" href="/post/form">New Post</a><br/> -->
       <!-- <a class="btn btn-warning btn-sm" href="/login/newpost">New Post</a><br/> -->
-      <a class="btn btn-warning btn-sm" href="/post-new-editor">New Post</a><br/>
+      <a class="btn btn-warning btn-sm" href="/post-new-editor">New Post</a>
     </div>
   </div>
 </div>
