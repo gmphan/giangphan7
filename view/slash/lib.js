@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $('.NA').click(function(){
+    alert("The page is under development.");
+  });
+
   $('#contactForm').submit(function(e){
     e.preventDefault();
     console.log('testing');

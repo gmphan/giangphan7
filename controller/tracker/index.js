@@ -1,15 +1,15 @@
 'use strict'
 
 /******resumeHandler*******************/
-const quotePage=require('~/view/quote/index.marko')
+const trackerPage=require('~/view/tracker/index.marko')
 const quoteHandler=function(req, reply){
-  reply(quotePage.stream())
+  reply(trackerPage.stream())
 }
 /******End resumeHandler***************/
 module.exports=[
   {
     method:'GET',
-    path:'/quote',
+    path:'/tracker',
     handler:quoteHandler
   }
 ]
