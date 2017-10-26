@@ -80,6 +80,12 @@ section.success {
   bottom: 10%;
 }
 /**-------end Portfolio-----------**/
+/********** About *****************/
+p{
+  font-size: 20px;
+}
+/**------- end About ------------**/
+
 /****** Contact Sections ******/
 .floating-label-form-group {
   position: relative;
