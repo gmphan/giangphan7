@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <img src="/assets/profileImge256x172Trans.png">
+          <img src="/assets/LinkInTrans.gif">
           <div class="intro-text">
             <h1 class="name">Giang Phan</h1>
             <hr class="star-light">
@@ -121,17 +121,19 @@
         </div>
       </div>
     </div>
-    <div class="row"  style="padding:0px 15px;">
-      <div class="col-lg-4 col-lg-offset-2">
-        <p id="leftP">${input.contentOfAbout[0]}</p>
-        <!--the below is for the old about me editor  -->
-        <!-- <a class="btn btn-warning btn-sm" href="/login/edit/about/${input.idOfAbout[0]}" role="botton">Edit</a> -->
-        <a class="btn btn-basic btn-sm" href="/about-editor/${input.idOfAbout[0]}" role="button">Edit</a>
-      </div>
-      <div class="col-lg-4">
-        <p id="rightP">${input.contentOfAbout[1]}</p>
-        <!-- <a class="btn btn-warning btn-sm" href="/login/edit/about/${input.idOfAbout[1]}" role="botton">Edit</a> -->
-        <a class="btn btn-basic btn-sm" href="/about-editor/${input.idOfAbout[1]}" role="botton">Edit</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-2 leftDiv">
+          <p id="leftP">${input.contentOfAbout[0]}</p>
+          <!--the below is for the old about me editor  -->
+          <!-- <a class="btn btn-warning btn-sm" href="/login/edit/about/${input.idOfAbout[0]}" role="botton">Edit</a> -->
+          <a class="btn btn-basic btn-sm" href="/about-editor/${input.idOfAbout[0]}" role="button">Edit</a>
+        </div>
+        <div class="col-lg-6 rightDiv">
+          <p id="rightP">${input.contentOfAbout[1]}</p>
+          <!-- <a class="btn btn-warning btn-sm" href="/login/edit/about/${input.idOfAbout[1]}" role="botton">Edit</a> -->
+          <a class="btn btn-basic btn-sm" href="/about-editor/${input.idOfAbout[1]}" role="botton">Edit</a>
+        </div>
       </div>
     </div>
   </section>
