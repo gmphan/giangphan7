@@ -5,9 +5,6 @@
   <@content>
   <!--always need something in @content, or else will get "Error: write after end"  -->
 
-<!-- Trigger the modal with a button -->
-<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -41,15 +38,17 @@
     <div class="col-md-2 hidden-sm"></div>
     <div class="col-md-8">
       <h1>Blog</h1>
-      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"><h4 class="meta">Posts that I've written.</h4></button>
-      <ul id="ulBlog" style="list-style-type: none;">
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+        <h4 class="meta">Posts that I've written.</h4>
+      </button>
+      <ul id="ulBlog" style="list-style-type: decimal;">
         <for(var i=0; i<input.postId.length; i++)>
-          <li><span class="col-md-3">${i}.&nbsp;&nbsp;&nbsp;&nbsp;${input.postDate[i]}</span> <span class="col-md-4"><a id="${input.postId[i]}" href="/post/${input.postId[i]}">${input.postName[i]}</a></span></li><br/><br/>
+          <li  style="border:1px solid white"> <!--without the border the decimal will go to the left-->
+            <span class="col-md-2">${input.postDate[i]}</span>
+            <span class="col-md-6"><a id="${input.postId[i]}" href="/post/${input.postId[i]}">${input.postName[i]}</a></span>
+          </li><br/>
         </for>
-      <!-- <li><span class="monospace">July 5, 2017</span> &raquo; <a href="/post/display">testing</a></li> -->
       </ul>
-      <!-- <a class="btn btn-success btn-lg" href="/post/form">New Post</a><br/> -->
-      <!-- <a class="btn btn-warning btn-sm" href="/login/newpost">New Post</a><br/> -->
       <a class="btn btn-warning btn-sm" href="/post-new-editor">New Post</a>
     </div>
   </div>
