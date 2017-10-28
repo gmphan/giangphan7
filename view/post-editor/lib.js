@@ -7,7 +7,8 @@ $(document).ready(function(){
       url:'/update/post',
       data:{
         postId:url.substr(url.lastIndexOf('/')+1),
-        postContent:$("textarea[name='postContent']").val()
+        postName:$("input[name='post_name']").val(),
+        postContent:$("textarea[name='postContent']").val()        
       },
       success:function(){
         window.location.href='/post/'+url.substr(url.lastIndexOf('/')+1);

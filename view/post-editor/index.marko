@@ -11,6 +11,11 @@
         <form id="submitEditedPost">
            <div class="row control-group">
              <div class="form-group col-xs-12 floating-label-form-group controls">
+                 <!-- <label for="post name">Post name:</label> -->
+                 <input id="postName" type="text" class="form-control" name="post_name" placeholder="post name" value="${input.postName}">
+                 <p class="help-block text-danger"></p>
+             </div>
+             <div class="form-group col-xs-12 floating-label-form-group controls">
                  <textarea id="" rows="20" class="form-control" name="postContent" placeholder="post content" >${input.postContent}</textarea>
                  <p class="help-block text-danger"></p>
              </div>

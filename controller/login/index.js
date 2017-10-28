@@ -39,6 +39,7 @@ function handleValidateLogin(req, reply){
       //   console.log(hash);
       // }); //I used this to create my hash password
       bcrypt.compare(psw, hash_pw, function(err, res){
+
         if(err){
           throw err;
         }else if(res == false){
@@ -54,7 +55,7 @@ function handleValidateLogin(req, reply){
                   if (err) {
                       throw err;
                   }else{
-                    //set cookieAuth Object with session id 
+                    //set cookieAuth Object with session id
                     req.cookieAuth.set({ sid: sid });
                     return reply('matched');
                   }

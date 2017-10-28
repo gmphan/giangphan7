@@ -9,6 +9,7 @@ function handlePost(req, reply){
     const results=await api.get('/post/'+req.params.id)
     const postData={
       postId:results[0].id,
+      postName:results[0].post_name,
       postContent:results[0].post_content
     }
     reply(postPage.stream(postData));
@@ -26,7 +27,8 @@ function handlePostEditor(req, reply){
     const results=await api.get('/post/'+req.params.id)
     const postData={
       postContent:results[0].post_content,
-      postId:results[0].id
+      postId:results[0].id,
+      postName:results[0].post_name
     }
     //console.log(postData.postContent)
     reply(postEditorPage.stream(postData))
@@ -42,8 +44,8 @@ function handlePostEditor(req, reply){
 /******* handleUpdatePost ***************/
 function handleUpdatePost(req, reply){
   (async function(){
-    const {postId, postContent} = req.payload;
-    await api.post('/update/post/'+postId, {postContent});
+    const {postId, postName, postContent} = req.payload;
+    await api.post('/update/post/'+postId, {postName, postContent});
     reply()
   })()
   .catch((err)=>{

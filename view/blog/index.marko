@@ -36,7 +36,7 @@
   <div class="container">
   <div class="row">
     <div class="col-md-2 hidden-sm"></div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <h1>Blog</h1>
       <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
         <h4 class="meta">Posts that I've written.</h4>
@@ -45,7 +45,11 @@
         <for(var i=0; i<input.postId.length; i++)>
           <li  style="border:1px solid white"> <!--without the border the decimal will go to the left-->
             <span class="col-md-2">${input.postDate[i]}</span>
-            <span class="col-md-6"><a id="${input.postId[i]}" href="/post/${input.postId[i]}">${input.postName[i]}</a></span>
+            <span class="col-md-8">
+              <a class="postClass" id="${input.postId[i]}" href="/post/${input.postId[i]}">
+                ${input.postName[i]}
+              </a>
+            </span>
           </li><br/>
         </for>
       </ul>
