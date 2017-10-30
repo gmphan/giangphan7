@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 /******** handleLogin *******************/
 const loginPage=require('~/view/login/index.marko');
 function handleLogin(req, reply){
-
+  console.log(req.cookieAuth);
   (async function(){
     reply(loginPage.stream());
   })()
@@ -39,7 +39,6 @@ function handleValidateLogin(req, reply){
       //   console.log(hash);
       // }); //I used this to create my hash password
       bcrypt.compare(psw, hash_pw, function(err, res){
-
         if(err){
           throw err;
         }else if(res == false){
@@ -50,7 +49,6 @@ function handleValidateLogin(req, reply){
                 password:hash_pw
               }
               const sid = usrname;
-
               req.server.app.cache.set(sid, {credentials:credentials}, 0, (err) => {
                   if (err) {
                       throw err;
@@ -71,9 +69,17 @@ function handleValidateLogin(req, reply){
 
 /****---- End handleValidateLogin -----****/
 
-
-
-
+/*******  handleLogout ******************/
+function handleLogout(req, reply){
+  (async function(){
+    req.cookieAuth.clear();
+      return reply.redirect('/');
+  })()
+  .catch((err)=>{
+    throw err;
+  });
+}
+/**------ end handleLogout ------------**/
 module.exports=[
   {
     method:'GET',
@@ -84,5 +90,10 @@ module.exports=[
     method:'POST',
     path:'/validate/login',
     handler:handleValidateLogin
+  },
+  {
+    method:'GET',
+    path:'/logout',
+    handler: handleLogout
   }
 ]
