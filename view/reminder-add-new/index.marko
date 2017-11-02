@@ -10,21 +10,29 @@
     <div class="col-md-8">
 
       <h3>Add New Reminder</h3>
-      <form id="submitPost">
+      <form id="submitReminder">
         <div class="row control-group">
              <div class="form-group col-xs-12 floating-label-form-group controls">
                  <!-- <label for="post name">Post name:</label> -->
-                 <input id="quoteName" type="text" class="form-control" name="quote_name" placeholder="Name of the quote" >
+                 <input id="reminderName" type="text" class="form-control" name="reminder_name" placeholder="Name of the reminder" >
                  <p class="help-block text-danger"></p>
              </div>
          </div>
          <div class="row control-group">
            <div class="form-group col-xs-12 floating-label-form-group controls">
                <!-- <label for="post content">Post content</label> -->
-               <textarea id="quote" rows="20" class="form-control" name="quote_content" placeholder="quote content" ></textarea>
+               <textarea id="reminderQuote" rows="10" class="form-control" name="reminder_quote" placeholder="quote for the reminder" ></textarea>
                <p class="help-block text-danger"></p>
            </div>
          </div>
+         <div class="row control-group">
+              <div class="form-group col-xs-12 floating-label-form-group controls">
+                  <!-- <label for="post name">Post name:</label> -->
+                  <input id="writtenBy" type="text" class="form-control" name="written_by" placeholder="The quote was written by:" >
+                  <p class="help-block text-danger"></p>
+              </div>
+          </div>
+
          <input type="submit" value="Submit" class="btn btn-success btn-lg">
 
       </form>

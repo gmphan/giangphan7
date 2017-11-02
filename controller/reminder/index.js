@@ -47,7 +47,19 @@ function handleAddNewReminderPage(req, reply){
 }
 /**----- End handleNewPostEditor --------***/
 
-
+/******** handleInsertReminder ************/
+function handleInsertReminder(req, reply){
+  (async function(){
+    const {reminder_name, reminder_quote, written_by} = req.payload;
+    //console.log(written_by);
+    await api.post('/insert/reminder', {reminder_name, reminder_quote, written_by});
+    reply(1)
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/***--- end handleInsertReminder -----*****/
 
 
 module.exports=[
@@ -60,5 +72,10 @@ module.exports=[
     method:'GET',
     path:'/add-new-reminder',
     handler:handleAddNewReminderPage
+  },
+  {
+    method:'POST',
+    path:'/insert/reminder',
+    handler:handleInsertReminder
   }
 ]
