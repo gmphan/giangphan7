@@ -1,7 +1,7 @@
 <lasso-page package-path="./browser.json"/>
 //the <include/> and <@tag> tag is belong to marko
 <include('../layout/template/index.marko', data)>
-<@title>Resume</@title>
+<@title>Reminders</@title>
   <@content>
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog">
@@ -11,10 +11,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Attention!</h3>
+          <h3 class="modal-title">Reminders</h3>
         </div>
         <div class="modal-body">
-          <p>something here later</p>
+          <p>The reminders are my discipline scripts. They help my mind stay
+            focus and calm. Some of the reminders were written by myself, and
+            the others were from other people.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-basic" data-dismiss="modal">Continue to the page</button>
@@ -26,7 +28,7 @@
   </div>
     <div class="container">
     <div class="row" style="text-align:center;">
-      <!-- <div class="col-md-2 hidden-sm"></div> --> 
+      <!-- <div class="col-md-2 hidden-sm"></div> -->
         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
           <h1 class="meta">Reminders:</h1><br/><br/>
         </button>

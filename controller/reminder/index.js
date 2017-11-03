@@ -71,7 +71,12 @@ module.exports=[
   {
     method:'GET',
     path:'/add-new-reminder',
-    handler:handleAddNewReminderPage
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleAddNewReminderPage
+    }
   },
   {
     method:'POST',
