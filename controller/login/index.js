@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 /******** handleLogin *******************/
 const loginPage=require('~/view/login/index.marko');
 function handleLogin(req, reply){
-  console.log(req.cookieAuth);
+  //console.log(req.cookieAuth);
   (async function(){
     reply(loginPage.stream());
   })()

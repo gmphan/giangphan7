@@ -81,7 +81,8 @@ function handleInsertContact(req, reply){
     const {name, email, phone, message} = req.payload;
     //when setting from UI to API, I use {} json,
     //from sql in API to the table I use [] array.
-    await api.post('/insert/contact', {name, email, phone, message});
+    const result=await api.post('/insert/contact', {name, email, phone, message});
+    console.log(result);
     reply(1)
   })()
   .catch((err)=>{
@@ -134,12 +135,7 @@ module.exports=[
   {
     method:'POST',
     path:'/insert/contact',
-    config: {
-      auth: {
-        strategy: 'base'
-      },
-        handler:handleInsertContact
-    }
+    handler:handleInsertContact
   },
   {
     method:'GET',
