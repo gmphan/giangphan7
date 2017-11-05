@@ -1,0 +1,11 @@
+'use strict'
+
+module.exports={
+  gmail:{
+    service: 'gmail',
+    auth: {
+      user: 'myemail@gmail.com',
+      pass: 'mygmail-pw'
+    }
+  }
+}

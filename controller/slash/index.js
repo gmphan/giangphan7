@@ -1,7 +1,8 @@
 'use strict'
 
 const api = require('~/lib/api');
-
+var nodemailer = require('nodemailer');
+const config = require('~/lib/config');
 /***+++++++slashHandler++++++++++++++++*/
 const slashPage = require('~/view/slash/index.marko');
 
@@ -82,7 +83,24 @@ function handleInsertContact(req, reply){
     //when setting from UI to API, I use {} json,
     //from sql in API to the table I use [] array.
     const result=await api.post('/insert/contact', {name, email, phone, message});
-    console.log(result);
+    //console.log(result);
+    if(result==1){
+      var transporter = nodemailer.createTransport(config.gmail);
+      var mailOptions = {
+        from: 'gmphan7@gmail.com',
+        to: email,
+        subject: 'Sending Email using Node.js',
+        text: 'Hi '+name+', '+'Thank you for visiting www.giangphan7.com and sharing your information. '+'Giang'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    }
     reply(1)
   })()
   .catch((err)=>{

@@ -1,4 +1,5 @@
 node_modules
 .cache
 static
-/lib/mysqlCon.js
+/lib/config.js
+/toBeRemoved/mysqlCon.js
