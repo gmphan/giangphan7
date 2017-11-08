@@ -95,7 +95,7 @@ p{
   position: relative;
   margin-bottom: 0;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #bab8b6;//#eeeeee;
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
@@ -173,7 +173,7 @@ hr.star-primary {
   border-color: #2C3E50;
 }
 hr.star-primary:after {
-  background-color: white;
+  background-color: #EBE8E1;//white;
   color: #2C3E50;
 }
 
