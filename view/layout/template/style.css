@@ -10,6 +10,7 @@ body{
 	position:relative;
 	padding-top: 100px; //this to keep the first div to not go under nav
 }
+
 p {
 	text-indent: 50px;
 }

@@ -62,9 +62,6 @@ section.success {
 
 /****** Portfolio *************/
 .portfolio-box{
-  //border:1px solid gray;
-  //border-radius: 10px;
-  //box-shadow: 10px 10px 5px #888888;
   margin: 2.5px;
   margin-bottom: 15px;
   padding-top: 10px;
@@ -82,9 +79,6 @@ section.success {
 }
 /**-------end Portfolio-----------**/
 /********** About *****************/
-#about-container{
-  padding-top: 50px;
-}
 p{
   font-size: 20px;
 }
