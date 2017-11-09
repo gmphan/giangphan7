@@ -1,10 +1,10 @@
 $(document).ready(function(){
   //this right here will remember the key and value until close the tab.
   //this sessionStorage is only for the browser
-  if(sessionStorage.getItem('key') !== 'value'){
+  if(sessionStorage.getItem('reminder-key') !== 'reminder'){
     $("#myModal").modal('show');
     //window.name = 'key'
-    sessionStorage.setItem('key', 'value');
+    sessionStorage.setItem('reminder-key', 'reminder');
   }
 
   console.log('blog page');

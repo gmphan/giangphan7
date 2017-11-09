@@ -23,7 +23,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #2C3E50;
+  color: #FFA500;//#2C3E50;
 }
 
 h1,
@@ -51,6 +51,7 @@ h6{
 	color:white;
 	border-radius: 0px;
 	border: 1px solid #2C3E50;
+	//padding: 15px 32px;
 	-webkit-transition-duration: 0.4s; /* speed on Safari */
   transition-duration: 0.4s; /* speed on others */
 }
@@ -60,4 +61,10 @@ h6{
 }
 .center-gphan{
 	text-align: center;
+}
+.left-gphan{
+	text-align: left;
+}
+.right-gphan{
+	text-align: right;
 }
