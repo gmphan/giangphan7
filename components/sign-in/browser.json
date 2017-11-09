@@ -1,7 +1,8 @@
 {
   "dependencies":[
+    "../layout/template/browser.json",
     "../../assets/jquerysession.js",
     "./lib.js",
     "./style.css"
   ]
-}
+},
