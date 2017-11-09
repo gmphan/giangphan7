@@ -49,9 +49,9 @@ h6{
 .btn-gphan{
 	background-color:#2C3E50;
 	color:white;
-	border-radius: 0px;
+	border-radius: 5px;
 	border: 1px solid #2C3E50;
-	//padding: 15px 32px;
+	padding: 10px 25px;
 	-webkit-transition-duration: 0.4s; /* speed on Safari */
   transition-duration: 0.4s; /* speed on others */
 }
