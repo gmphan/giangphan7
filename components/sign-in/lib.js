@@ -19,4 +19,29 @@ This will keep all normal functionality, allowing you to show the modal using a 
 
 $(document).ready(function(){
   $('#signin1').appendTo("body")
+
+  $('#authComp1').submit(function(e){
+    e.preventDefault();
+    if($('#usrname').val()==""||$('#psw').val()==""){
+      document.getElementById("msg1").innerHTML="<p"+
+      "style='color:red'>***Login field cannot be blank!</p>"
+    }else{
+      $.ajax({
+        type:'POST',
+        url:'/sign-in',
+        data:{
+          usrname:$('#usrname').val(),
+          psw:$('#psw').val()
+        },
+        success:function(){
+          console.log('yeah');
+        },
+        error:function(){
+          alert('Error ajax /sign-in');
+        }
+      });
+    }
+  });
+
+
 })
