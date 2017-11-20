@@ -1,0 +1,44 @@
+<lasso-page package-path="./browser.json"/>
+//the <include/> and <@tag> tag is belong to marko
+<include('../layout/template/index.marko', data)>
+<@title>Projects</@title>
+  <@content>
+    <div class="container reader-box">
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Prject Name:</div>
+        <div class="col-sm-9 proj-right-divs">some name</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Percent Complete:</div>
+        <div class="col-sm-9 proj-right-divs">90</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">State:</div>
+        <div class="col-sm-9 proj-right-divs">Open</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Due Date:</div>
+        <div class="col-sm-9 proj-right-divs">mm/dd/yyyy</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Completion Date:</div>
+        <div class="col-sm-9 proj-right-divs">mm/dd/yyyy</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Description:</div>
+        <div class="col-sm-9 proj-right-divs">some lolong long lon text</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Work Notes:</div>
+        <div class="col-sm-9 proj-right-divs">Where I will fill out the note</div>
+      </div>
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Previous note:</div>
+        <div class="col-sm-9 proj-right-divs">This will show all the note with date indicating, and will be use for loop here</div>
+      </div>
+
+
+    </div>
+
+  </@content>
+</include>

@@ -23,8 +23,8 @@ $(document).ready(function(){
   $('#authComp1').submit(function(e){
     e.preventDefault();
     if($('#usrname').val()==""||$('#psw').val()==""){
-      document.getElementById("msg1").innerHTML="<p"+
-      "style='color:red'>***Login field cannot be blank!</p>"
+      document.getElementById("msg1").innerHTML=
+      "<p>***Login field cannot be blank!</p>";
     }else{
       $.ajax({
         type:'POST',
@@ -33,8 +33,16 @@ $(document).ready(function(){
           usrname:$('#usrname').val(),
           psw:$('#psw').val()
         },
-        success:function(){
-          console.log('yeah');
+        success:function(response){
+          if(response==='badUsername'||response==='badPassword'){
+            document.getElementById("msg1").innerHTML=
+            "<p>***No match found!</p>";
+          }else if(response==='matched'){
+            window.location.href=window.location.href; 
+            alert('Successfully Authenticated!!!');
+            //to dismiss modal
+            $("#dismissBtn1").click();
+          }
         },
         error:function(){
           alert('Error ajax /sign-in');

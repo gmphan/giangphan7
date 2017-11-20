@@ -68,3 +68,6 @@ h6{
 .right-gphan{
 	text-align: right;
 }
+.testCSS{
+	border:0.5px solid red;
+}
