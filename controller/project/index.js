@@ -2,7 +2,7 @@
 const api = require('~/lib/api');
 
 /******resumeHandler*******************/
-const projectPage=require('~/view/projects/index.marko')
+const projectPage=require('~/view/project/index.marko')
 const handleProjects=function(req, reply){
   (async function(){
     const results=await api.get('/projects')
@@ -29,8 +29,22 @@ const handleProjects=function(req, reply){
 }
 /******End resumeHandler***************/
 
+/********* handleProjectAddNew ********/
+const projectAddNewPage=require('~/view/project-add-new/index.marko');
+function handleProjectAddNew(req, reply){
+  (async function(){
+
+    reply(projectAddNewPage.stream());
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/****--- end handleProjectAddNew ---****/
+
+
 /**** handleProject ********/
-const projectDisplayPage=require('~/view/project-display/index.marko')
+const projectDisplayPage=require('~/view/project-display/index.marko');
 function handleDisplayProject(req, reply){
   (async function(){
 
@@ -46,6 +60,11 @@ module.exports=[
     method:'GET',
     path:'/projects',
     handler:handleProjects
+  },
+  {
+    method:'GET',
+    path:'/project-add-new',
+    handler:handleProjectAddNew
   },
   {
     method:'GET',

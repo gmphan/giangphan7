@@ -1,0 +1,15 @@
+.proj-rows{
+  margin-top:10px;
+}
+.proj-left-divs{
+  //border: 1px solid red;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+.proj-right-divs{
+  border:1px solid #EBE8E1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 2%;
+}

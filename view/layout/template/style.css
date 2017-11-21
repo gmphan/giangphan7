@@ -50,7 +50,7 @@ h6{
 	background-color:#2C3E50;
 	color:white;
 	border-radius: 5px;
-	border: 1px solid #2C3E50;
+	//border: 1px solid #EBE8E1;
 	padding: 10px 25px;
 	-webkit-transition-duration: 0.4s; /* speed on Safari */
   transition-duration: 0.4s; /* speed on others */
