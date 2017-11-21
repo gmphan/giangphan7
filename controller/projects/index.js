@@ -6,14 +6,20 @@ const projectPage=require('~/view/projects/index.marko')
 const handleProjects=function(req, reply){
   (async function(){
     const results=await api.get('/projects')
+    const id=[];
+    const project_name=[];
+    const added_date=[];
+
+    console.log('testing '+results[0].id);
+    for(let i=0; i<results.length; i++){
+      id[i]=results[i].id,
+      project_name[i]=results[i].project_name,
+      added_date[i]=results[i].added_date
+    }
     const projectData={
-      project_name:results[0].project_name,
-      percent_complete:results[0].percent_complete,
-      state:results[0].state,
-      due_date:results[0].due_date,
-      completion_date:results[0].completion_date,
-      description:results[0].description,
-      work_notes:results[0].work_notes
+      id:id,
+      project_name:project_name,
+      added_date:added_date
     }
     reply(projectPage.stream(projectData));
   })()
