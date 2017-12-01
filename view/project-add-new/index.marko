@@ -16,9 +16,9 @@
           <div class="col-sm-2"></div>
         </div>
         <div class="row proj-rows">
-          <div class="col-sm-2 proj-left-divs">Percent Complete:</div>
+          <div class="col-sm-2 proj-left-divs">Due Date:</div>
           <div class="col-sm-3">
-            <input class="input-border" type="text" name="percent-complete" placeholder="0" />
+            <input class="input-border" type="date" name="due-date"/>
           </div>
           <div class="col-sm-2 proj-left-divs">State:</div>
           <div class="col-sm-3">
@@ -32,25 +32,20 @@
           <div class="col-sm-2"></div>
         </div>
         <div class="row proj-rows">
-          <div class="col-sm-2 proj-left-divs">Due Date:</div>
-          <div class="col-sm-3">
-            <input class="input-border" type="date" name="due-date"/>
-          </div>
-        </div>
-        <div class="row proj-rows">
           <div class="col-sm-2 proj-left-divs">Description:</div>
           <div class="col-sm-8">
             <textarea name="description" rows="3" cols="40" class="input-border" placeholder=""></textarea>
           </div>
           <div class="col-sm-2"></div>
         </div>
-        <div class="row proj-rows">
+        <!-- <div class="row proj-rows">
           <div class="col-sm-2 proj-left-divs">Work Notes:</div>
           <div class="col-sm-8">
             <textarea name="work-notes" rows="8" cols="40" class="input-border" placeholder=""></textarea>
           </div>
           <div class="col-sm-2"></div>
-        </div>
+        </div>-->
+        <p id="notifyMessage"></p>
         <div class="row" style="text-align:center">
           <br/><input type="submit" value="Submit" class="btn btn-gphan btn-lg">
         </div>
