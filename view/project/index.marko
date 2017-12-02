@@ -28,29 +28,33 @@
   <div class="container reader-box">
     <div class="row">
       <div class="col-md-2 hidden-sm"></div>
-      <div class="col-md-10">
-        <h1>Projects</h1>
+      <div class="col-md-10 meta">
         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-          <h4 class="meta">My Projects.</h4>
+          <h1>Projects</h1>
         </button>
-        <ul id="ulBlog" style="list-style-type: decimal;">
-          <for(var i=0; i<input.id.length; i++)>
-            <li  style="border:1px solid white"> <!--without the border the decimal will go to the left-->
-              <span class="col-md-2">${input.added_date[i]}</span>
-              <span class="col-md-8">
-                <a class="postClass" id="${input.id[i]}" href="/project/${input.id[i]}">
-                  ${input.project_name[i]}
-                </a>
-              </span>
-            </li><br/>
-          </for>
-        </ul>
-      </div>
-      <div class="row" style="text-align:center">
-        <a class="btn btn-gphan" href="/project-add-new">New Project</a>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-2 hidden-sm"></div>
+      <div class="col-md-10">
+        <for(var i=0; i<input.id.length; i++)>
+          <div class="col-md-3">${i+1}.<span class="tab">${input.added_date[i]}</span></div>
+          <div class="col-md-7">
+            <a class="postClass" id="${input.id[i]}" href="/project/${input.id[i]}">
+              ${input.project_name[i]}
+            </a>
+          </div>
+        </for>
+      </div>
+    </div>
+    <div class="row" style="text-align:center">
+      <br/><br/><a class="btn btn-gphan" href="/project-add-new">New Project</a>
+    </div>
   </div>
+
+
+
+
 
   </@content>
 </include>

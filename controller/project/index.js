@@ -9,13 +9,14 @@ const handleProjects=function(req, reply){
     const id=[];
     const project_name=[];
     const added_date=[];
-
-    console.log('testing '+results[0].id);
+    var date = new Date(results[0].added_date);
+    console.log('testing '+date.toLocaleString());
     for(let i=0; i<results.length; i++){
       id[i]=results[i].id,
       project_name[i]=results[i].project_name,
-      added_date[i]=results[i].added_date
+      added_date[i]= (new Date(results[i].added_date)).toLocaleString()
     }
+
     const projectData={
       id:id,
       project_name:project_name,

@@ -69,5 +69,8 @@ h6{
 	text-align: right;
 }
 .testCSS{
-	border:0.5px solid red;
+	border:0.2px solid red;
+}
+.tab {
+	margin-left: 2.5em
 }
