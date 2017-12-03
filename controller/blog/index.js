@@ -15,7 +15,7 @@ function handleBlog(req, reply){
     for(let i=0; i<results.length; i++){
         postId[i]=results[i].id,
         postName[i]=results[i].post_name,
-        postDate[i]=results[i].created_date
+        postDate[i]=(new Date(results[i].created_date)).toLocaleString()
     }
 
     //console.log(postDate);

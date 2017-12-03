@@ -35,32 +35,28 @@
 </div>
 <!-- end of modal -->
   <div class="container reader-box">
-  <div class="row">
-    <div class="col-md-2 hidden-sm"></div>
-    <div class="col-md-10">
-      <h1>Blog</h1>
+    <div class="row" style="text-align:center;">
       <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-        <h4 class="meta">Posts that I've written.</h4>
-      </button>
-      <ul id="ulBlog" style="list-style-type: decimal;">
-        <for(var i=0; i<input.postId.length; i++)>
-          <li  style="border:1px solid white"> <!--without the border the decimal will go to the left-->
-            <span class="col-md-2">${input.postDate[i]}</span>
-            <span class="col-md-8">
-              <a class="postClass" id="${input.postId[i]}" href="/post/${input.postId[i]}">
-                ${input.postName[i]}
-              </a>
-            </span>
-          </li><br/>
-        </for>
-      </ul>
-
-
+        <h1>Posts</h1>
+      </button><br/><br/>      
     </div>
+    <for(var i=0; i<input.postId.length; i++)>
+      <div class="row" style="margin-bottom:15px;">
+          <div class="col-md-2 hidden-sm"></div>
+          <div class="col-md-1" style="text-align:right">${i+1}.</div>
+          <div class="col-md-9">
+              <div class="col-md-3">${input.postDate[i]}</div>
+              <div class="col-md-6">
+                <a class="postClass" id="${input.postId[i]}" href="/post/${input.postId[i]}">
+                  ${input.postName[i]}
+                </a>
+              </div>
+          </div>
+      </div>
+    </for>
     <div class="row" style="text-align:center">
-      <a class="btn btn-gphan" href="/post-new-editor">New Post</a>
+      <br/><br/><a class="btn btn-gphan" href="/post-new-editor">New Post</a>
     </div>
-  </div>
 </div>
 
 

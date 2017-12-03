@@ -26,27 +26,25 @@
   </div>
   <!-- end of modal -->
   <div class="container reader-box">
-    <div class="row">
-      <div class="col-md-2 hidden-sm"></div>
-      <div class="col-md-10 meta">
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-          <h1>Projects</h1>
-        </button>
-      </div>
+    <div class="row" style="text-align:center;">
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+        <h1>Projects</h1>
+      </button><br/><br/>
     </div>
-    <div class="row">
-      <div class="col-md-2 hidden-sm"></div>
-      <div class="col-md-10">
-        <for(var i=0; i<input.id.length; i++)>
-          <div class="col-md-3">${i+1}.<span class="tab">${input.added_date[i]}</span></div>
-          <div class="col-md-7">
-            <a class="postClass" id="${input.id[i]}" href="/project/${input.id[i]}">
-              ${input.project_name[i]}
-            </a>
+    <for(var i=0; i<input.id.length; i++)>
+      <div class="row" style="margin-bottom:15px;">
+          <div class="col-md-2 hidden-sm"></div>
+          <div class="col-md-1" style="text-align:right">${i+1}.</div>
+          <div class="col-md-9">
+              <div class="col-md-3">${input.added_date[i]}</div>
+              <div class="col-md-6">
+                <a class="postClass" id="${input.id[i]}" href="/project/${input.id[i]}">
+                  ${input.project_name[i]}
+                </a>
+              </div>
           </div>
-        </for>
       </div>
-    </div>
+    </for>
     <div class="row" style="text-align:center">
       <br/><br/><a class="btn btn-gphan" href="/project-add-new">New Project</a>
     </div>
