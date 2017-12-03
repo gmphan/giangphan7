@@ -6,27 +6,31 @@
     <div class="container reader-box">
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Prject Name:</div>
-        <div class="col-sm-9 proj-right-divs">some name</div>
-      </div>
-      <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Percent Complete:</div>
-        <div class="col-sm-9 proj-right-divs">90</div>
+        <div class="col-sm-9 proj-right-divs">${input.proj_name}</div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">State:</div>
-        <div class="col-sm-9 proj-right-divs">Open</div>
+        <div class="col-sm-9">
+          <select id="prj-state" class="input-border" style="height:40px" type="text" name="state">
+            <option value="${input.state}">${input.state}</option>
+            <option value="open">Open</option>
+            <option value="pending">Pending</option>
+            <option value="waiting">Waiting</option>
+            <option value="complete">Complete</option>
+          </select>
+        </div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Due Date:</div>
-        <div class="col-sm-9 proj-right-divs">mm/dd/yyyy</div>
+        <div class="col-sm-9 proj-right-divs">${input.due_date}</div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Completion Date:</div>
-        <div class="col-sm-9 proj-right-divs">mm/dd/yyyy</div>
+        <div class="col-sm-9 proj-right-divs">${input.completion_date}</div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Description:</div>
-        <div class="col-sm-9 proj-right-divs">some lolong long lon text</div>
+        <div class="col-sm-9 proj-right-divs">${input.description}</div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Work Notes:</div>

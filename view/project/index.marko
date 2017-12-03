@@ -31,17 +31,27 @@
         <h1>Projects</h1>
       </button><br/><br/>
     </div>
+    <div class="row" style="margin-bottom:15px;">
+      <div class="col-md-2 hidden-sm"></div>
+      <div class="col-md-10">
+        <div class="col-md-1" style="text-align:center">Count</div>
+        <div class="col-md-3" style="text-align:center">Added Date:</div>
+        <div class="col-md-4" style="text-align:center">Project Name:</div>
+        <div class="col-md-2" style="text-align:center">State:</div>
+      </div>
+    </div>
     <for(var i=0; i<input.id.length; i++)>
       <div class="row" style="margin-bottom:15px;">
           <div class="col-md-2 hidden-sm"></div>
-          <div class="col-md-1" style="text-align:right">${i+1}.</div>
-          <div class="col-md-9">
-              <div class="col-md-3">${input.added_date[i]}</div>
-              <div class="col-md-6">
-                <a class="postClass" id="${input.id[i]}" href="/project/${input.id[i]}">
-                  ${input.project_name[i]}
-                </a>
-              </div>
+          <div class="col-md-10">
+            <div class="col-md-1" style="text-align:right">${i+1}.</div>
+            <div class="col-md-3">${input.added_date[i]}</div>
+            <div class="col-md-4">
+              <a class="postClass" id="${input.id[i]}" href="/project/${input.id[i]}">
+                ${input.project_name[i]}
+              </a>
+            </div>
+            <div class="col-md-2">${input.state[i]}</div>
           </div>
       </div>
     </for>

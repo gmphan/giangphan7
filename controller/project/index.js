@@ -9,18 +9,21 @@ const handleProjects=function(req, reply){
     const id=[];
     const project_name=[];
     const added_date=[];
+    const state=[];
     //var date = new Date(results[0].added_date);
     //console.log('testing '+date.toLocaleString());
     for(let i=0; i<results.length; i++){
-      id[i]=results[i].id,
-      project_name[i]=results[i].project_name,
-      added_date[i]= (new Date(results[i].added_date)).toLocaleString()
+      id[i]=results[i].id;
+      project_name[i]=results[i].project_name;
+      added_date[i]= (new Date(results[i].added_date)).toLocaleString();
+      state[i]=results[i].state;
     }
 
     const projectData={
       id:id,
       project_name:project_name,
-      added_date:added_date
+      added_date:added_date,
+      state:state
     }
     reply(projectPage.stream(projectData));
   })()
@@ -48,8 +51,15 @@ function handleProjectAddNew(req, reply){
 const projectDisplayPage=require('~/view/project-display/index.marko');
 function handleDisplayProject(req, reply){
   (async function(){
-
-    reply(projectDisplayPage.stream());
+    const result=await api.get('/project/'+req.params.id);
+    const projData={
+      proj_name:result[0].project_name,
+      state:result[0].state,
+      due_date:result[0].due_date,
+      completion_date:result[0].completion_date,
+      description:result[0].description
+    }
+    reply(projectDisplayPage.stream(projData));
   })()
   .catch((err)=>{
     throw err;
@@ -61,7 +71,7 @@ function handleDisplayProject(req, reply){
 function handleInsertPrj(req, reply){
   (async function(){
     const {proj_name, due_date, state, description} = req.payload;
-    //console.log(description);
+    //console.log('date '+due_date);
     await api.post('/insert/project', {proj_name, due_date, state, description});
     reply(1);
   })()

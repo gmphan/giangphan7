@@ -1,9 +1,9 @@
 $(document).ready(function(){
   $('#new-proj-form1').submit(function(e){
     e.preventDefault();
-    if($("input[name='proj-name']").val()==""||$("input[name='description']").val()==""){
+    if($("input[name='proj-name']").val()==""||$("input[name='description']").val()==""||$("input[name='due-date']").val()==""){
       document.getElementById("notifyMessage").innerHTML="<p"+
-      "style='color:red'>***Project Name or Description field cannot be blank!</p>"
+      "style='color:red'>***All fields are need to be filled!</p>"
       return false;
     }else{
       $.ajax({
