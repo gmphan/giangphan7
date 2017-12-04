@@ -6,11 +6,14 @@
     <div class="container reader-box">
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Prject Name:</div>
-        <div class="col-sm-9 proj-right-divs">${input.proj_name}</div>
+        <div class="col-sm-8 proj-right-divs">${input.proj_name}</div>
+        <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs">Due Date:</div>
+        <div class="col-sm-3 proj-right-divs">${input.due_date}</div>
         <div class="col-sm-2 proj-left-divs">State:</div>
-        <div class="col-sm-9">
+        <div class="col-sm-3">
           <select id="prj-state" class="input-border" style="height:40px" type="text" name="state">
             <option value="${input.state}">${input.state}</option>
             <option value="open">Open</option>
@@ -19,26 +22,30 @@
             <option value="complete">Complete</option>
           </select>
         </div>
-      </div>
-      <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Due Date:</div>
-        <div class="col-sm-9 proj-right-divs">${input.due_date}</div>
+        <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Completion Date:</div>
-        <div class="col-sm-9 proj-right-divs">${input.completion_date}</div>
+        <div class="col-sm-3 proj-right-divs" style="min-height:40px">${input.completion_date}</div>
+        <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Description:</div>
-        <div class="col-sm-9 proj-right-divs">${input.description}</div>
+        <div class="col-sm-8 proj-right-divs">${input.description}</div>
+        <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Work Notes:</div>
-        <div class="col-sm-9 proj-right-divs">Where I will fill out the note</div>
+        <div class="col-sm-8 proj-right-divs">
+          <textarea name="work-note" rows="3" cols="40" placeholder=""></textarea>
+
+        </div>
+        <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Previous note:</div>
-        <div class="col-sm-9 proj-right-divs">This will show all the note with date indicating, and will be use for loop here</div>
+        <div class="col-sm-8 proj-right-divs">This will show all the note with date indicating, and will be use for loop here</div>
+        <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">

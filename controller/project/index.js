@@ -55,7 +55,7 @@ function handleDisplayProject(req, reply){
     const projData={
       proj_name:result[0].project_name,
       state:result[0].state,
-      due_date:result[0].due_date,
+      due_date:(new Date(result[0].due_date)).toLocaleString(),
       completion_date:result[0].completion_date,
       description:result[0].description
     }
