@@ -11,18 +11,18 @@
         <div class="row proj-rows">
           <div class="col-sm-2 proj-left-divs">Project Name:</div>
           <div class="col-sm-8">
-            <input class="input-border" type="text" name="proj-name" placeholder="" />
+            <input class="form-control" type="text" name="proj-name" placeholder="" />
           </div>
           <div class="col-sm-2"></div>
         </div>
         <div class="row proj-rows">
           <div class="col-sm-2 proj-left-divs">Due Date:</div>
           <div class="col-sm-3">
-            <input class="input-border" type="date" name="due-date"/>
+            <input type="date" class="form-control" name="due-date"/>
           </div>
           <div class="col-sm-2 proj-left-divs">State:</div>
           <div class="col-sm-3">
-            <select id="prj-state" class="input-border" style="height:40px" type="text" name="state">
+            <select id="prj-state" class="form-control" type="text" name="state">
               <option value="open">Open</option>
               <option value="pending">Pending</option>
               <option value="waiting">Waiting</option>
@@ -34,7 +34,7 @@
         <div class="row proj-rows">
           <div class="col-sm-2 proj-left-divs">Description:</div>
           <div class="col-sm-8">
-            <textarea name="description" rows="3" cols="40" class="input-border" placeholder=""></textarea>
+            <textarea class="form-control" name="description" rows="3" cols="40" placeholder=""></textarea>
           </div>
           <div class="col-sm-2"></div>
         </div>
@@ -43,8 +43,6 @@
           <br/><input type="submit" value="Submit" class="btn btn-gphan btn-lg">
         </div>
       </form>
-
-
     </div>
 
   </@content>

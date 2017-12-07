@@ -5,39 +5,49 @@
   <@content>
     <div class="container reader-box">
       <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Prject Name:</div>
-        <div class="col-sm-8 proj-right-divs">${input.proj_name}</div>
-        <div class="col-sm-2"></div>
-      </div>
-      <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Due Date:</div>
-        <div class="col-sm-3 proj-right-divs">${input.due_date}</div>
-        <div class="col-sm-2 proj-left-divs">State:</div>
-        <div class="col-sm-3">
-          <select id="prj-state" class="input-border" style="height:40px" type="text" name="state">
-            <option value="${input.state}">${input.state}</option>
-            <option value="open">Open</option>
-            <option value="pending">Pending</option>
-            <option value="waiting">Waiting</option>
-            <option value="complete">Complete</option>
-          </select>
-        </div>
-        <div class="col-sm-2"></div>
-      </div>
-      <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Completion Date:</div>
-        <div class="col-sm-3 proj-right-divs" style="min-height:40px">${input.completion_date}</div>
+        <div class="col-sm-2 proj-left-divs"></div>
+        <div class="col-sm-8" style="text-align:center"><h2>${input.proj_name} - Project</h2><br/></div>
         <div class="col-sm-2"></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Description:</div>
-        <div class="col-sm-8 proj-right-divs">${input.description}</div>
+        <div class="col-sm-8">
+          <textarea class="form-control" name="description" rows="5" cols="20">${input.description}</textarea>
+        </div>
         <div class="col-sm-2"></div>
       </div>
+      <form>
+        <div class="row proj-rows">
+          <div class="col-sm-2 proj-left-divs">State:</div>
+          <div class="col-sm-3">
+            <select id="prj-state" class="form-control" type="text" name="state">
+              <option value="${input.state}">${input.state}</option>
+              <option value="open">Open</option>
+              <option value="pending">Pending</option>
+              <option value="waiting">Waiting</option>
+              <option value="complete">Complete</option>
+            </select>
+          </div>
+          <div class="col-sm-2 proj-left-divs">Due Date:</div>
+          <div class="col-sm-3">
+            <input class="form-control" value="${input.due_date}">
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <div class="row proj-rows">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-2 proj-left-divs">Completion Date:</div>
+          <div class="col-sm-3">
+            <input id="prj-Cmptn-date" class="form-control" type="date" name="due-date" placeholder=""/>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </form>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Task:</div>
-        <div class="col-sm-6">
-          <select id="prj-state" class="input-border" style="height:40px" type="text" name="state">
+        <div class="col-sm-8">
+          <select id="prj-state" class="form-control" type="text" name="state">
             <option value="task1">Select a task to view its note</option>
             <option value="task2">task2</option>
             <option value="task3">task3</option>
@@ -45,19 +55,20 @@
             <option value="task5">task5</option>
           </select>
         </div>
-        <div class="col-sm-2"><button>Add Note</button></div>
+        <div class="col-sm-2"><project-add-task/></div>
       </div>
       <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Previous note:</div>
-        <div class="col-sm-8 proj-right-divs">Select a task to view its note</div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2 proj-left-divs">Activity:</div>
+        <div class="col-sm-8">
+          <textarea class="form-control" name="activity" rows="5" cols="40"></textarea>
+        </div>
+        <div class="col-sm-2"><button class="btn btn-gphan btn-sm">Add Note</button></div>
       </div>
       <div class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">
           <a class="btn btn-gphan btn-sm" href="/projects">Back</a>
         </div>
       </div>
-
     </div>
 
   </@content>

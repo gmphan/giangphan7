@@ -1,0 +1,50 @@
+<!-- Modal -->
+<!-- Trigger the modal with a button -->
+<a id="add-task-link-1" data-toggle="modal" data-target="#add-task-1">
+  <button class="btn btn-gphan btn-sm">Add Task</button>
+</a>
+<!-- Modal -->
+<div id="add-task-1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Task</h4>
+      </div>
+      <div class="modal-body">
+        <form id="add-task-form-1" role="form">
+          <div class="form-group">
+            <label for="task-name">Task Name</label>
+            <input type="text" class="form-control" id="tsk-name-input-1" placeholder="Enter Task Name">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control" rows="3" cols="40" placeholder="Give a brief description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="state">State</label>
+            <select id="prj-state" class="form-control" type="text" name="state">
+              <option value="open">Open</option>
+              <option value="pending">Pending</option>
+              <option value="waiting">Waiting</option>
+              <option value="complete">Complete</option>
+            </select>
+          </div>
+          <p id="msg1" style="color:red"></p>
+          <div class="checkbox">
+            <label><input type="checkbox" value="" checked>Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-gphan btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Authenticate</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button id="dismissBtn1" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- end of modal -->
