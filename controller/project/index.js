@@ -52,6 +52,7 @@ const projectDisplayPage=require('~/view/project-display/index.marko');
 function handleDisplayProject(req, reply){
   (async function(){
     const result=await api.get('/project/'+req.params.id);
+    console.log(result[0].id);
     const projData={
       prj_id:result[0].id,
       proj_name:result[0].project_name,
