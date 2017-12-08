@@ -11,13 +11,16 @@ $(document).ready(function(){
         url:'/add/task',
         data:{
           task_name:$("input[name='task-name']").val(),
-          description:$("input[name='description']").val()
+          description:$("textarea[name='tsk-description']").val(),
+          state:$( "#tsk-state option:selected" ).text(),
+          prj_id:$("input[name='prj_id']").val()
         },
         success:function(){
           window.location.href='/projects';
+          //console.log($("input[name='description']").val());
         },
         error:function(){
-          document.getElementById("notifyMessage").innerHTML="<p"+
+          document.getElementById("msg1").innerHTML="<p"+
           "style='color:red'>***Error posting this project!</p>"
         }
       });

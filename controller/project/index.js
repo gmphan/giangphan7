@@ -53,6 +53,7 @@ function handleDisplayProject(req, reply){
   (async function(){
     const result=await api.get('/project/'+req.params.id);
     const projData={
+      prj_id:result[0].id,
       proj_name:result[0].project_name,
       state:result[0].state,
       due_date:(new Date(result[0].due_date)).toLocaleString(),
@@ -81,6 +82,22 @@ function handleInsertPrj(req, reply){
 }
 /***-- end handleInsertPrj --****/
 
+/******* handleAddTask ************/
+function handleAddTask(req, reply){
+  (async function(){
+    const {prj_id, task_name, state, description} = req.payload;
+    //console.log('handleAddTask: '+task_name + ' '+ description+ ' ' + state + '  '+prj_id);
+    await api.post('/add/task', {prj_id, task_name, state, description});
+    reply(1);
+  })()
+  .catch((err)=>{
+    throw err;
+  });
+}
+/******* end handleAddTask **************/
+
+
+
 module.exports=[
   {
     method:'GET',
@@ -101,5 +118,10 @@ module.exports=[
     method:'POST',
     path:'/insert/project',
     handler:handleInsertPrj
+  },
+  {
+    method:'POST',
+    path:'/add/task',
+    handler:handleAddTask
   }
 ]
