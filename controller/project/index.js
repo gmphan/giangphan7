@@ -5,18 +5,18 @@ const api = require('~/lib/api');
 const projectPage=require('~/view/project/index.marko')
 const handleProjects=function(req, reply){
   (async function(){
-    const results=await api.get('/projects')
+    const rows=await api.get('/projects')
     const id=[];
     const project_name=[];
     const added_date=[];
     const state=[];
-    //var date = new Date(results[0].added_date);
+    //var date = new Date(rows[0].added_date);
     //console.log('testing '+date.toLocaleString());
-    for(let i=0; i<results.length; i++){
-      id[i]=results[i].id;
-      project_name[i]=results[i].project_name;
-      added_date[i]= (new Date(results[i].added_date)).toLocaleString();
-      state[i]=results[i].state;
+    for(let i=0; i<rows.length; i++){
+      id[i]=rows[i].id;
+      project_name[i]=rows[i].project_name;
+      added_date[i]= (new Date(rows[i].added_date)).toLocaleString();
+      state[i]=rows[i].state;
     }
 
     const projectData={
@@ -51,15 +51,28 @@ function handleProjectAddNew(req, reply){
 const projectDisplayPage=require('~/view/project-display/index.marko');
 function handleDisplayProject(req, reply){
   (async function(){
-    const result=await api.get('/project/'+req.params.id);
-    console.log(result[0].id);
+    const row=await api.get('/project/'+req.params.id);
+    console.log(row[1]);
+    // for(let i=0; i<row.length; i++){
+    //   proj_name[i] = row[i].project_name;
+    //   state[i] = row[i].state;
+    //   completion_date:row[0].completion_date;
+    //   description:row[0].description;
+    //   task_id[i] = row[i].id;
+    //   task_name:row[0].task_name;
+    //   //due_date:(new Date(row[0].due_date)).toLocaleString();
+    //
+    //
+    // }
+
     const projData={
-      prj_id:result[0].id,
-      proj_name:result[0].project_name,
-      state:result[0].state,
-      due_date:(new Date(result[0].due_date)).toLocaleString(),
-      completion_date:result[0].completion_date,
-      description:result[0].description
+      prj_id:row[0].id,
+      proj_name:row[0].project_name,
+      state:row[0].state,
+      due_date:(new Date(row[0].due_date)).toLocaleString(),
+      completion_date:row[0].completion_date,
+      description:row[0].description,
+      task_name:row[0].task_name
     }
     reply(projectDisplayPage.stream(projData));
   })()
