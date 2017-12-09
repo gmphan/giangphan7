@@ -53,18 +53,6 @@ function handleDisplayProject(req, reply){
   (async function(){
     const row=await api.get('/project/'+req.params.id);
     console.log(row[1]);
-    // for(let i=0; i<row.length; i++){
-    //   proj_name[i] = row[i].project_name;
-    //   state[i] = row[i].state;
-    //   completion_date:row[0].completion_date;
-    //   description:row[0].description;
-    //   task_id[i] = row[i].id;
-    //   task_name:row[0].task_name;
-    //   //due_date:(new Date(row[0].due_date)).toLocaleString();
-    //
-    //
-    // }
-
     const projData={
       prj_id:row[0].id,
       proj_name:row[0].project_name,
@@ -110,6 +98,19 @@ function handleAddTask(req, reply){
 }
 /******* end handleAddTask **************/
 
+/********* handleGetTask ****************/
+function handleGetTask(req, reply){
+  (async function(){
+    //need query from task table to display on the list
+    console.log(req.params.prjId);
+    console.log('I am here');
+    reply(1)
+  })()
+  .catch((err)=>{
+    throw err;
+  });
+}
+/******** end handleGetTask ************/
 
 
 module.exports=[
@@ -129,6 +130,11 @@ module.exports=[
     handler:handleDisplayProject
   },
   {
+    method:'GET',
+    path:'/get/task/{prjId}',
+    handler:handleGetTask
+  },
+  {
     method:'POST',
     path:'/insert/project',
     handler:handleInsertPrj
@@ -138,4 +144,5 @@ module.exports=[
     path:'/add/task',
     handler:handleAddTask
   }
+
 ]
