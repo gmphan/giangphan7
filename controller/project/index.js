@@ -101,10 +101,10 @@ function handleAddTask(req, reply){
 /********* handleGetTask ****************/
 function handleGetTask(req, reply){
   (async function(){
-    //need query from task table to display on the list
     console.log(req.params.prjId);
     console.log('I am here');
-    reply(1)
+    const row=await api.get('/get/task/'+req.params.prjId);
+    reply(row)
   })()
   .catch((err)=>{
     throw err;
