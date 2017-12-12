@@ -37,7 +37,6 @@ const handleProjects=function(req, reply){
 const projectAddNewPage=require('~/view/project-add-new/index.marko');
 function handleProjectAddNew(req, reply){
   (async function(){
-
     reply(projectAddNewPage.stream());
   })()
   .catch((err)=>{
@@ -45,30 +44,6 @@ function handleProjectAddNew(req, reply){
   })
 }
 /****--- end handleProjectAddNew ---****/
-
-
-/**** handleProject ********/
-const projectDisplayPage=require('~/view/project-display/index.marko');
-function handleDisplayProject(req, reply){
-  (async function(){
-    const row=await api.get('/project/'+req.params.id);
-    console.log(row[1]);
-    const projData={
-      prj_id:row[0].id,
-      proj_name:row[0].project_name,
-      state:row[0].state,
-      due_date:(new Date(row[0].due_date)).toLocaleString(),
-      completion_date:row[0].completion_date,
-      description:row[0].description,
-      task_name:row[0].task_name
-    }
-    reply(projectDisplayPage.stream(projData));
-  })()
-  .catch((err)=>{
-    throw err;
-  })
-}
-/***-- end handleProject --***/
 
 /****** handleInsertPrj *********/
 function handleInsertPrj(req, reply){
@@ -83,6 +58,30 @@ function handleInsertPrj(req, reply){
   });
 }
 /***-- end handleInsertPrj --****/
+
+/**** handleProject ********/
+const projectDisplayPage=require('~/view/project-display/index.marko');
+function handleDisplayProject(req, reply){
+  (async function(){
+    const row=await api.get('/project/'+req.params.id);
+    console.log(row[1]);
+    const projData={
+      prj_id:row[0].id,
+      proj_name:row[0].project_name,
+      state:row[0].state,
+      due_date:(new Date(row[0].due_date)).toLocaleString(),
+      completion_date:row[0].completion_date,
+      description:row[0].description
+    }
+    reply(projectDisplayPage.stream(projData));
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/***-- end handleProject --***/
+
+
 
 /******* handleAddTask ************/
 function handleAddTask(req, reply){
@@ -120,6 +119,11 @@ module.exports=[
     handler:handleProjects
   },
   {
+    method:'POST',
+    path:'/insert/project',
+    handler:handleInsertPrj
+  },
+  {
     method:'GET',
     path:'/project-add-new',
     handler:handleProjectAddNew
@@ -133,11 +137,6 @@ module.exports=[
     method:'GET',
     path:'/get/task/{prjId}',
     handler:handleGetTask
-  },
-  {
-    method:'POST',
-    path:'/insert/project',
-    handler:handleInsertPrj
   },
   {
     method:'POST',
