@@ -2,7 +2,7 @@ $(document).ready(function(){
   const prjId = $("input[name='prj_id']").val();
   $.ajax({
     type:'get',
-    url:'/get/task/'+prjId,
+    url:'/get/task-name/'+prjId,
     success:function(taskData){
       var sltTsk = document.getElementById('slt-tsk');
       //const tskId=[];
@@ -26,7 +26,13 @@ $(document).ready(function(){
     alert( tskId);
     $.ajax({
       type:'get',
-      url:'/get/task/'+tskId,
+      url:'/get/task-note/'+tskId,
+      success:function(tskNoteData){
+        console.log(tskNoteData);
+      },
+      error:function(){
+        alert("couldn't get task note")
+      }
 
     })
 

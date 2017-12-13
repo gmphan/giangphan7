@@ -98,11 +98,11 @@ function handleAddTask(req, reply){
 /******* end handleAddTask **************/
 
 /********* handleGetTask ****************/
-function handleGetTask(req, reply){
+function handleGetTaskName(req, reply){
   (async function(){
-    console.log(req.params.prjId);
-    console.log('I am here');
-    const row=await api.get('/get/task/'+req.params.prjId);
+    //console.log(req.params.prjId);
+    //console.log('I am here');
+    const row=await api.get('/get/task-name/'+req.params.prjId);
     reply(row)
   })()
   .catch((err)=>{
@@ -111,6 +111,18 @@ function handleGetTask(req, reply){
 }
 /******** end handleGetTask ************/
 
+/******** handleGetTskNote **************/
+function handleGetTskNote(req, reply){
+  (async function(){
+    console.log(req.params.tskId);
+    const row=await api.get('/get/task-note/{tskId}');
+    reply(row);
+  })()
+  .catch((err)=>{
+    throw err;
+  });
+}
+/******* End handleGetTskNote **************/
 
 module.exports=[
   {
@@ -135,13 +147,18 @@ module.exports=[
   },
   {
     method:'GET',
-    path:'/get/task/{prjId}',
-    handler:handleGetTask
+    path:'/get/task-name/{prjId}',
+    handler:handleGetTaskName
   },
   {
     method:'POST',
     path:'/add/task',
     handler:handleAddTask
+  },
+  {
+    method:'GET',
+    path:'/get/task-note/{tskId}',
+    handler:handleGetTskNote
   }
 
 ]
