@@ -115,7 +115,7 @@ function handleGetTaskName(req, reply){
 function handleGetTskNote(req, reply){
   (async function(){
     console.log(req.params.tskId);
-    const row=await api.get('/get/task-note/{tskId}');
+    const row=await api.get('/get/task-note/'+req.params.tskId);
     reply(row);
   })()
   .catch((err)=>{

@@ -22,22 +22,25 @@ $(document).ready(function(){
     }
   });
   $('#slt-tsk').on('change', function() {
-    var tskId = this.value;
-    alert( tskId);
-    $.ajax({
-      type:'get',
-      url:'/get/task-note/'+tskId,
-      success:function(tskNoteData){
-        console.log(tskNoteData);
-      },
-      error:function(){
-        alert("couldn't get task note")
-      }
+      var tskId = this.value;
+      alert(tskId);
+      $.ajax({
+        type:'get',
+        url:'/get/task-note/'+tskId,
+        success:function(tskNoteData){
 
-    })
+          console.log(tskNoteData);
+          for(var i=0; i<tskNoteData.length; i++){
+            document.getElementById('tsk_note_textarea').innerHTML=
+            '<textarea class="form-control" name="activity" rows="5" cols="40">'+
+              tskNoteData[i].note +
+            '</textarea>';
+          }
 
-
-    })
-
-
+        },
+        error:function(){
+          alert("couldn't get task note")
+        }
+      });
+    });
 });
