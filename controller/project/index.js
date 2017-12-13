@@ -64,7 +64,7 @@ const projectDisplayPage=require('~/view/project-display/index.marko');
 function handleDisplayProject(req, reply){
   (async function(){
     const row=await api.get('/project/'+req.params.id);
-    console.log(row[1]);
+    //console.log(row[1]);
     const projData={
       prj_id:row[0].id,
       proj_name:row[0].project_name,
@@ -114,7 +114,7 @@ function handleGetTaskName(req, reply){
 /******** handleGetTskNote **************/
 function handleGetTskNote(req, reply){
   (async function(){
-    console.log(req.params.tskId);
+    //console.log(req.params.tskId);
     const row=await api.get('/get/task-note/'+req.params.tskId);
     reply(row);
   })()
@@ -123,6 +123,21 @@ function handleGetTskNote(req, reply){
   });
 }
 /******* End handleGetTskNote **************/
+
+/****** handlerPostNote ******************/
+function handlerPostNote(req, reply){
+  (async function(){
+    const{tskId, work_note} = req.payload;
+    //console.log(work_note + ' ' +tskId);
+    const result=await api.post('/post/note', {tskId, work_note});
+    console.log(result);
+    reply(result);
+  })()
+  .catch((err)=>{
+    throw err;
+  });
+}
+/******* End handlerPostNote *************/
 
 module.exports=[
   {
@@ -159,6 +174,11 @@ module.exports=[
     method:'GET',
     path:'/get/task-note/{tskId}',
     handler:handleGetTskNote
+  },
+  {
+    method:'POST',
+    path:'/post/note',
+    handler:handlerPostNote
   }
 
 ]

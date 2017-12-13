@@ -5,7 +5,9 @@
   <@content>
     <div class="container reader-box">
       <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs"></div>
+        <div class="col-sm-2 proj-left-divs">
+          <a class="btn btn-gphan btn-sm" href="/projects">Back</a>
+        </div>
         <div class="col-sm-8" style="text-align:center"><h2>${input.proj_name} - Project</h2><br/></div>
         <div class="col-sm-2"></div>
       </div>
@@ -59,34 +61,33 @@
             <option value="task5">task5</option> -->
           </select>
         </div>
-        <div class="col-sm-2"><project-add-task/></div>
       </div>
 
-      <div id="tsk_note" class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Work Notes:</div>
-        <div id="work_note_textarea" class="col-sm-8">
-          <!--this will be replace with a textarea for entering work notes -->
+      <div class="row proj-rows">
+        <div class="col-sm-2 proj-left-divs"></div>
+        <div class="col-sm-8" style="text-align:center">
+          <project-add-task/>
         </div>
       </div>
+      <form id="note-form1" class="">
+        <div id="" class="row proj-rows">
+          <div class="col-sm-2 proj-left-divs">Work Notes:</div>
+          <div id="work_note_textarea" class="col-sm-8">
+            <!--this will be replace with a textarea for entering work notes -->
+          </div>
+        </div>
+        <div class="row proj-rows">
+          <div class="col-sm-2 proj-left-divs"></div>
+          <div id="noteSubmit" class="col-sm-8" style="text-align:center">
+            <!-- this will be replace with a post note button -->
+          </div>
+        </div>
+      </form>
 
-      <div id="tsk_note" class="row proj-rows">
+      <div id="" class="row proj-rows">
         <div class="col-sm-2 proj-left-divs">Activity:</div>
         <div id="tsk_note_textarea" class="col-sm-8">
           <!--this is for newTextarea fragment(s) on existing notes -->
-        </div>
-      </div>
-
-
-      <!-- <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Activity:</div>
-        <div class="col-sm-8">
-          <textarea class="form-control" name="activity" rows="5" cols="40"></textarea>
-        </div>
-        <div class="col-sm-2"><button class="btn btn-gphan btn-sm">Add Note</button></div>
-      </div> -->
-      <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">
-          <a class="btn btn-gphan btn-sm" href="/projects">Back</a>
         </div>
       </div>
     </div>

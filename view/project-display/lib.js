@@ -21,11 +21,9 @@ $(document).ready(function(){
       alert("Could not get project's tasks to display");
     }
   });
+  var tskId;
   $('#slt-tsk').on('change', function() {
-      var tskId = this.value;
-      var workNoteElement = document.getElementById('work_note_textarea');
-      var workNoteFrag = document.createDocumentFragment();
-
+      tskId = this.value;
       var tskNoteElement  = document.getElementById('tsk_note_textarea');
       var textareaFrag = document.createDocumentFragment();
       //alert(tskId);
@@ -33,22 +31,13 @@ $(document).ready(function(){
         type:'get',
         url:'/get/task-note/'+tskId,
         success:function(tskNoteData){
-          //console.log(tskNoteData);
-          /*create a fragment for work notes*/
-          // var workNoteTextarea = document.createElement('textarea');
-          // workNoteTextarea.className = 'form-control';
-          // workNoteTextarea.name = 'work-notes';
-          // workNoteTextarea.rows = '5';
-          // workNoteTextarea.cols = '40';
-          // workNoteFrag.appendChild(workNoteTextarea);
-          // workNoteElement.appendChild(workNoteFrag);
-
           document.getElementById('work_note_textarea').innerHTML=
-          '<textarea class="form-control" name="activity" rows="5" cols="40">'+
+          '<textarea class="form-control" name="work_note" rows="5" cols="40" placeholder="fill out your note here">'+
           '</textarea>';
+          document.getElementById('noteSubmit').innerHTML=
+          '<button type="submit" class="btn btn-gphan btn-sm">Post Note</button>';
 
           for(var i=0; i<tskNoteData.length; i++){
-
             /*
               create newTextarea element, add class, name and value to that
               the new textarea element, insert the element into a fragment
@@ -74,4 +63,37 @@ $(document).ready(function(){
         }
       });
     });
+
+    $('#note-form1').submit(function(e){
+      e.preventDefault();
+      if($("textarea[name='work_note']").val()==""){
+        alert('fill out note before you can submit it');
+        return false;
+      }else{
+        //console.log($("textarea[name='work_note']").val());
+        //console.log(tskId);
+        $.ajax({
+          type:'post',
+          url:'/post/note',
+          data:{
+            work_note:$("textarea[name='work_note']").val(),
+            tskId:tskId
+          },
+          success:function(result){
+            if(result==1){
+              console.log('success post note');
+              document.getElementById('note-form1').reset();
+            }else{
+              alert('data get to the API but could not be inserted');
+            }
+          },
+          error:function(){
+            alert("error posting note");
+          }
+
+        });
+      }
+
+    });
+
 });
