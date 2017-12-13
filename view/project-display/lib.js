@@ -23,18 +23,27 @@ $(document).ready(function(){
   });
   $('#slt-tsk').on('change', function() {
       var tskId = this.value;
-      alert(tskId);
+      var element  = document.getElementById('tsk_note_textarea');
+      var textareaFrag = document.createDocumentFragment();
+      //alert(tskId);
       $.ajax({
         type:'get',
         url:'/get/task-note/'+tskId,
         success:function(tskNoteData){
-
-          console.log(tskNoteData);
+          //console.log(tskNoteData);
           for(var i=0; i<tskNoteData.length; i++){
-            document.getElementById('tsk_note_textarea').innerHTML=
-            '<textarea class="form-control" name="activity" rows="5" cols="40">'+
-              tskNoteData[i].note +
-            '</textarea>';
+            // document.getElementById('tsk_note_textarea').innerHTML=
+            // '<textarea class="form-control" name="activity" rows="5" cols="40">'+
+            //   tskNoteData[i].note +
+            // '</textarea>';
+            var newTextarea = document.createElement('textarea');
+            // newTextarea.id = 'sltTskOpt'+taskData[i].id;
+            newTextarea.className = 'form-control';
+            newTextarea.name='activity';
+            newTextarea.value=tskNoteData[i].note;
+            // newTextarea.value = taskData[i].description;
+            textareaFrag.appendChild(newTextarea);
+            element.appendChild(textareaFrag);
           }
 
         },
