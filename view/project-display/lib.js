@@ -35,7 +35,7 @@ $(document).ready(function(){
           '<textarea class="form-control" name="work_note" rows="5" cols="40" placeholder="fill out your note here">'+
           '</textarea>';
           document.getElementById('noteSubmit').innerHTML=
-          '<button type="submit" class="btn btn-gphan btn-sm">Post Note</button>';
+          '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
 
           for(var i=0; i<tskNoteData.length; i++){
             /*
