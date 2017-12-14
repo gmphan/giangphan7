@@ -40,12 +40,18 @@ $(document).ready(function(){
             I will need to add the textarea in the html first
             then some how append the content to it because textarea only
             accept string and not for loop
+            for (i = 0; i < args.length; i++) {
+                out.appendChild(document.createTextNode(args[i]));
+                out.appendChild(document.createElement("br"));
+            }
           */
+          var tskTextarea=document.getElementById('tsk_note_textarea');
           for(var i=0; i<tskNoteData.length; i++){
-            var obj=document.getElementById('tsk_note_textarea');
-            //var txt=document.createTextNode(tskNoteData[i].note);
+            tskTextarea.appendChild(document.createTextNode(tskNoteData[i].note &#013;));
+            //tskTextarea.appendChild(document.createElement("br"));
 
-            obj.append('<p>tskNoteData[i].note</p>');
+
+            //obj.append('<p>tskNoteData[i].note</p>');
 
             //document.getElementById('tsk_note_textarea').value=tskNoteData[i].note;
             //document.getElementById('tsk_note_textarea').append=tskNoteData[i].note;
