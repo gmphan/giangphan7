@@ -15,8 +15,8 @@ $(document).ready(function(){
           state:$( "#tsk-state option:selected" ).text(),
           prj_id:$("input[name='prj_id']").val()
         },
-        success:function(){
-          window.location.href='/projects';
+        success:function(prj_id){
+          window.location.href='/project/'+prj_id;
           //console.log($("input[name='description']").val());
         },
         error:function(){

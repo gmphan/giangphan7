@@ -89,7 +89,7 @@ function handleAddTask(req, reply){
     const {prj_id, task_name, state, description} = req.payload;
     //console.log('handleAddTask: '+task_name + ' '+ description+ ' ' + state + '  '+prj_id);
     await api.post('/add/task', {prj_id, task_name, state, description});
-    reply(1);
+    reply(prj_id);
   })()
   .catch((err)=>{
     throw err;
