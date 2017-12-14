@@ -47,7 +47,7 @@ $(document).ready(function(){
           */
           var tskTextarea=document.getElementById('tsk_note_textarea');
           for(var i=0; i<tskNoteData.length; i++){
-            tskTextarea.appendChild(document.createTextNode(tskNoteData[i].note &#013;));
+            tskTextarea.appendChild(document.createTextNode(tskNoteData[i].note));
             //tskTextarea.appendChild(document.createElement("br"));
 
 
