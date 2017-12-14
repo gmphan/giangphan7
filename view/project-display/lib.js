@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  /*********** get all the taks of a proj into the task list ***************/
   const prjId = $("input[name='prj_id']").val();
   $.ajax({
     type:'get',
@@ -21,9 +22,25 @@ $(document).ready(function(){
       alert("Could not get project's tasks to display");
     }
   });
+/*********** end get all the taks of a proj into the task list ***************/
+
+  /*********** show note of a task ******************/
   var tskId;
+  var holder;
   $('#slt-tsk').on('change', function() {
       tskId = this.value;
+
+      // var holder = -1;
+      // var tskId;
+      //
+      // tskId = this.value;
+      // if(tskId == holder){
+      //   return false;
+      // }else{
+      //   clear the the all the textarea in tsk_note_textarea
+      //   now render
+      // }
+
       var tskNoteElement  = document.getElementById('tsk_note_textarea');
       var textareaFrag = document.createDocumentFragment();
       //alert(tskId);
@@ -37,25 +54,29 @@ $(document).ready(function(){
           document.getElementById('noteSubmit').innerHTML=
           '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
           /*
-            I will need to add the textarea in the html first
-            then some how append the content to it because textarea only
-            accept string and not for loop
-            for (i = 0; i < args.length; i++) {
-                out.appendChild(document.createTextNode(args[i]));
-                out.appendChild(document.createElement("br"));
-            }
+            create newTextarea element, add class, name and value to that
+            the new textarea element, insert the element into a fragment
+            (textareaFrag) that I created earlier. After all, insert that
+            fragment into an exisiting element (element) that I got earlier
+            from the current exisitng DOM tree
           */
-          var tskTextarea=document.getElementById('tsk_note_textarea');
+
+
+
           for(var i=0; i<tskNoteData.length; i++){
-            tskTextarea.appendChild(document.createTextNode(tskNoteData[i].note));
-            //tskTextarea.appendChild(document.createElement("br"));
+            var newTextarea = document.createElement('textarea');
+            // newTextarea.id = 'sltTskOpt'+taskData[i].id;
+            newTextarea.className = 'form-control';
+            newTextarea.name='activity';
+            newTextarea.rows="5";
+            newTextarea.cols='40';
+            newTextarea.value=tskNoteData[i].note;
+            // newTextarea.value = taskData[i].description;
+            textareaFrag.appendChild(newTextarea);
+            tskNoteElement.appendChild(textareaFrag);
 
-
-            //obj.append('<p>tskNoteData[i].note</p>');
-
-            //document.getElementById('tsk_note_textarea').value=tskNoteData[i].note;
-            //document.getElementById('tsk_note_textarea').append=tskNoteData[i].note;
           }
+
 
         },
         error:function(){
@@ -63,7 +84,9 @@ $(document).ready(function(){
         }
       });
     });
+/*********** end show note of a task ******************/
 
+/************ submit a note of a task ********************/
     $('#note-form1').submit(function(e){
       e.preventDefault();
       if($("textarea[name='work_note']").val()==""){
@@ -95,5 +118,5 @@ $(document).ready(function(){
       }
 
     });
-
+/************ end submit a note of a task ********************/
 });
