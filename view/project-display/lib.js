@@ -36,8 +36,27 @@ $(document).ready(function(){
           '</textarea>';
           document.getElementById('noteSubmit').innerHTML=
           '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
+          /*
+            I will need to add the textarea in the html first
+            then some how append the content to it because textarea only
+            accept string and not for loop
+          */
 
-          for(var i=0; i<tskNoteData.length; i++){
+          // document.getElementById('tsk_note_textarea').innerHTML=
+          // '<textarea id="tsk_note_textarea" class="form-control" name="activiy" rows="5" cols="40">'+
+          //   //tskNoteData[1].note;
+          //   for(var i=0; i<tskNoteData.length; i++){
+          //     tskNoteData[i].note;
+          //   }
+          // '</textarea>'
+          // for(var i=0; i<tskNoteData.length; i++){
+          //   document.getElementById('tsk_note_textarea').innerHTML=
+          //   '<textarea id="tsk_note_textarea" class="form-control" name="activiy" rows="5" cols="40" placeholder="activity">'+
+          //     tskNoteData[i].note+
+          //   '</textarea>'
+          //
+          // }
+
             /*
               create newTextarea element, add class, name and value to that
               the new textarea element, insert the element into a fragment
@@ -45,18 +64,19 @@ $(document).ready(function(){
               fragment into an exisiting element (element) that I got earlier
               from the current exisitng DOM tree
             */
-            var newTextarea = document.createElement('textarea');
-            // newTextarea.id = 'sltTskOpt'+taskData[i].id;
-            newTextarea.className = 'form-control';
-            newTextarea.name='activity';
-            newTextarea.rows="5";
-            newTextarea.cols='40';
-            newTextarea.value=tskNoteData[i].note;
-            // newTextarea.value = taskData[i].description;
-            textareaFrag.appendChild(newTextarea);
-            tskNoteElement.appendChild(textareaFrag);
-          }
-
+          // for(var i=0; i<tskNoteData.length; i++){
+          //   var newTextarea = document.createElement('textarea');
+          //   // newTextarea.id = 'sltTskOpt'+taskData[i].id;
+          //   newTextarea.className = 'form-control';
+          //   newTextarea.name='activity';
+          //   newTextarea.rows="5";
+          //   newTextarea.cols='40';
+          //   newTextarea.value=tskNoteData[i].note;
+          //   // newTextarea.value = taskData[i].description;
+          //   textareaFrag.appendChild(newTextarea);
+          //   tskNoteElement.appendChild(textareaFrag);
+          //
+          // }
         },
         error:function(){
           alert("couldn't get task note")
