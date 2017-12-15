@@ -26,28 +26,29 @@ $(document).ready(function(){
 
   /*********** show note of a task ******************/
   var tskId;
-  var holder;
   $('#slt-tsk').on('change', function() {
       tskId = this.value;
+      //set the below to empty and do nothing on Select a Task to view selection
+      if(tskId == 0){
+        document.getElementById('work_note_label').innerHTML=''
+        document.getElementById('work_note_textarea').innerHTML='';
+        document.getElementById('noteSubmit').innerHTML='';
+        document.getElementById('activity_label').innerHTML='';
+        document.getElementById('tsk_note_textarea').innerHTML='';
 
-      // var holder = -1;
-      // var tskId;
-      //
-      // tskId = this.value;
-      // if(tskId == holder){
-      //   return false;
-      // }else{
-      //   clear the the all the textarea in tsk_note_textarea
-      //   now render
-      // }
+        return false;
+      }
+      //when a task is selected set the below to empty
+      document.getElementById('tsk_note_textarea').innerHTML='';
 
+      //get tsk_note_textarea and create textareaFrag
       var tskNoteElement  = document.getElementById('tsk_note_textarea');
       var textareaFrag = document.createDocumentFragment();
-      //alert(tskId);
       $.ajax({
         type:'get',
         url:'/get/task-note/'+tskId,
         success:function(tskNoteData){
+          document.getElementById('work_note_label').innerHTML='Work notes:';
           document.getElementById('work_note_textarea').innerHTML=
           '<textarea class="form-control" name="work_note" rows="5" cols="40" placeholder="Fill out your new note here">'+
           '</textarea>';
@@ -60,9 +61,7 @@ $(document).ready(function(){
             fragment into an exisiting element (element) that I got earlier
             from the current exisitng DOM tree
           */
-
-
-
+          document.getElementById('activity_label').innerHTML='Activity:';
           for(var i=0; i<tskNoteData.length; i++){
             var newTextarea = document.createElement('textarea');
             // newTextarea.id = 'sltTskOpt'+taskData[i].id;
@@ -76,8 +75,6 @@ $(document).ready(function(){
             tskNoteElement.appendChild(textareaFrag);
 
           }
-
-
         },
         error:function(){
           alert("couldn't get task note")
@@ -106,6 +103,7 @@ $(document).ready(function(){
             if(result==1){
               console.log('success post note');
               document.getElementById('note-form1').reset();
+              
             }else{
               alert('data get to the API but could not be inserted');
             }
