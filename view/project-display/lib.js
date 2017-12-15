@@ -66,7 +66,7 @@ $(document).ready(function(){
             var newTextarea = document.createElement('textarea');
             // newTextarea.id = 'sltTskOpt'+taskData[i].id;
             newTextarea.className = 'form-control';
-            newTextarea.name='activity';
+            //newTextarea.name='activity';
             newTextarea.rows="5";
             newTextarea.cols='40';
             newTextarea.value=tskNoteData[i].note;
@@ -103,7 +103,7 @@ $(document).ready(function(){
             if(result==1){
               console.log('success post note');
               document.getElementById('note-form1').reset();
-              
+
             }else{
               alert('data get to the API but could not be inserted');
             }
