@@ -74,3 +74,14 @@ h6{
 .tab {
 	margin-left: 2.5em
 }
+textarea{
+  /* box-sizing: padding-box; */
+  overflow:hidden;
+  /* demo only: */
+  padding:10px;
+  //font-size:14px;
+  margin:5px auto;
+  display:block;
+  //border-radius:10px;
+  //border:6px solid #556677;
+}

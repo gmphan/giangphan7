@@ -116,7 +116,27 @@ function handleGetTskNote(req, reply){
   (async function(){
     //console.log(req.params.tskId);
     const row=await api.get('/get/task-note/'+req.params.tskId);
-    reply(row);
+    //console.log(row);
+    const id=[];
+    const tsk_id=[];
+    const note=[];
+    const added_date=[];
+    for(let i=0; i<row.length; i++){
+      id[i]=row[i].id;
+      tsk_id[i]=row[i].tsk_id;
+      note[i]=row[i].note;
+      added_date[i]=(new Date(row[i].added_date)).toLocaleString();
+      //added_date[i]=row[i].added_date;
+      //console.log(row[i].tsk_id);
+    }
+    //console.log(id[0])
+    const tskData={
+      id:id,
+      tsk_id:tsk_id,
+      note:note,
+      added_date:added_date
+    }
+    reply(tskData);
   })()
   .catch((err)=>{
     throw err;
@@ -130,7 +150,7 @@ function handlerPostNote(req, reply){
     const{tskId, work_note} = req.payload;
     //console.log(work_note + ' ' +tskId);
     const result=await api.post('/post/note', {tskId, work_note});
-    console.log(result);
+
     reply(result);
   })()
   .catch((err)=>{
@@ -153,7 +173,12 @@ module.exports=[
   {
     method:'GET',
     path:'/project-add-new',
-    handler:handleProjectAddNew
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleProjectAddNew
+    }
   },
   {
     method:'GET',
@@ -168,7 +193,13 @@ module.exports=[
   {
     method:'POST',
     path:'/add/task',
-    handler:handleAddTask
+
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleAddTask
+    }
   },
   {
     method:'GET',
@@ -178,7 +209,13 @@ module.exports=[
   {
     method:'POST',
     path:'/post/note',
-    handler:handlerPostNote
+
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handlerPostNote
+    }
   }
 
 ]
