@@ -27,7 +27,9 @@ $(document).ready(function(){
   });
 
 /*********** end get all the taks of a proj into the task list ***************/
-$('#slt-tsk').on('change', function(){
+
+/*********** select and disply note ************************/
+$('#slt-tsk').on('change',function(){
   tskId = this.value;
   //set the below to empty and do nothing on Select a Task to view selection
   if(tskId == 0){
@@ -40,35 +42,77 @@ $('#slt-tsk').on('change', function(){
   }
   //when a task is selected empty the div below
   document.getElementById('tsk-activity').innerHTML='';
-
   $.ajax({
     type:'get',
     url:'/get/task-note/'+tskId,
-    //returning json file not array
     success:function(tskData){
       document.getElementById('work-note-label').innerHTML='Work note:';
-
+      document.getElementById('noteSubmit').innerHTML=
+      '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
       '"Fill out your new note here"></textarea>';
-
-      document.getElementById('noteSubmit').innerHTML=
-      '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
-
       for(var i=0; i<tskData.id.length; i++){
         document.getElementById('activity-label').innerHTML='Activity:';
-        document.getElementById('tsk-activity').innerHTML+='<textarea class="form-control test" rows="5" cols="40">'+
-          tskData.added_date[i]+':  '+ tskData.note[i]+
-        '</textarea>';
-
+        document.getElementById('tsk-activity').innerHTML+=
+          '<div id="activity-note">'+
+            '<p id="noteLabel">Activity on '+tskData.added_date[i]+':</p>'+
+            '<p>'+ tskData.note[i]+'</p>'
+          '</div>';
       }
+
     },
     error:function(){
       alert("couldn't get task note")
     }
   });
-})
+});
 
+/*********** end select and display note *******************/
+
+
+
+// $('#slt-tsk').on('change', function(){
+//   tskId = this.value;
+//   //set the below to empty and do nothing on Select a Task to view selection
+//   if(tskId == 0){
+//     document.getElementById('work-note-label').innerHTML=''
+//     document.getElementById('work-note-textarea').innerHTML='';
+//     document.getElementById('noteSubmit').innerHTML='';
+//     document.getElementById('activity-label').innerHTML='';
+//     document.getElementById('tsk-activity').innerHTML='';
+//     return false;
+//   }
+//   //when a task is selected empty the div below
+//   document.getElementById('tsk-activity').innerHTML='';
+//
+//   $.ajax({
+//     type:'get',
+//     url:'/get/task-note/'+tskId,
+//     //returning json file not array
+//     success:function(tskData){
+//       document.getElementById('work-note-label').innerHTML='Work note:';
+//
+//       document.getElementById('work-note-textarea').innerHTML='<textarea'+
+//       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
+//       '"Fill out your new note here"></textarea>';
+//
+//       document.getElementById('noteSubmit').innerHTML=
+//       '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
+//
+//       for(var i=0; i<tskData.id.length; i++){
+//         document.getElementById('activity-label').innerHTML='Activity:';
+//         document.getElementById('tsk-activity').innerHTML+='<textarea class="form-control test" rows="5" cols="40">'+
+//           tskData.added_date[i]+':  '+ tskData.note[i]+
+//         '</textarea>';
+//
+//       }
+//     },
+//     error:function(){
+//       alert("couldn't get task note")
+//     }
+//   });
+// })
 
 /************ submit a note of a task ********************/
     $('#note-form1').submit(function(e){
@@ -87,6 +131,7 @@ $('#slt-tsk').on('change', function(){
             tskId:tskId
           },
           success:function(result){
+            //console.log(result);
             document.getElementById('note-form1').reset();
             if(result==1){
               console.log('successfully posted note')

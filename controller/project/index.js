@@ -148,7 +148,7 @@ function handleGetTskNote(req, reply){
 function handlerPostNote(req, reply){
   (async function(){
     const{tskId, work_note} = req.payload;
-    //console.log(work_note + ' ' +tskId);
+    //console.log('show work and it: '+work_note + ' ' +tskId);
     const result=await api.post('/post/note', {tskId, work_note});
 
     reply(result);
