@@ -9,7 +9,6 @@ $(document).ready(function(){
     url:'/get/task-name/'+prjId,
     success:function(taskData){
       var sltTsk = document.getElementById('slt-tsk');
-      //const tskId=[];
         for(var i=0; i<taskData.length; i++){
           /*
             create options, add text and value to the options
@@ -52,15 +51,18 @@ $('#slt-tsk').on('change',function(){
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
       '"Fill out your new note here"></textarea>';
-      for(var i=0; i<tskData.id.length; i++){
+
+
+      var k = tskData.id.length - 1; //id is an array in tskData json
+      do{
         document.getElementById('activity-label').innerHTML='Activity:';
         document.getElementById('tsk-activity').innerHTML+=
           '<div id="activity-note">'+
-            '<p id="noteLabel">Activity on '+tskData.added_date[i]+':</p>'+
-            '<p><xmp style="white-space: pre-wrap">'+ tskData.note[i]+'</xmp></p>'
+            '<p id="noteLabel">Activity on '+tskData.added_date[k]+':</p>'+
+            '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
           '</div>';
-      }
-
+        k--;
+      }while(k >= 0)
     },
     error:function(){
       alert("couldn't get task note")
@@ -71,49 +73,6 @@ $('#slt-tsk').on('change',function(){
 /*********** end select and display note *******************/
 
 
-
-// $('#slt-tsk').on('change', function(){
-//   tskId = this.value;
-//   //set the below to empty and do nothing on Select a Task to view selection
-//   if(tskId == 0){
-//     document.getElementById('work-note-label').innerHTML=''
-//     document.getElementById('work-note-textarea').innerHTML='';
-//     document.getElementById('noteSubmit').innerHTML='';
-//     document.getElementById('activity-label').innerHTML='';
-//     document.getElementById('tsk-activity').innerHTML='';
-//     return false;
-//   }
-//   //when a task is selected empty the div below
-//   document.getElementById('tsk-activity').innerHTML='';
-//
-//   $.ajax({
-//     type:'get',
-//     url:'/get/task-note/'+tskId,
-//     //returning json file not array
-//     success:function(tskData){
-//       document.getElementById('work-note-label').innerHTML='Work note:';
-//
-//       document.getElementById('work-note-textarea').innerHTML='<textarea'+
-//       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
-//       '"Fill out your new note here"></textarea>';
-//
-//       document.getElementById('noteSubmit').innerHTML=
-//       '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
-//
-//       for(var i=0; i<tskData.id.length; i++){
-//         document.getElementById('activity-label').innerHTML='Activity:';
-//         document.getElementById('tsk-activity').innerHTML+='<textarea class="form-control test" rows="5" cols="40">'+
-//           tskData.added_date[i]+':  '+ tskData.note[i]+
-//         '</textarea>';
-//
-//       }
-//     },
-//     error:function(){
-//       alert("couldn't get task note")
-//     }
-//   });
-// })
-
 /************ submit a note of a task ********************/
     $('#note-form1').submit(function(e){
       e.preventDefault();
@@ -121,8 +80,7 @@ $('#slt-tsk').on('change',function(){
         alert('fill out note before you can submit it');
         return false;
       }else{
-        //console.log($("textarea[name='work_note']").val());
-        //console.log(tskId);
+        document.getElementById('tsk-activity').innerHTML='';
         $.ajax({
           type:'post',
           url:'/post/note',
@@ -131,11 +89,35 @@ $('#slt-tsk').on('change',function(){
             tskId:tskId
           },
           success:function(result){
-            //console.log(result);
-            document.getElementById('note-form1').reset();
             if(result==1){
               console.log('successfully posted note')
-              window.location.href='/project/'+prjId;
+              $.ajax({
+                type:'get',
+                url:'/get/task-note/'+tskId,
+                success:function(tskData){
+                  document.getElementById('work-note-label').innerHTML='Work note:';
+                  document.getElementById('noteSubmit').innerHTML=
+                  '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
+                  document.getElementById('work-note-textarea').innerHTML='<textarea'+
+                  ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
+                  '"Fill out your new note here"></textarea>';
+
+
+                  var k = tskData.id.length - 1; //id is an array in tskData json
+                  do{
+                    document.getElementById('activity-label').innerHTML='Activity:';
+                    document.getElementById('tsk-activity').innerHTML+=
+                      '<div id="activity-note">'+
+                        '<p id="noteLabel">Activity on '+tskData.added_date[k]+':</p>'+
+                        '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
+                      '</div>';
+                    k--;
+                  }while(k >= 0)
+                },
+                error:function(){
+                  alert("couldn't get task note")
+                }
+              });
             }else{
               console.log('Ajax post/note was good but data was not inserted')
             }
