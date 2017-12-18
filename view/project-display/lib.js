@@ -50,19 +50,21 @@ $('#slt-tsk').on('change',function(){
       '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
-      '"Fill out your new note here"></textarea>';
-
+      '"Add more note for this task"></textarea>';
+      console.log(tskData.id.length);
 
       var k = tskData.id.length - 1; //id is an array in tskData json
       do{
         document.getElementById('activity-label').innerHTML='Activity:';
         document.getElementById('tsk-activity').innerHTML+=
           '<div id="activity-note">'+
-            '<p id="noteLabel">Activity on '+tskData.added_date[k]+':</p>'+
+            '<p id="noteLabel">Activity on '+tskData.added_date[k]+'</p>'+
             '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
           '</div>';
         k--;
       }while(k >= 0)
+
+
     },
     error:function(){
       alert("couldn't get task note")
@@ -80,7 +82,7 @@ $('#slt-tsk').on('change',function(){
         alert('fill out note before you can submit it');
         return false;
       }else{
-        document.getElementById('tsk-activity').innerHTML='';
+        //document.getElementById('tsk-activity').innerHTML='';
         $.ajax({
           type:'post',
           url:'/post/note',
@@ -90,34 +92,14 @@ $('#slt-tsk').on('change',function(){
           },
           success:function(result){
             if(result==1){
-              console.log('successfully posted note')
-              $.ajax({
-                type:'get',
-                url:'/get/task-note/'+tskId,
-                success:function(tskData){
-                  document.getElementById('work-note-label').innerHTML='Work note:';
-                  document.getElementById('noteSubmit').innerHTML=
-                  '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
-                  document.getElementById('work-note-textarea').innerHTML='<textarea'+
-                  ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
-                  '"Fill out your new note here"></textarea>';
-
-
-                  var k = tskData.id.length - 1; //id is an array in tskData json
-                  do{
-                    document.getElementById('activity-label').innerHTML='Activity:';
-                    document.getElementById('tsk-activity').innerHTML+=
-                      '<div id="activity-note">'+
-                        '<p id="noteLabel">Activity on '+tskData.added_date[k]+':</p>'+
-                        '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
-                      '</div>';
-                    k--;
-                  }while(k >= 0)
-                },
-                error:function(){
-                  alert("couldn't get task note")
-                }
-              });
+              console.log('successfully posted note');
+              document.getElementById('recent-added-note-label').innerHTML='Recent notes:';
+              document.getElementById('recent-added-note').innerHTML+=
+                '<div id="activity-note">'+
+                  '<p id="noteLabel">Activity on '+Date()+'</p>'+
+                  '<p><xmp style="white-space: pre-wrap">'+$("textarea[name='work-note']").val()+'</xmp></p>'
+                '</div>';
+              document.getElementById('note-form1').reset();
             }else{
               console.log('Ajax post/note was good but data was not inserted')
             }

@@ -69,7 +69,7 @@ function handleDisplayProject(req, reply){
       prj_id:row[0].id,
       proj_name:row[0].project_name,
       state:row[0].state,
-      due_date:(new Date(row[0].due_date)).toLocaleString(),
+      due_date:(new Date(row[0].due_date)).toLocaleDateString(),
       completion_date:row[0].completion_date,
       description:row[0].description
     }
@@ -125,9 +125,8 @@ function handleGetTskNote(req, reply){
       id[i]=row[i].id;
       tsk_id[i]=row[i].tsk_id;
       note[i]=row[i].note;
-      added_date[i]=(new Date(row[i].added_date)).toLocaleString();
-      //added_date[i]=row[i].added_date;
-      //console.log(row[i].tsk_id);
+      //added_date[i]=(new Date(row[i].added_date)).toLocaleString();
+      added_date[i]=(new Date(row[i].added_date)).toString();
     }
     //console.log(id[0])
     const tskData={
@@ -193,13 +192,13 @@ module.exports=[
   {
     method:'POST',
     path:'/add/task',
-
-    config: {
-      auth: {
-        strategy: 'base'
-      },
-        handler:handleAddTask
-    }
+    handler:handleAddTask
+    // config: {
+    //   auth: {
+    //     strategy: 'base'
+    //   },
+    //     handler:handleAddTask
+    // }
   },
   {
     method:'GET',
@@ -209,13 +208,13 @@ module.exports=[
   {
     method:'POST',
     path:'/post/note',
-
-    config: {
-      auth: {
-        strategy: 'base'
-      },
-        handler:handlerPostNote
-    }
+    handler:handlerPostNote
+    // config: {
+    //   auth: {
+    //     strategy: 'base'
+    //   },
+    //     handler:handlerPostNote
+    // }
   }
 
 ]
