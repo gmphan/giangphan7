@@ -192,13 +192,13 @@ module.exports=[
   {
     method:'POST',
     path:'/add/task',
-    handler:handleAddTask
-    // config: {
-    //   auth: {
-    //     strategy: 'base'
-    //   },
-    //     handler:handleAddTask
-    // }
+    //handler:handleAddTask
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleAddTask
+    }
   },
   {
     method:'GET',
@@ -208,13 +208,13 @@ module.exports=[
   {
     method:'POST',
     path:'/post/note',
-    handler:handlerPostNote
-    // config: {
-    //   auth: {
-    //     strategy: 'base'
-    //   },
-    //     handler:handlerPostNote
-    // }
+    //handler:handlerPostNote
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handlerPostNote
+    }
   }
 
 ]
