@@ -53,7 +53,7 @@ $('#slt-tsk').on('change',function(){
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
       '"Add more note for this task"></textarea>';
-      console.log(tskData.id.length);
+      //console.log(tskData.id.length);
 
       var k = tskData.id.length - 1; //id is an array in tskData json
       do{
@@ -97,13 +97,13 @@ $('#slt-tsk').on('change',function(){
               console.log('successfully posted note');
               document.getElementById('recent-added-note-label').innerHTML='Recent notes:';
               document.getElementById('recent-added-note').innerHTML+=
-                '<div id="activity-note">'+
+                '<div class="gray-border">'+
                   '<p id="noteLabel">Activity on '+Date()+'</p>'+
                   '<p><xmp style="white-space: pre-wrap">'+$("textarea[name='work-note']").val()+'</xmp></p>'
                 '</div>';
               document.getElementById('note-form1').reset();
             }else{
-              console.log('Ajax post/note was good but data was not inserted')
+              alert('Ajax post/note was good but data was not inserted');
             }
           },
           error:function(){

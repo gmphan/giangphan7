@@ -7,5 +7,5 @@ $(document).ready(function(){
     sessionStorage.setItem('proj-key', 'proj');
   }
 
-  console.log('project page');
+  //console.log('project page');
 });
