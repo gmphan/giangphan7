@@ -39,6 +39,8 @@ $('#slt-tsk').on('change',function(){
     document.getElementById('noteSubmit').innerHTML='';
     document.getElementById('activity-label').innerHTML='';
     document.getElementById('tsk-activity').innerHTML='';
+    adocument.getElementById('recent-added-note-label').innerHTML='';
+    document.getElementById('recent-added-note').innerHTML='';
     return false;
   }
   //when a task is selected empty the div below
