@@ -8,6 +8,7 @@ $(document).ready(function(){
     type:'get',
     url:'/get/task-name/'+prjId,
     success:function(taskData){
+      var j = 1;
       var sltTsk = document.getElementById('slt-tsk');
         for(var i=0; i<taskData.length; i++){
           /*
@@ -15,9 +16,10 @@ $(document).ready(function(){
             then add those option to sltTsk elements
           */
           var option = document.createElement("option");
-          option.text = taskData[i].task_name;
+          option.text = j+'. '+taskData[i].task_name;
           option.value= taskData[i].id;
           sltTsk.add(option);
+          j++;
         }
     },
     error:function(){
@@ -57,7 +59,7 @@ $('#slt-tsk').on('change',function(){
       do{
         document.getElementById('activity-label').innerHTML='Activity:';
         document.getElementById('tsk-activity').innerHTML+=
-          '<div id="activity-note">'+
+          '<div class="gray-border">'+
             '<p id="noteLabel">Activity on '+tskData.added_date[k]+'</p>'+
             '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
           '</div>';

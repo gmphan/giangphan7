@@ -8,14 +8,21 @@
   text-align: right;
 }
 
-#activity-note{
+/* #activity-note{
   border:1px solid #D9D2D2;
   border-radius: 5px;
   margin-bottom: 10px;
   padding-top:10px;
   padding-left: 10px;
-}
+} */
 #noteLabel{
   font-style:italic;
   color:gray;
+}
+.gray-border{
+  border:1px solid #D9D2D2;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-top:10px;
+  padding-left: 10px;
 }
