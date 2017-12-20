@@ -149,7 +149,6 @@ function handlerPostNote(req, reply){
     const{tskId, work_note} = req.payload;
     //console.log('show work and it: '+work_note + ' ' +tskId);
     const result=await api.post('/post/note', {tskId, work_note});
-
     reply(result);
   })()
   .catch((err)=>{
