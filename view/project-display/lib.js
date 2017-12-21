@@ -39,7 +39,7 @@ $('#slt-tsk').on('change',function(){
     document.getElementById('noteSubmit').innerHTML='';
     document.getElementById('activity-label').innerHTML='';
     document.getElementById('tsk-activity').innerHTML='';
-    adocument.getElementById('recent-added-note-label').innerHTML='';
+    document.getElementById('recent-added-note-label').innerHTML='';
     document.getElementById('recent-added-note').innerHTML='';
     return false;
   }
@@ -49,13 +49,16 @@ $('#slt-tsk').on('change',function(){
     type:'get',
     url:'/get/task-note/'+tskId,
     success:function(tskData){
+      //set the below to empty when a task is selected 
+      document.getElementById('recent-added-note-label').innerHTML='';
+      document.getElementById('recent-added-note').innerHTML='';
+
       document.getElementById('work-note-label').innerHTML='Work note:';
       document.getElementById('noteSubmit').innerHTML=
       '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
       '"Add more note for this task"></textarea>';
-      //console.log(tskData.id.length);
 
       var k = tskData.id.length - 1; //id is an array in tskData json
       do{
