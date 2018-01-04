@@ -43,31 +43,41 @@ $('#slt-tsk').on('change',function(){
     document.getElementById('recent-added-note').innerHTML='';
     return false;
   }
-  //when a task is selected empty the div below
+  //empty the div below when a task is selected
   document.getElementById('tsk-activity').innerHTML='';
   $.ajax({
     type:'get',
     url:'/get/task-note/'+tskId,
     success:function(tskData){
-      //set the below to empty when a task is selected 
+      //set the below to empty when a task is selected
       document.getElementById('recent-added-note-label').innerHTML='';
       document.getElementById('recent-added-note').innerHTML='';
 
+      //labeling and configuring the divs
       document.getElementById('work-note-label').innerHTML='Work note:';
       document.getElementById('noteSubmit').innerHTML=
-      '<button type="submit" class="btn btn-default btn-sm">Post Note</button>';
+      '<button type="submit" class="btn btn-default btn-sm btn-sm2">Post Note</button>';
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
       ' class="form-control" name="work-note" rows="5" cols="40" placeholder='+
-      '"Add more note for this task"></textarea>';
+        '"Add new note for this task">'+
+      '</textarea>';
 
+      //displaying the result note of a task
       var k = tskData.id.length - 1; //id is an array in tskData json
       do{
         document.getElementById('activity-label').innerHTML='Activity:';
-        document.getElementById('tsk-activity').innerHTML+=
+        if(tskData.id[k] == null){
+          document.getElementById('tsk-activity').innerHTML=
           '<div class="gray-border">'+
-            '<p id="noteLabel">Activity on '+tskData.added_date[k]+'</p>'+
-            '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
+            '<p id="noteLabel">This task has no previous added note.</p>'
           '</div>';
+        }else{
+          document.getElementById('tsk-activity').innerHTML+=
+            '<div class="gray-border">'+
+              '<p id="noteLabel">Activity on '+tskData.added_date[k]+'</p>'+
+              '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
+            '</div>';
+        }
         k--;
       }while(k >= 0)
 

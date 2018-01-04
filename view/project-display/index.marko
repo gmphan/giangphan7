@@ -40,7 +40,6 @@
         <div class="row proj-rows">
           <div class="col-sm-2 proj-left-divs">Project ID:</div>
           <div class="col-sm-3">
-            <!-- <p>${input.prj_id}</p> -->
             <input name="prj_id" type="text" class="form-control" id="prj-id-1" value="${input.prj_id}" readonly>
           </div>
           <!-- <div class="col-sm-2"></div>
@@ -49,7 +48,11 @@
           <div class="col-sm-3">
             <input id="prj-Cmptn-date" class="form-control" type="date" name="due-date" placeholder=""/>
           </div>
-          <div class="col-sm-2"></div>
+          <div class="col-sm-2">
+            <a>
+              <button class="btn btn-default btn-sm btn-sm2">Update Project</button>
+            </a>
+          </div>
         </div>
       </form>
       <div class="row proj-rows">
@@ -57,10 +60,7 @@
         <div class="col-sm-8">
           <select id="slt-tsk" class="form-control" type="text" name="state">
             <option value="0">Select a task to view and add more note</option>
-            <!-- <option value="task2">task1</option>
-            <option value="task3">task3</option>
-            <option value="task4">task4</option>
-            <option value="task5">task5</option> -->
+            <!--this is where other options get fill in  -->
           </select>
         </div>
         <div class="col-sm-2"><project-add-task/></div>
