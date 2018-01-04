@@ -129,5 +129,42 @@ $('#slt-tsk').on('change',function(){
       }
 
     });
-/************ end submit a note of a task ********************/
+  /************ end submit a note of a task ********************/
+
+  /********** update project status ***********/
+  $('#update-proj-form-1').submit(function(e){
+    e.preventDefault();
+    //$("textarea[name='description']").val();
+    if($("textarea[name='description']").val()==""){
+      alert('Description Cannot be blanked');
+      return false;
+    }else{
+      $.ajax({
+        type:'post',
+        url:'/update/project',
+        data:{
+          prjId:$("input[name='prj_id']").val(),
+          description:$("textarea[name='description']").val(),
+          state:$("#prj-state").val(),
+          dueDate:$("input[name='due_date']").val(),
+          completeDate:$("input[name='complete_date']").val()
+        },
+        success:function(result){
+          if(result==1){
+            window.location.href='/project/'+prjId;
+          }else{
+            alert('fail to update project at API level');
+          }
+        },
+        error:function(){
+          alert('error ajax /update/project');
+        }
+      });
+    }
+
+  });
+
+  /********** end update proj status **********/
+
+
 });

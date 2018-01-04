@@ -70,7 +70,7 @@ function handleDisplayProject(req, reply){
       proj_name:row[0].project_name,
       state:row[0].state,
       due_date:(new Date(row[0].due_date)).toLocaleDateString(),
-      completion_date:row[0].completion_date,
+      completion_date:(new Date(row[0].completion_date)).toLocaleDateString(),
       description:row[0].description
     }
     reply(projectDisplayPage.stream(projData));
@@ -144,7 +144,7 @@ function handleGetTskNote(req, reply){
 /******* End handleGetTskNote **************/
 
 /****** handlerPostNote ******************/
-function handlerPostNote(req, reply){
+function handlePostNote(req, reply){
   (async function(){
     const{tskId, work_note} = req.payload;
     //console.log('show work and it: '+work_note + ' ' +tskId);
@@ -156,6 +156,21 @@ function handlerPostNote(req, reply){
   });
 }
 /******* End handlerPostNote *************/
+
+/******* handleProject *******************/
+function handleUpdateProject(req, reply){
+  (async function(){
+    const{prjId, description, state, dueDate, completeDate} = req.payload;
+    //console.log(prjId + description + state + dueDate + completeDate);
+    const result=await api.post('/update/project', {prjId, description, state, dueDate, completeDate});
+    reply(result);
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/******* end handleProject ***************/
+
 
 module.exports=[
   {
@@ -212,8 +227,13 @@ module.exports=[
       auth: {
         strategy: 'base'
       },
-        handler:handlerPostNote
+        handler:handlePostNote
     }
+  },
+  {
+    method:'POST',
+    path:'/update/project',
+    handler:handleUpdateProject
   }
 
 ]
