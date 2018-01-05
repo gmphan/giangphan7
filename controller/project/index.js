@@ -15,10 +15,10 @@ const handleProjects=function(req, reply){
     for(let i=0; i<rows.length; i++){
       id[i]=rows[i].id;
       project_name[i]=rows[i].project_name;
-      added_date[i]= (new Date(rows[i].added_date)).toLocaleString();
+      added_date[i]= (new Date(rows[i].added_date)).toDateString();
       state[i]=rows[i].state;
     }
-
+    //console.log('testing '+added_date[2]);
     const projectData={
       id:id,
       project_name:project_name,
@@ -71,6 +71,7 @@ function handleDisplayProject(req, reply){
       state:row[0].state,
       due_date:(new Date(row[0].due_date)).toLocaleDateString(),
       completion_date:(new Date(row[0].completion_date)).toLocaleDateString(),
+      //completion_date:(row[0].complete_date).toLocaleDateString(),
       description:row[0].description
     }
     reply(projectDisplayPage.stream(projData));

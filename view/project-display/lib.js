@@ -151,7 +151,7 @@ $('#slt-tsk').on('change',function(){
         },
         success:function(result){
           if(result==1){
-            window.location.href='/project/'+prjId;
+            alert('successfully updated project '+prjId);
           }else{
             alert('fail to update project at API level');
           }
