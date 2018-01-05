@@ -38,10 +38,9 @@ $(document).ready(function(){
             document.getElementById("msg1").innerHTML=
             "<p>***No match found!</p>";
           }else if(response==='matched'){
-            window.location.href=window.location.href; 
             alert('Successfully Authenticated!!!');
             //to dismiss modal
-            $("#dismissBtn1").click();
+            $("#signin1").modal("hide");
           }
         },
         error:function(){
