@@ -65,13 +65,19 @@ function handleDisplayProject(req, reply){
   (async function(){
     const row=await api.get('/project/'+req.params.id);
     //console.log(row[1]);
+    //fix empty completion_date display as 1969 or 1970
+    var completion_date;
+    if(row[0].completion_date == null){
+      completion_date = 'yyyy-mm-dd';
+    }else{
+      completion_date = (new Date(row[0].completion_date)).toLocaleDateString();
+    }
     const projData={
       prj_id:row[0].id,
       proj_name:row[0].project_name,
       state:row[0].state,
       due_date:(new Date(row[0].due_date)).toLocaleDateString(),
-      completion_date:(new Date(row[0].completion_date)).toLocaleDateString(),
-      //completion_date:(row[0].complete_date).toLocaleDateString(),
+      completion_date:completion_date,
       description:row[0].description
     }
     reply(projectDisplayPage.stream(projData));
@@ -234,7 +240,13 @@ module.exports=[
   {
     method:'POST',
     path:'/update/project',
-    handler:handleUpdateProject
+    //handler:handleUpdateProject
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleUpdateProject
+    }
   }
 
 ]

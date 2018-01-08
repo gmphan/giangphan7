@@ -69,7 +69,7 @@ $('#slt-tsk').on('change',function(){
         if(tskData.id[k] == null){
           document.getElementById('tsk-activity').innerHTML=
           '<div class="gray-border">'+
-            '<p id="noteLabel">This task has no previous added note.</p>'
+            '<p id="noteLabel">This task has no previous activity.</p>'
           '</div>';
         }else{
           document.getElementById('tsk-activity').innerHTML+=
