@@ -2,6 +2,7 @@ $(document).ready(function(){
 
   const prjId = $("input[name='prj_id']").val();
   var tskId;
+  const tskStateOnId=[];
 
   /*********** get all the taks of a proj into the task list ***************/
   $.ajax({
@@ -16,11 +17,14 @@ $(document).ready(function(){
             then add those option to sltTsk elements
           */
           var option = document.createElement("option");
-          option.text = j+'. '+taskData[i].task_name;
+          option.text = j+'. '+taskData[i].task_name+' '+' ('+taskData[i].state+')';
           option.value= taskData[i].id;
           sltTsk.add(option);
+          //assign task state to tskStateOnId by task id
+          tskStateOnId[taskData[i].id]=taskData[i].state;
           j++;
         }
+
     },
     error:function(){
       alert("Could not get project's tasks to display");
@@ -43,6 +47,19 @@ $('#slt-tsk').on('change',function(){
     document.getElementById('recent-added-note').innerHTML='';
     return false;
   }
+
+  /******** task state **********************/
+  document.getElementById('task-state-label').innerHTML='Task State:'
+  document.getElementById('task-state').innerHTML=
+    '<select class="form-control" type="text">'+
+      '<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
+      '<option value="open">Open</option>'+
+      '<option value="pending">Pending</option>'+
+      '<option value="waiting">Waiting</option>'+
+      '<option value="complete">Complete</option>'+
+    '</select>';
+  /********* end task state ******************/
+
   //empty the div below when a task is selected
   document.getElementById('tsk-activity').innerHTML='';
   $.ajax({

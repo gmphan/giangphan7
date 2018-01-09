@@ -141,7 +141,6 @@ function handleGetTskNote(req, reply){
       tsk_id:tsk_id,
       note:note,
       added_date:added_date,
-      task_state:task_state
     }
     reply(tskData);
   })()

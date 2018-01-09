@@ -22,19 +22,14 @@
           <div class="col-sm-2"></div>
         </div>
         <div class="row proj-rows">
-          <div class="col-sm-2 proj-left-divs">State:</div>
-          <div class="col-sm-3">
-            <select id="prj-state" class="form-control" type="text">
-              <option value="${input.state}">${input.state}</option>
-              <option value="open">Open</option>
-              <option value="pending">Pending</option>
-              <option value="waiting">Waiting</option>
-              <option value="complete">Complete</option>
-            </select>
-          </div>
           <div class="col-sm-2 proj-left-divs">Due Date:</div>
           <div class="col-sm-3">
             <input class="form-control" type="" name="due_date" value="${input.due_date}">
+          </div>
+          <div class="col-sm-2 proj-left-divs">Completion Date:</div>
+          <div class="col-sm-3">
+            <input id="prj-Cmptn-date" class="form-control" type="text" name="complete_date" value="${input.completion_date}"/>
+
           </div>
           <div class="col-sm-2"></div>
         </div>
@@ -45,9 +40,16 @@
           </div>
           <!-- <div class="col-sm-2"></div>
           <div class="col-sm-3"></div> -->
-          <div class="col-sm-2 proj-left-divs">Completion Date:</div>
+          <div class="col-sm-2 proj-left-divs">Project State:</div>
           <div class="col-sm-3">
-            <input id="prj-Cmptn-date" class="form-control" type="text" name="complete_date" value="${input.completion_date}"/>
+            <select id="prj-state" class="form-control" type="text">
+              <option value="${input.state}">${input.state}</option>
+              <option value="open">Open</option>
+              <option value="pending">Pending</option>
+              <option value="waiting">Waiting</option>
+              <option value="complete">Complete</option>
+            </select>
+
           </div>
           <div class="col-sm-2">
             <a>
@@ -67,21 +69,15 @@
         <div class="col-sm-2"><project-add-task/></div>
       </div>
       <form id="note-form1" class="">
-        <!-- <div id="" class="row proj-rows">
+        <div id="" class="row proj-rows">
           <div class="col-sm-2 proj-left-divs"></div>
           <div class="col-sm-3"></div>
-          <div class="col-sm-2 proj-left-divs">Task State:</div>
-          <div class="col-sm-3">
-            <select id="prj-state" class="form-control" type="text">
-              <option value="${input.task_state}">${input.task_state}</option>
-              <option value="open">Open</option>
-              <option value="pending">Pending</option>
-              <option value="waiting">Waiting</option>
-              <option value="complete">Complete</option>
-            </select>
+          <div id="task-state-label" class="col-sm-2 proj-left-divs"></div>
+          <div id="task-state" class="col-sm-3">
+
           </div>
           <div class="col-sm-2"></div>
-        </div> -->
+        </div>
         <div id="" class="row proj-rows">
           <div id="work-note-label" class="col-sm-2 proj-left-divs"></div>
           <div id="work-note-textarea" class="col-sm-8">
