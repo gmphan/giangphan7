@@ -1,7 +1,7 @@
 <lasso-page package-path="./browser.json"/>
 //the <include/> and <@tag> tag is belong to marko
 <include('../layout/template/index.marko', data)>
-<@title>Projects</@title>
+<@title>Project detail</@title>
   <@content>
     <div class="container reader-box">
 
@@ -14,7 +14,7 @@
       </div>
       <form id="update-proj-form-1">
         <div class="row proj-rows">
-          <div class="col-sm-2 proj-left-divs">Description:</div>
+          <div class="col-sm-2 proj-left-divs">Proj Description:</div>
           <div class="col-sm-8">
             <!-- <div class="gray-border"><p>${input.description}</p></div> -->
             <textarea class="form-control" name="description" rows="5" cols="20">${input.description}</textarea>
@@ -22,11 +22,11 @@
           <div class="col-sm-2"></div>
         </div>
         <div class="row proj-rows">
-          <div class="col-sm-2 proj-left-divs">Due Date:</div>
+          <div class="col-sm-2 proj-left-divs">Proj Due Date:</div>
           <div class="col-sm-3">
             <input class="form-control" type="" name="due_date" value="${input.due_date}">
           </div>
-          <div class="col-sm-2 proj-left-divs">Completion Date:</div>
+          <div class="col-sm-2 proj-left-divs">Proj Completion Date:</div>
           <div class="col-sm-3">
             <input id="prj-Cmptn-date" class="form-control" type="text" name="complete_date" value="${input.completion_date}"/>
 
@@ -59,7 +59,7 @@
         </div>
       </form>
       <div class="row proj-rows">
-        <div class="col-sm-2 proj-left-divs">Tasks:</div>
+        <div class="col-sm-2 proj-left-divs">Task list:</div>
         <div class="col-sm-8">
           <select id="slt-tsk" class="form-control" type="text" name="state">
             <option value="0">Select a task to view and add more note</option>
@@ -72,9 +72,9 @@
         <div id="" class="row proj-rows">
           <div class="col-sm-2 proj-left-divs"></div>
           <div class="col-sm-3"></div>
-          <div id="task-state-label" class="col-sm-2 proj-left-divs"></div>
+          <div id="task-state-label" class="col-sm-2 proj-left-divs"><!--label will be displayed by id --></div>
           <div id="task-state" class="col-sm-3">
-
+            <!-- <select> tag will be displayed using id in lib.js --->
           </div>
           <div class="col-sm-2"></div>
         </div>

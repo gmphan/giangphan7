@@ -71,7 +71,7 @@ $('#slt-tsk').on('change',function(){
       document.getElementById('recent-added-note').innerHTML='';
 
       //labeling and configuring the divs
-      document.getElementById('work-note-label').innerHTML='Work note:';
+      document.getElementById('work-note-label').innerHTML='Task new note:';
       document.getElementById('noteSubmit').innerHTML=
       '<button type="submit" class="btn btn-default btn-sm btn-sm2">Post Note</button>';
       document.getElementById('work-note-textarea').innerHTML='<textarea'+
@@ -82,7 +82,7 @@ $('#slt-tsk').on('change',function(){
       //displaying the result note of a task
       var k = tskData.id.length - 1; //id is an array in tskData json
       do{
-        document.getElementById('activity-label').innerHTML='Activity:';
+        document.getElementById('activity-label').innerHTML='Task activities:';
         if(tskData.id[k] == null){
           document.getElementById('tsk-activity').innerHTML=
           '<div class="gray-border">'+
