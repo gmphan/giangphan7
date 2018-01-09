@@ -75,7 +75,7 @@ $('#slt-tsk').on('change',function(){
           document.getElementById('tsk-activity').innerHTML+=
             '<div class="gray-border">'+
               '<p id="noteLabel">Activity on '+tskData.added_date[k]+'</p>'+
-              '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'
+              '<p><xmp style="white-space: pre-wrap">'+ tskData.note[k]+'</xmp></p>'+
             '</div>';
         }
         k--;

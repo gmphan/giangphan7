@@ -123,7 +123,7 @@ function handleGetTskNote(req, reply){
   (async function(){
     //console.log(req.params.tskId);
     const row=await api.get('/get/task-note/'+req.params.tskId);
-    //console.log(row);
+    //console.log('This is task state: '+ row[0].tsk_id);
     const id=[];
     const tsk_id=[];
     const note=[];
@@ -135,12 +135,13 @@ function handleGetTskNote(req, reply){
       //added_date[i]=(new Date(row[i].added_date)).toLocaleString();
       added_date[i]=(new Date(row[i].added_date)).toString();
     }
-    //console.log(id[0])
+    //console.log('This is task state: '+ row[0].state)
     const tskData={
       id:id,
       tsk_id:tsk_id,
       note:note,
-      added_date:added_date
+      added_date:added_date,
+      task_state:task_state
     }
     reply(tskData);
   })()
