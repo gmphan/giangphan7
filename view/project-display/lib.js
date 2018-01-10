@@ -60,6 +60,10 @@ $('#slt-tsk').on('change',function(){
     '</select>';
   /********* end task state ******************/
 
+  //show update task button
+  document.getElementById('tsk-state-update').innerHTML=
+    '<button class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
+
   //empty the div below when a task is selected
   document.getElementById('tsk-activity').innerHTML='';
   $.ajax({
@@ -150,7 +154,7 @@ $('#slt-tsk').on('change',function(){
 
   /********** update project status ***********/
   $('#update-proj-form-1').submit(function(e){
-    e.preventDefault();
+    e.preventDefault();//to prevent the form still submit even return false
     //$("textarea[name='description']").val();
     if($("textarea[name='description']").val()==""){
       alert('Description Cannot be blanked');
@@ -182,6 +186,11 @@ $('#slt-tsk').on('change',function(){
   });
 
   /********** end update proj status **********/
+
+  /********** update task state **************/
+
+
+  /********** end update task state **********/
 
 
 });
