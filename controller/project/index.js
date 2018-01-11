@@ -184,7 +184,7 @@ function handleUpdateTaskState(req, reply){
     const {tskState, tskId} = req.payload;
     //console.log('here is task state: '+tskState);
     const result=await api.post('/update/task-state',{tskState,tskId});
-    reply(1);
+    reply(result);
   })()
   .catch((err)=>{
     throw err;

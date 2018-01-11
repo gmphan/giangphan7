@@ -198,8 +198,12 @@ $('#slt-tsk').on('change',function(){
         tskState:$("#tsk-state-opt").val(),
         tskId:tskId
       },
-      success:function(){
-        alert('successfully ajax /update/task-state');
+      success:function(result){
+        if(result==1){
+          alert('Successfully updated task state');
+        }else{
+          alert('Authenticate and try again');
+        }
       },
       error:function(){
         alert('Error ajax /update/task-state');
