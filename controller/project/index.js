@@ -178,6 +178,19 @@ function handleUpdateProject(req, reply){
 }
 /******* end handleProject ***************/
 
+/******* handleUpdateTaskState **********/
+function handleUpdateTaskState(req, reply){
+  (async function(){
+    const {tskState, tskId} = req.payload;
+    //console.log('here is task state: '+tskState);
+    const result=await api.post('/update/task-state',{tskState,tskId});
+    reply(1);
+  })()
+  .catch((err)=>{
+    throw err;
+  })
+}
+/******* end handleUpdateTaskState ******/
 
 module.exports=[
   {
@@ -246,6 +259,16 @@ module.exports=[
         strategy: 'base'
       },
         handler:handleUpdateProject
+    }
+  },
+  {
+    method:'POST',
+    path:'/update/task-state',
+    config: {
+      auth: {
+        strategy: 'base'
+      },
+        handler:handleUpdateTaskState
     }
   }
 

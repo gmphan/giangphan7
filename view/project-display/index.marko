@@ -44,10 +44,10 @@
           <div class="col-sm-3">
             <select id="prj-state" class="form-control" type="text">
               <option value="${input.state}">${input.state}</option>
-              <option value="open">Open</option>
-              <option value="pending">Pending</option>
-              <option value="waiting">Waiting</option>
-              <option value="complete">Complete</option>
+              <option value="Open">Open</option>
+              <option value="Pending">Pending</option>
+              <option value="Waiting">Waiting</option>
+              <option value="Complete">Complete</option>
             </select>
 
           </div>
@@ -68,16 +68,20 @@
         </div>
         <div class="col-sm-2"><project-add-task/></div>
       </div>
-      <form id="note-form1" class="">
+      <form id="tsk-updte-tsk-state-frm">
         <div id="" class="row proj-rows">
           <div class="col-sm-2 proj-left-divs"></div>
           <div class="col-sm-3"></div>
-          <div id="task-state-label" class="col-sm-2 proj-left-divs"><!--label will be displayed by id --></div>
+          <div id="task-state-label" class="col-sm-2 proj-left-divs">
+            <!--label will be displayed by id -->
+          </div>
           <div id="task-state" class="col-sm-3">
             <!-- <select> tag will be displayed using id in lib.js --->
           </div>
           <div id="tsk-state-update" class="col-sm-2"></div>
         </div>
+      </form>
+      <form id="note-form1" class="">
         <div id="" class="row proj-rows">
           <div id="work-note-label" class="col-sm-2 proj-left-divs"></div>
           <div id="work-note-textarea" class="col-sm-8">

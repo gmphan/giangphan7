@@ -51,18 +51,18 @@ $('#slt-tsk').on('change',function(){
   /******** task state **********************/
   document.getElementById('task-state-label').innerHTML='Task State:'
   document.getElementById('task-state').innerHTML=
-    '<select class="form-control" type="text">'+
+    '<select id="tsk-state-opt" class="form-control" type="text">'+
       '<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
-      '<option value="open">Open</option>'+
-      '<option value="pending">Pending</option>'+
-      '<option value="waiting">Waiting</option>'+
-      '<option value="complete">Complete</option>'+
+      '<option value="Open">Open</option>'+
+      '<option value="Pending">Pending</option>'+
+      '<option value="Waiting">Waiting</option>'+
+      '<option value="Complete">Complete</option>'+
     '</select>';
   /********* end task state ******************/
 
   //show update task button
   document.getElementById('tsk-state-update').innerHTML=
-    '<button class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
+    '<button type="submit" class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
 
   //empty the div below when a task is selected
   document.getElementById('tsk-activity').innerHTML='';
@@ -154,7 +154,7 @@ $('#slt-tsk').on('change',function(){
 
   /********** update project status ***********/
   $('#update-proj-form-1').submit(function(e){
-    e.preventDefault();//to prevent the form still submit even return false
+    e.preventDefault();//to prevent the page to refresh
     //$("textarea[name='description']").val();
     if($("textarea[name='description']").val()==""){
       alert('Description Cannot be blanked');
@@ -188,7 +188,24 @@ $('#slt-tsk').on('change',function(){
   /********** end update proj status **********/
 
   /********** update task state **************/
-
+  $("#tsk-updte-tsk-state-frm").submit(function(e){
+    e.preventDefault();//prevent the page from refresh
+    //console.log($("#tsk-state-opt").val());
+    $.ajax({
+      type:'post',
+      url:'/update/task-state',
+      data:{
+        tskState:$("#tsk-state-opt").val(),
+        tskId:tskId
+      },
+      success:function(){
+        alert('successfully ajax /update/task-state');
+      },
+      error:function(){
+        alert('Error ajax /update/task-state');
+      }
+    });
+  });
 
   /********** end update task state **********/
 
