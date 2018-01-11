@@ -9,19 +9,25 @@ $(document).ready(function(){
     type:'get',
     url:'/get/task-name/'+prjId,
     success:function(taskData){
+      //use j as index for task list
       var j = 1;
       var sltTsk = document.getElementById('slt-tsk');
         for(var i=0; i<taskData.length; i++){
+          //assign task state to tskStateOnId by task id
+          tskStateOnId[taskData[i].id]=taskData[i].state;
+
           /*
             create options, add text and value to the options
             then add those option to sltTsk elements
           */
-          var option = document.createElement("option");
-          option.text = j+'. '+taskData[i].task_name+' '+' ('+taskData[i].state+')';
-          option.value= taskData[i].id;
-          sltTsk.add(option);
-          //assign task state to tskStateOnId by task id
-          tskStateOnId[taskData[i].id]=taskData[i].state;
+          // var option = document.createElement("option");
+          // option.text = j+'. '+taskData[i].task_name+' ('+tskStateOnId[taskData[i].id]+')';
+          // option.value= taskData[i].id;
+
+          var tskSltOpt = document.createElement("option");
+          tskSltOpt.text = j+'. '+taskData[i].task_name; //+' ('+tskStateOnId[taskData[i].id]+')'
+          tskSltOpt.value= taskData[i].id;
+          sltTsk.add(tskSltOpt);
           j++;
         }
 
@@ -45,24 +51,11 @@ $('#slt-tsk').on('change',function(){
     document.getElementById('tsk-activity').innerHTML='';
     document.getElementById('recent-added-note-label').innerHTML='';
     document.getElementById('recent-added-note').innerHTML='';
+    document.getElementById('task-state-label').innerHTML='';
+    document.getElementById('task-state').innerHTML='';
+    document.getElementById('tsk-state-update').innerHTML='';
     return false;
   }
-
-  /******** task state **********************/
-  document.getElementById('task-state-label').innerHTML='Task State:'
-  document.getElementById('task-state').innerHTML=
-    '<select id="tsk-state-opt" class="form-control" type="text">'+
-      '<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
-      '<option value="Open">Open</option>'+
-      '<option value="Pending">Pending</option>'+
-      '<option value="Waiting">Waiting</option>'+
-      '<option value="Complete">Complete</option>'+
-    '</select>';
-  /********* end task state ******************/
-
-  //show update task button
-  document.getElementById('tsk-state-update').innerHTML=
-    '<button type="submit" class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
 
   //empty the div below when a task is selected
   document.getElementById('tsk-activity').innerHTML='';
@@ -70,6 +63,24 @@ $('#slt-tsk').on('change',function(){
     type:'get',
     url:'/get/task-note/'+tskId,
     success:function(tskData){
+
+      /******** task state **********************/
+      // document.getElementById('task-state-label').innerHTML='Task State:'
+      // document.getElementById('task-state').innerHTML=
+      //   '<select id="tsk-state-opt" class="form-control" type="text">'+
+      //     //'<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
+      //     '<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
+      //     '<option value="Open">Open</option>'+
+      //     '<option value="Pending">Pending</option>'+
+      //     '<option value="Waiting">Waiting</option>'+
+      //     '<option value="Complete">Complete</option>'+
+      //   '</select>';
+      //   //show update task button
+      // document.getElementById('tsk-state-update').innerHTML=
+      //   '<button type="submit" class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
+
+
+
       //set the below to empty when a task is selected
       document.getElementById('recent-added-note-label').innerHTML='';
       document.getElementById('recent-added-note').innerHTML='';
@@ -93,6 +104,21 @@ $('#slt-tsk').on('change',function(){
             '<p id="noteLabel">This task has no previous activity.</p>'
           '</div>';
         }else{
+          /******** task state **********************/
+          document.getElementById('task-state-label').innerHTML='Task State:';
+          document.getElementById('task-state').innerHTML=
+            '<select id="tsk-state-opt" class="form-control" type="text">'+
+              //'<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
+              '<option value="'+tskStateOnId[tskId]+'">'+tskStateOnId[tskId]+'</option>'+
+              '<option value="Open">Open</option>'+
+              '<option value="Pending">Pending</option>'+
+              '<option value="Waiting">Waiting</option>'+
+              '<option value="Complete">Complete</option>'+
+            '</select>';
+          document.getElementById('tsk-state-update').innerHTML=
+            '<button type="submit" class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
+            /********* end task state ******************/
+
           document.getElementById('tsk-activity').innerHTML+=
             '<div class="gray-border">'+
               '<p id="noteLabel">Activity on '+tskData.added_date[k]+'</p>'+
@@ -201,6 +227,9 @@ $('#slt-tsk').on('change',function(){
       success:function(result){
         if(result==1){
           alert('Successfully updated task state');
+          //update the value in the tskState array
+          tskStateOnId[tskId]=$("#tsk-state-opt").val();
+          //console.log(tskStateOnId[tskId]);
         }else{
           alert('Authenticate and try again');
         }
