@@ -25,7 +25,7 @@ $(document).ready(function(){
           // option.value= taskData[i].id;
 
           var tskSltOpt = document.createElement("option");
-          tskSltOpt.text = j+'. '+taskData[i].task_name; //+' ('+tskStateOnId[taskData[i].id]+')'
+          tskSltOpt.text = j+'. '+taskData[i].task_name+'  ('+tskStateOnId[taskData[i].id]+')';
           tskSltOpt.value= taskData[i].id;
           sltTsk.add(tskSltOpt);
           j++;
@@ -113,7 +113,8 @@ $('#slt-tsk').on('change',function(){
               '<option value="Open">Open</option>'+
               '<option value="Pending">Pending</option>'+
               '<option value="Waiting">Waiting</option>'+
-              '<option value="Complete">Complete</option>'+
+              '<option value="Close Complete">Close Complete</option>'+
+              '<option value="Close Incomplete">Close Incomplete</option>'+
             '</select>';
           document.getElementById('tsk-state-update').innerHTML=
             '<button type="submit" class="btn btn-default btn-sm btn-sm2">Update Task State</button>';
