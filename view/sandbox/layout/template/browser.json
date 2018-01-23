@@ -1,0 +1,22 @@
+{
+  "dependencies": [
+    {
+      "type": "css",
+      "url": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    },
+    {
+      "type": "js",
+      "url": "//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+    },
+    {
+      "type": "js",
+      "url": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    },
+    {
+      "type": "js",
+      "url": "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+    },
+    "./lib.js",
+    "./style.css",
+  ]
+}
