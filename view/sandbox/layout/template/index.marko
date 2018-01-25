@@ -1,27 +1,23 @@
-//this template is the central of displaying, everypage is use the head and title
-//from here. example: slash/index.marko include this page, and lasso just put
-//everything in place for us. therefore other index.marko in the view don't
-//have to repeat all of the below again.
-
-//this line contain css, js, and jquery, ... that use for every index.marko page
-//even for nav, but can't put it here, because if I put this here, the other
-//lib.js from other pachage will not get included - I need to find out why from
-//Charles. The <lasso-page package-path="./browser.json"/> need to be on the
-//top page. Example notes/index.marko will need <lasso-page package-path="./browser.json"/>
-//and in the browser.json of notes/index.marko will have to have template/browser.json
-<!-- <lasso-page package-path="./browser.json"/> -->
+<lasso-page package-path="./browser.json"/>
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- <title><include(input.title)/></title> -->
+    <title><include(input.title)/></title>
     <!-- <link href="/assets/images/happySnailTrans.ico" rel="icon" type="image/png"> -->
-
+    <lasso-head/>
   </head>
   <body>
-    <h1>testing</h1>
+      <h1>testing from template new</h1>
 
+      <!-- include @content from each page/view index.marko -->
+      <include(input.content)/>
+
+
+
+    <lasso-body/>
+    <browser-refresh enabled="true"/>
   </body>
 </html>
