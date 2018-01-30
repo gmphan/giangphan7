@@ -17,7 +17,15 @@
       "url": "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
     },
     "./lib.js",
+    "../../../assets/vendor/jquery/jquery.min.js",
+    "../../../assets/vendor/bootstrap/js/bootstrap.min.js",
+    {
+      "type": "js",
+      "url": "//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"
+    },
+    "../../../assets/js/jqBootstrapValidation.js",
+    "../../../assets/js/freelancer.min.js",
     "./style.css",
-    "../../../assets/font-awesome/css/font-awesome.min.css"
+    "../../../assets/vendor/font-awesome/css/font-awesome.min.css"
   ]
 }
