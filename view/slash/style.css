@@ -8,6 +8,7 @@ header {
 the end of navigation, so that we can do rolling without rolling the
 navigation away*/
 header .container {
+  padding-top: 100px;
   padding-bottom: 50px;
 }
 header img {
