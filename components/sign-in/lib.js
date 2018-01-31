@@ -7,7 +7,7 @@ the fixed and relative css, but that will messup the page display.
 
 Best solution:
 Use custom js to change the way it appear to body:
-The below tell the browser, show the modal was it is belong to the <body> and
+The below tell the browser, show the modal as it is belong to the <body> and
 not other <div>
 
 $('#myModal').appendTo("body").modal('show');
@@ -17,11 +17,11 @@ $('#myModal').appendTo("body")
 This will keep all normal functionality, allowing you to show the modal using a button.
 */
 
-$(document).ready(function(){
-  $('#signin1').appendTo("body")
+(function($){
+  "use strict";
+  $('#signin1').appendTo("body");
 
   $('#authComp1').submit(function(e){
-    e.preventDefault();
     if($('#usrname').val()==""||$('#psw').val()==""){
       document.getElementById("msg1").innerHTML=
       "<p>***Login field cannot be blank!</p>";
@@ -48,7 +48,8 @@ $(document).ready(function(){
         }
       });
     }
+    e.preventDefault();
   });
 
 
-})
+})(jQuery);

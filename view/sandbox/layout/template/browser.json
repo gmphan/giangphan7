@@ -1,7 +1,7 @@
 {
   "dependencies":[
     "./lib.js",
-    "../../../../assets/vendor/jquery/jquery.min.js",
+    "../../../../assets/sandbox/vendor/jquery/jquery.min.js",
     "../../../../assets/sandbox/vendor/bootstrap/js/bootstrap.min.js",
     {
       "type": "js",
