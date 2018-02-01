@@ -3,23 +3,30 @@
   const url = window.location.href;
   const lastIndexOfUrl = url.substr(url.lastIndexOf('/')+1);
 
+  /* make sure scrolling animation work when jump from a menu page to home page */
+  console.log(sessionStorage.getItem('scrolling-key'));
+  if(lastIndexOfUrl == "" && sessionStorage.getItem('scrolling-key') !== ""){
+    console.log(window.location.href);
+    $('html, body').stop().animate({
+        scrollTop: ($(sessionStorage.getItem('scrolling-key')).offset().top - 50)
+    }, 1250, 'easeInOutExpo');
+    sessionStorage.setItem('scrolling-key', "");
+  }
+
   // jQuery for page scrolling feature - requires jQuery Easing plugin
   $('.page-scroll a').on('click', function(event) {
     var $anchor = $(this);
-    if(lastIndexOfUrl === '' || lastIndexOfUrl === '#portfolio' || lastIndexOfUrl === '#about' || lastIndexOfUrl === '#contact'){
+    sessionStorage.setItem('scrolling-key', $anchor.attr('href'));
+    if(lastIndexOfUrl !== ""){
+      window.location.href='/';
+    }else{
+      console.log('in empty '+ window.location.href);
       $('html, body').stop().animate({
-          scrollTop: ($($anchor.attr('href')).offset().top - 50)
+          scrollTop: ($(sessionStorage.getItem('scrolling-key')).offset().top - 50)
       }, 1250, 'easeInOutExpo');
-      event.preventDefault();
-    }else if(lastIndexOfUrl !== ""){
-      href:window.location.href='/'+$anchor.attr('href');
-      console.log($anchor.attr('href'));
-      $('html, body').stop().animate({
-          scrollTop: ($($anchor.attr('href')).offset().top - 50)
-      }, 1250, 'easeInOutExpo');
-      event.preventDefault();
     }
   });
+/* end of make sure scrolling animation work when jump from a menu page to home page */
 
   // Highlight the top nav as scrolling occurs
   $('body').scrollspy({
