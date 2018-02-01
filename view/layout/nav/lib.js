@@ -3,6 +3,13 @@
   const url = window.location.href;
   const lastIndexOfUrl = url.substr(url.lastIndexOf('/')+1);
 
+  /**** set session for scrolling-key or else will get compile error
+  @scrollTop: ($(sessionStorage.getItem('scrolling-key')).offset().top - 50)
+  because null.offset is not acceptable *****/
+  if(sessionStorage.getItem('scrolling-key') == null){
+    sessionStorage.setItem('scrolling-key', "#page-top");
+  }
+
   /* make sure scrolling animation work when jump from a menu page to home page */
   if(lastIndexOfUrl == "" && sessionStorage.getItem('scrolling-key') !== ""){
     $('html, body').stop().animate({
