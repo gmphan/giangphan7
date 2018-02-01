@@ -4,9 +4,7 @@
   const lastIndexOfUrl = url.substr(url.lastIndexOf('/')+1);
 
   /* make sure scrolling animation work when jump from a menu page to home page */
-  console.log(sessionStorage.getItem('scrolling-key'));
   if(lastIndexOfUrl == "" && sessionStorage.getItem('scrolling-key') !== ""){
-    console.log(window.location.href);
     $('html, body').stop().animate({
         scrollTop: ($(sessionStorage.getItem('scrolling-key')).offset().top - 50)
     }, 1250, 'easeInOutExpo');
@@ -20,7 +18,6 @@
     if(lastIndexOfUrl !== ""){
       window.location.href='/';
     }else{
-      console.log('in empty '+ window.location.href);
       $('html, body').stop().animate({
           scrollTop: ($(sessionStorage.getItem('scrolling-key')).offset().top - 50)
       }, 1250, 'easeInOutExpo');
