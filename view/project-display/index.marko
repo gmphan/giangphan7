@@ -28,7 +28,13 @@
           </div>
           <div class="col-sm-2 proj-left-divs">Proj Completion Date:</div>
           <div class="col-sm-3">
-            <input id="prj-Cmptn-date" class="form-control" type="text" name="complete_date" value="${input.completion_date}"/>
+            <if("${input.completion_date}"=='empty')>
+              <input id="prj-Cmptn-date" class="form-control" type="date" name="complete_date" value=""/>
+            </if>
+            <else>
+              <input id="prj-Cmptn-date" class="form-control" type="text" name="complete_date" value="${input.completion_date}"/>
+            </else>
+            
 
           </div>
           <div class="col-sm-2"></div>

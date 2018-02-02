@@ -15,7 +15,7 @@ const handleProjects=function(req, reply){
     for(let i=0; i<rows.length; i++){
       id[i]=rows[i].id;
       project_name[i]=rows[i].project_name;
-      added_date[i]= (new Date(rows[i].added_date)).toDateString();
+      added_date[i]= (new Date(rows[i].added_date)).toLocaleDateString();
       state[i]=rows[i].state;
     }
     //console.log('testing '+added_date[2]);
@@ -68,9 +68,10 @@ function handleDisplayProject(req, reply){
     //fix empty completion_date display as 1969 or 1970
     var completion_date;
     if(row[0].completion_date == null){
-      completion_date = 'yyyy-mm-dd';
+      completion_date = 'empty';
     }else{
       completion_date = (new Date(row[0].completion_date)).toLocaleDateString();
+      console.log(completion_date);
     }
     const projData={
       prj_id:row[0].id,
