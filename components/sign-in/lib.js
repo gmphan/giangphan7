@@ -17,9 +17,23 @@ $('#myModal').appendTo("body")
 This will keep all normal functionality, allowing you to show the modal using a button.
 */
 
+
+
 (function($){
   "use strict";
   $('#signin1').appendTo("body");
+
+  //need to convert the below functions into jquery, when the link is clicked
+  //I auth modal will pop up, after submit, authLink will change
+  // function open_fun() {
+  //   document.getElementById('authLink').innerHTML =
+  //     "<a href='javascript:clo_fun()'>CLOSE</a>";
+  // }
+
+  // function clo_fun() {
+  //   document.getElementById('authLink').innerHTML =
+  //     "<a id='signin1link' data-toggle='modal' data-target='#signout1' href='javascript:open_fun()'>OPEN</a>";
+  // }
 
   $('#authComp1').submit(function(e){
     if($('#usrname').val()==""||$('#psw').val()==""){
@@ -39,8 +53,21 @@ This will keep all normal functionality, allowing you to show the modal using a 
             "<p>***No match found!</p>";
           }else if(response==='matched'){
             alert('Successfully Authenticated!!!');
+
+            //problem: the below change/add the innerHTML inside <a> and not
+            //<a>'s attributes
+            //document.getElementById("signin1link").innerHTML=
+            //"<a id='signin1link' data-toggle='modal' data-target='#signout1'>Sign-Out</a>"
+
             //to dismiss modal
             $("#signin1").modal("hide");
+
+            document.getElementById("authLink").innerHTML=
+               "<a id='signin1link' data-toggle='modal' data-target='#signout1'>Sign-out</a>";
+
+           //need to call sign-out controller to clear the cookie
+           //and then change the innerHTML to sign-in again.
+
           }
         },
         error:function(){
