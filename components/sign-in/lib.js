@@ -22,6 +22,7 @@ This will keep all normal functionality, allowing you to show the modal using a 
 (function($){
   "use strict";
   $('#signin1').appendTo("body");
+  $('#signout1').appendTo("body");//without this there will be no content on my signout1 modal
 
   //need to convert the below functions into jquery, when the link is clicked
   //I auth modal will pop up, after submit, authLink will change
@@ -77,6 +78,7 @@ This will keep all normal functionality, allowing you to show the modal using a 
     }
     e.preventDefault();
   });
+
 
 
 })(jQuery);
