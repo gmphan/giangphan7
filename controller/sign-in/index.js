@@ -56,10 +56,23 @@ function handleSignin(req, reply){
 }
 /**---- end handleSignin------**/
 
+/***---- handleSignout -----*****/
+function handleSignout(req, reply){
+  //request.auth.session.clear();
+  //return reply(‘Logout Successful!’);
+  reply('hello');
+}
+/***--- end handleSignout ---***/
+
 module.exports=[
   {
     method:'POST',
     path:'/sign-in',
     handler:handleSignin
+  },
+  {
+    method:'GET',
+    path:'/sign-out',
+    handler:handleSignout
   }
 ]
