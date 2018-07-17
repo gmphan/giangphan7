@@ -27,6 +27,7 @@
     "node-dir": "^0.1.17",
     "nodemailer": "^4.3.1",
     "os": "^0.1.1",
+    "pino": "^4.16.1",
     "promise": "^7.1.1",
     "request": "^2.83.0",
     "require-self-ref": "^2.0.1"
