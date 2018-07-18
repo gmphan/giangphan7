@@ -10,10 +10,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Reminders</h3>
+          <h3 class="modal-title">Quotes</h3>
         </div>
-        <div class="modal-body">
-          <p>
+        <div class="modal-body" style="text-align:center;">
+          <li>Either you run the day, or the day runs you. <br/>
+            <span style="font-style:italic; font-size:14px" >"by - Jim Rohn"</span>
+          </li>
+          <!-- <p>
             There are days that I feel lost, lazy, or tired. Those days are the
             days that I just want to stop challenging and giving up on myself
             and on the things that I have been working on or planning to accomplish.
@@ -25,7 +28,7 @@
             The meaning of each reminder helps with each specific life situation.
             The reminders have often helped to refresh my mind and redirect me
             back to my right track.
-          </p>
+          </p> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-gphan" data-dismiss="modal">Continue to the page</button>
@@ -39,7 +42,7 @@
     <div class="row" style="text-align:center;">
       <!-- <div class="col-md-2 hidden-sm"></div> -->
         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-          <h1 class="meta">Reminders:</h1><br/><br/>
+          <h1 class="meta">Quotes:</h1><br/><br/>
         </button>
         <ul id="ulReminder" style="list-style:none">
           <for(var i=0; i<input.reminderId.length; i++)>
@@ -49,7 +52,7 @@
             </li><br/><br/><br/>
           </for>
         </ul>
-        <a class="btn btn-gphan" href="/add-new-reminder">New Reminder</a>
+        <a class="btn btn-gphan" href="/add-new-reminder">New Quotes</a>
     </div>
   </div>
 
